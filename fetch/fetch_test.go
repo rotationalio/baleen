@@ -54,6 +54,7 @@ func TestRSSResponse(t *testing.T) {
 	equals(t, feed.Title, "Sample Feed")
 	equals(t, len(feed.Items), 1)
 }
+
 func TestAtomResponse(t *testing.T) {
 	// Start a local test HTTP server and close when test is done
 	server := httptest.NewServer(serveTestdata(t, "testdata/atom1.xml"))
