@@ -123,7 +123,6 @@ func (f *httpFetcher) Fetch() (feed *gofeed.Feed, err error) {
 
 	// Get the eTag and last-modified from the response header if we've successfully
 	// parsed the request and received a 200 response.
-	// TODO: provide reset functionality to clear the etag and last-modified
 	f.etag = rep.Header.Get("ETag")
 	f.modified = rep.Header.Get("Last-Modified")
 

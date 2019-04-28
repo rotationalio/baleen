@@ -27,7 +27,7 @@ func serveTestdata(t *testing.T, path string) http.HandlerFunc {
 		}
 
 		// Set Headers
-		rw.Header().Set("Content-Type", "application/rss+xml")
+		rw.Header().Set("Content-Type", "text/xml")
 		rw.Header().Set("Content-Length", fmt.Sprintf("%d", d.Size()))
 		rw.WriteHeader(200)
 
