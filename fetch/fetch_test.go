@@ -32,7 +32,7 @@ func serveTestdata(t *testing.T, path string) http.HandlerFunc {
 		rw.WriteHeader(200)
 
 		if _, err = io.Copy(rw, f); err != nil {
-			t.Errorf("could copy RSS data to resp: %s", err)
+			t.Errorf("could not copy RSS data to resp: %s", err)
 		}
 
 	}
