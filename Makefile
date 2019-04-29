@@ -39,11 +39,11 @@ deps:
 
 # Target for simple testing on the command line
 test:
-	@ $(GOTEST) .
+	@ $(GOTEST) ./...
 
 # Target for testing in continuous integration
 citest:
-	$(GOTEST) -v -bench .
+	$(GOTEST) -v -bench ./...
 
 # Run Godoc server and open browser to the documentation
 doc:
