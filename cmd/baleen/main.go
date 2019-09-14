@@ -1,3 +1,16 @@
+/*
+Package main serves as the primary entry point for launching the Baleen
+command line application.
+
+Author:  Benjamin Bengfort
+Author:  Rebecca Bilbro
+Created: Thu Apr 25 18:32:19 2019 -0400
+
+Copyright (C) 2019 Kansas Labs
+For license information, see LICENSE.txt
+
+ID: main.go [68a2562] benjamin@bengfort.com $
+*/
 package main
 
 import (

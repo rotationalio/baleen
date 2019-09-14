@@ -14,6 +14,15 @@ Basic Usage:
 
 For more on RSS hacking and bandwidth minimization see:
 https://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers
+
+Author:  Benjamin Bengfort
+Author:  Rebecca Bilbro
+Created: Mon Apr 29 06:43:36 2019 -0400
+
+Copyright (C) 2019 Kansas Labs
+For license information, see LICENSE.txt
+
+ID: fetch.go [d6dba70] benjamin@bengfort.com $
 */
 package fetch
 
