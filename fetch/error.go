@@ -1,29 +1,3 @@
-/*
-Package fetch provides a high-level interface for going out to get RSS and Atom feeds
-from any source. Right now http and https requests are supported but future
-implementations may also include authenticated fetchers, etc. Fetchers are intended to
-synchronously make a single request to get the latest version the feed and to preserve
-the state of the last request to the feed they are managing. They ensure that
-connections are closed after each request use etag and last-modified headers to minimize
-the amount of bandwidth required.
-
-Basic Usage:
-
-	fetcher := fetch.New("https://www.example.com/rss")
-	feed, err := fetcher.Fetch()
-
-For more on RSS hacking and bandwidth minimization see:
-https://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers
-
-Author:  Benjamin Bengfort
-Author:  Rebecca Bilbro
-Created: Mon Apr 29 06:43:36 2019 -0400
-
-Copyright (C) 2019 Kansas Labs
-For license information, see LICENSE.txt
-
-ID: error.go [d6dba70] benjamin@bengfort.com $
-*/
 package fetch
 
 import (
@@ -54,3 +28,14 @@ func (e HTTPError) NotModified() bool {
 func (e HTTPError) NotFound() bool {
 	return e.Code == http.StatusNotFound
 }
+
+/*
+Author:  Benjamin Bengfort
+Author:  Rebecca Bilbro
+Created: Mon Apr 29 06:43:36 2019 -0400
+
+Copyright (C) 2019 Kansas Labs
+For license information, see LICENSE.txt
+
+ID: error.go [d6dba70] benjamin@bengfort.com $
+*/

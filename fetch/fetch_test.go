@@ -1,14 +1,5 @@
 /*
 Package fetch_test provides testing for the functions in the fetch package.
-
-Author:  Benjamin Bengfort
-Author:  Rebecca Bilbro
-Created: Mon Apr 29 06:43:36 2019 -0400
-
-Copyright (C) 2019 Kansas Labs
-For license information, see LICENSE.txt
-
-ID: fetch_test.go [d6dba70] benjamin@bengfort.com $
 */
 package fetch_test
 
@@ -153,3 +144,14 @@ func TestSendLastModified(t *testing.T) {
 	equals(t, he.Code, http.StatusNotModified)
 	assert(t, feed == nil, "feed is not nil")
 }
+
+/*
+Author:  Benjamin Bengfort
+Author:  Rebecca Bilbro
+Created: Mon Apr 29 06:43:36 2019 -0400
+
+Copyright (C) 2019 Kansas Labs
+For license information, see LICENSE.txt
+
+ID: fetch_test.go [d6dba70] benjamin@bengfort.com $
+*/
