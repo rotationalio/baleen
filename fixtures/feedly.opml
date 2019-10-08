@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+	<head>
+		<title>Kansas subscriptions in feedly Cloud</title>
+	</head>
+	<body>
+		<outline type="rss" text="ekathimerini.com" title="ekathimerini.com" xmlUrl="http://www.ekathimerini.com/rss" htmlUrl="http://www.ekathimerini.com/"/>
+		<outline type="rss" text="Η ΚΑΘΗΜΕΡΙΝΗ | Ημερήσια Πολιτική και Οικονομική Εφημερίδα" title="Η ΚΑΘΗΜΕΡΙΝΗ | Ημερήσια Πολιτική και Οικονομική Εφημερίδα" xmlUrl="http://www.kathimerini.gr/rss" htmlUrl="https://www.kathimerini.gr/"/>
+		<outline type="rss" text="ert.gr" title="ert.gr" xmlUrl="https://www.ert.gr/feed/" htmlUrl="https://www.ert.gr"/>
+		<outline type="rss" text="ERT International" title="ERT International" xmlUrl="https://int.ert.gr/feed/" htmlUrl="https://int.ert.gr"/>
+		<outline type="rss" text="The National Herald" title="The National Herald" xmlUrl="https://www.thenationalherald.com/feed/" htmlUrl="https://www.thenationalherald.com"/>
+		<outline type="rss" text="The National Herald GR" title="The National Herald GR" xmlUrl="https://www.ekirikas.com/feed/" htmlUrl="https://www.ekirikas.com"/>
+		<outline type="rss" text="조선닷컴 : 전체기사" title="조선닷컴 : 전체기사" xmlUrl="http://www.chosun.com/site/data/rss/rss.xml" htmlUrl="http://www.chosun.com"/>
+		<outline type="rss" text="The Chosun Ilbo" title="The Chosun Ilbo" xmlUrl="http://english.chosun.com/site/data/rss/rss.xml" htmlUrl="http://english.chosun.com"/>
+		<outline type="rss" text="한국일보 주요기사" title="한국일보 주요기사" xmlUrl="http://rss.hankookilbo.com/rss_xml/main/mainpan.xml" htmlUrl="http://www.hankookilbo.com/"/>
+		<outline type="rss" text="Korea Times News" title="Korea Times News" xmlUrl="http://www.ktimes.com/www/rss/rss.xml" htmlUrl="http://www.koreatimes.co.kr/"/>
+		<outline type="rss" text="전체기사 : 뉴스 : 한겨레 뉴스 - 인터넷한겨레" title="전체기사 : 뉴스 : 한겨레 뉴스 - 인터넷한겨레" xmlUrl="http://www.hani.co.kr/rss/" htmlUrl="http://www.hani.co.kr/arti/"/>
+		<outline type="rss" text="English Edition : The hankyoreh" title="English Edition : The hankyoreh" xmlUrl="http://english.hani.co.kr/rss/english_edition/" htmlUrl="http://english.hani.co.kr"/>
+		<outline type="rss" text="Granma - Órgano oficial del Partido Comunista de Cuba" title="Granma - Órgano oficial del Partido Comunista de Cuba" xmlUrl="http://www.granma.cu/feed" htmlUrl="http://www.granma.cu"/>
+		<outline type="rss" text="Granma - Órgano oficial del Partido Comunista de Cuba" title="Granma - Órgano oficial del Partido Comunista de Cuba" xmlUrl="http://en.granma.cu/feed" htmlUrl="http://en.granma.cu"/>
+		<outline type="rss" text="Agencia EFE | www.efe.com | Edición España" title="Agencia EFE | www.efe.com | Edición España" xmlUrl="http://www.efe.com/efe/noticias/espana/1/rss" htmlUrl="https://www.efe.com/efe/espana/1/rss"/>
+		<outline type="rss" text="Agencia EFE | www.efe.com | English edition" title="Agencia EFE | www.efe.com | English edition" xmlUrl="http://www.efe.com/efe/noticias/english/4/rss" htmlUrl="https://www.efe.com/efe/english/4/rss"/>
+		<outline type="rss" text="In English Section | EL PAÍS" title="In English Section | EL PAÍS" xmlUrl="http://ep01.epimg.net/rss/elpais/inenglish.xml" htmlUrl="https://elpais.com/rss/elpais/inenglish.xml"/>
+		<outline type="rss" text="Portada de EL PAÍS" title="Portada de EL PAÍS" xmlUrl="http://www.elpais.com/rss/feed.html?feedId=1022" htmlUrl="https://elpais.com/rss/elpais/portada.xml"/>
+		<outline type="rss" text="GARA Euskal Herriko egunkaria | naiz.eus" title="GARA Euskal Herriko egunkaria | naiz.eus" xmlUrl="https://www.naiz.eus/es/rss/publications/gara.rss" htmlUrl="https://www.naiz.eus/es/rss/publications/gara.rss"/>
+		<outline type="rss" text="GARA Euskal Herriko egunkaria | naiz.eus | English" title="GARA Euskal Herriko egunkaria | naiz.eus | English" xmlUrl="https://www.naiz.eus/en/rss/publications/gara.rss" htmlUrl="https://www.naiz.eus/en/rss/publications/gara.rss"/>
+		<outline type="rss" text="BBC News 코리아 - 홈페이지" title="BBC News 코리아 - 홈페이지" xmlUrl="http://feeds.bbci.co.uk/korean/rss.xml" htmlUrl="https://www.bbckorean.com"/>
+		<outline type="rss" text="BBC News - World" title="BBC News - World" xmlUrl="http://feeds.bbci.co.uk/news/world/rss.xml" htmlUrl="https://www.bbc.co.uk/news/"/>
+		<outline type="rss" text="BBC Uzbek - Бош саҳифа" title="BBC Uzbek - Бош саҳифа" xmlUrl="http://feeds.bbci.co.uk/uzbek/rss.xml" htmlUrl="http://www.bbcuzbek.com"/>
+		<outline type="rss" text="BBC News Україна - Новини" title="BBC News Україна - Новини" xmlUrl="http://feeds.bbci.co.uk/ukrainian/rss.xml" htmlUrl="http://www.bbcukrainian.com"/>
+		<outline type="rss" text="BBC News Indonesia - Berita" title="BBC News Indonesia - Berita" xmlUrl="http://feeds.bbci.co.uk/indonesia/rss.xml" htmlUrl="http://www.bbcindonesia.com"/>
+		<outline type="rss" text="BBC Mundo - Noticias" title="BBC Mundo - Noticias" xmlUrl="http://feeds.bbci.co.uk/mundo/rss.xml" htmlUrl="http://www.bbcmundo.com"/>
+		<outline type="rss" text="BBC News اردو - خبریں، تازہ خبریں، بریکنگ نیو | News, latest news, breaking news" title="BBC News اردو - خبریں، تازہ خبریں، بریکنگ نیو | News, latest news, breaking news" xmlUrl="http://feeds.bbci.co.uk/urdu/rss.xml" htmlUrl="http://www.bbcurdu.com"/>
+		<outline type="rss" text="BBC Russian - Главная" title="BBC Russian - Главная" xmlUrl="http://feeds.bbci.co.uk/russian/rss.xml" htmlUrl="http://www.bbcrussian.com"/>
+		<outline type="rss" text="BBC News தமிழ் - முகப்பு" title="BBC News தமிழ் - முகப்பு" xmlUrl="http://feeds.bbci.co.uk/tamil/rss.xml" htmlUrl="http://www.bbctamil.com"/>
+		<outline type="rss" text="BBC News Tiếng Việt - Tin chính" title="BBC News Tiếng Việt - Tin chính" xmlUrl="http://feeds.bbci.co.uk/vietnamese/rss.xml" htmlUrl="http://www.bbcvietnamese.com"/>
+		<outline type="rss" text="BBC News नेपाल - समाचार, भर्खरै प्राप्त समाचार, भिडिओ, विश्लेषण, प्रतिक्रिया | बीबीसी नेपाली" title="BBC News नेपाल - समाचार, भर्खरै प्राप्त समाचार, भिडिओ, विश्लेषण, प्रतिक्रिया | बीबीसी नेपाली" xmlUrl="http://feeds.bbci.co.uk/nepali/rss.xml" htmlUrl="http://www.bbcnepali.com"/>
+		<outline type="rss" text="BBC Brasil - Notícias, vídeos, análise e contexto em português" title="BBC Brasil - Notícias, vídeos, análise e contexto em português" xmlUrl="http://feeds.bbci.co.uk/portuguese/rss.xml" htmlUrl="http://www.bbcbrasil.com"/>
+		<outline type="rss" text="BBC Turkish - Haberler, Son Dakika Haberleri, Haber-Analiz, Video" title="BBC Turkish - Haberler, Son Dakika Haberleri, Haber-Analiz, Video" xmlUrl="http://feeds.bbci.co.uk/turkce/rss.xml" htmlUrl="http://www.bbcturkce.com"/>
+		<outline type="rss" text="BBC Cymru Fyw - Newyddion a mwy" title="BBC Cymru Fyw - Newyddion a mwy" xmlUrl="http://feeds.bbci.co.uk/cymrufyw/rss.xml" htmlUrl="http://www.bbc.co.uk/cymrufyw"/>
+		<outline type="rss" text="BBC Chinese - 主页" title="BBC Chinese - 主页" xmlUrl="http://feeds.bbci.co.uk/zhongwen/simp/rss.xml" htmlUrl="http://www.bbcchinese.com"/>
+	</body>
+</opml>
