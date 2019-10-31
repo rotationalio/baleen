@@ -62,17 +62,13 @@ func GetSession(creds *AWSCredentials) (sesh *session.Session, err error) {
 // setting file information including name (the feedID, language code, year, month, day, and
 // hash of the content), the content size and type, and the encryption on the uploaded file.
 func Upload(s *session.Session, doc Document, bucket string) error {
-	// Get doc size and read the content into a buffer
-	size := len(doc.Content)
-	buffer := make([]byte, size)
-
 	// Hash the contents of the file and use the hash to create a unique filename
 	hasher := murmur3.New64()
-	hasher.Write(buffer)
+	hasher.Write([]byte(doc.Content))
 	hash := strconv.FormatInt(int64(hasher.Sum64()), 10)
 	name := doc.LanguageCode + "/" + strconv.Itoa(doc.Year) + "/" + doc.Month + "/" + strconv.Itoa(doc.Day) + "/" + doc.FeedID + "/" + hash + ".html"
 
-	fmt.Printf("\n storing %s to s3", name)
+	fmt.Printf("\n Storing %s to s3", name)
 
 	// Put the object to the S3 bucket
 	_, err := s3.New(s).PutObject(&s3.PutObjectInput{
@@ -80,8 +76,8 @@ func Upload(s *session.Session, doc Document, bucket string) error {
 		Key:                  aws.String(name),
 		ACL:                  aws.String("private"),
 		Body:                 bytes.NewReader([]byte(doc.Content)),
-		ContentLength:        aws.Int64(int64(size)),
-		ContentType:          aws.String(http.DetectContentType(buffer)),
+		ContentLength:        aws.Int64(int64(len(doc.Content))),
+		ContentType:          aws.String(http.DetectContentType([]byte(doc.Content))),
 		ContentDisposition:   aws.String("attachment"),
 		ServerSideEncryption: aws.String("AES256"),
 	})
