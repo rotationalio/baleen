@@ -17,3 +17,8 @@ Current overview:
 - Annotation quality assessment tools and gamification.
 - Periodic checkpoint of data into S3 for archive and analytics and to reduce EC2 expense.
 - Estimated cost with 3 yr reserved instance - $64.04 per month (mostly EBS).
+
+
+## Notes
+
+- [Google I/O 2013 - Advanced Go Concurrency Patterns](https://www.youtube.com/watch?v=QDDwwePbDtw)
