@@ -131,6 +131,7 @@ func (f *httpFetcher) Fetch() (feed *gofeed.Feed, err error) {
 	}
 
 	// Use the universal parser to parse the Atom or RSS feed
+	// Note: Feeds with illegal character codes will not be successfully parsed & return nil here
 	if feed, err = f.parser.Parse(rep.Body); err != nil {
 		return nil, err
 	}
@@ -239,8 +240,8 @@ func (f *htmlFetcher) newRequest() (req *http.Request, err error) {
 	}
 
 	req.Header.Set("User-Agent", "Baleen/1.0")
-	// TODO: this Accept header isn't right - need to research further
-	req.Header.Set("Accept", "text/xml;text/html")
+	req.Header.Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+	req.Header.Set("Accept-Language", "*")
 	req.Header.Set("Cache-Control", "max-age=3600")
 	req.Header.Set("Referer", "")
 

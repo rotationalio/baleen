@@ -111,7 +111,6 @@ func run(c *cli.Context) (err error) {
 
 		feedFetcher := fetch.NewFeedFetcher(url)
 		feed, err := feedFetcher.Fetch()
-
 		if err != nil {
 			switch he := err.(type) {
 			case fetch.HTTPError:
@@ -123,10 +122,15 @@ func run(c *cli.Context) (err error) {
 				}
 				return cli.NewExitError(err, 1)
 			default:
-				// If it's not one of the above errors, print out the error and stop execution
-				// TODO: Add better handling for this in case it's just a temporarily lost internet connection?
-				return cli.NewExitError(err, 1)
+				// If it's not one of the above errors, print out the error but don't stop execution
+				// Looks like the culprit is usually either a blip in internet connection or bad XML encoding
+				continue
 			}
+		}
+
+		// If we failed to get a feed, just skip it
+		if feed == nil {
+			break
 		}
 
 		for _, item := range feed.Items {
@@ -137,8 +141,7 @@ func run(c *cli.Context) (err error) {
 			key := strconv.FormatInt(int64(hasher.Sum64()), 10)
 
 			// Look up the item's key, if it exists, we have the item already, so can skip
-			if val, err := db.Get([]byte(key), nil); err == nil {
-				fmt.Println("Already ingested on: ", string(val))
+			if _, err := db.Get([]byte(key), nil); err == nil {
 				continue
 			} else {
 				// Otherwise prepare to retrieve and store the full details and text of the item
