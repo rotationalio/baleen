@@ -68,7 +68,7 @@ func NewFeedFetcher(url string) FeedFetcher {
 
 // HTMLFetcher is an interface for fetching the full HTML associated with a feed item
 type HTMLFetcher interface {
-	Fetch() (url string, err error)
+	Fetch() (content []byte, err error)
 }
 
 // NewHTMLFetcher creates a new HTML fetcher that can fetch the full HTML from the specified URL.
@@ -193,15 +193,17 @@ type htmlFetcher struct {
 	url string // the url of the article full text
 }
 
-func (f *htmlFetcher) Fetch() (content string, err error) {
+// Fetch creates a new htmlFetcher and attempts to retrieve the full text of the article,
+// returning it as raw bytes if successful
+func (f *htmlFetcher) Fetch() (raw []byte, err error) {
 	var req *http.Request
 	if req, err = f.newRequest(); err != nil {
-		return "", err
+		return nil, err
 	}
 
 	var rep *http.Response
 	if rep, err = client.Do(req); err != nil {
-		return "", err
+		return nil, err
 	}
 
 	// Close the body of the response reader when we're done.
@@ -218,7 +220,7 @@ func (f *htmlFetcher) Fetch() (content string, err error) {
 	// are still returning a 304 error to signal to the Subscription that nothing has
 	// changed and that the feed is nil.
 	if rep.StatusCode < 200 || rep.StatusCode >= 300 {
-		return "", HTTPError{
+		return nil, HTTPError{
 			Status: rep.Status,
 			Code:   rep.StatusCode,
 		}
@@ -229,9 +231,8 @@ func (f *htmlFetcher) Fetch() (content string, err error) {
 	if err != nil {
 		log.Printf("no text parsed from html retrieved from %s", f.url)
 	}
-	content = string(html)
 
-	return content, err
+	return html, err
 }
 
 func (f *htmlFetcher) newRequest() (req *http.Request, err error) {

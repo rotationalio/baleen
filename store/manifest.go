@@ -4,15 +4,15 @@ import (
 	"github.com/syndtr/goleveldb/leveldb"
 )
 
-// OpenManifest either initializes a new leveldb database at the path of the string provided
+// MustOpen either initializes a new leveldb database at the path of the string provided
 // or opens an existing leveldb database found at that path.
-func OpenManifest(path string) (*leveldb.DB, error) {
+func MustOpen(path string) *leveldb.DB {
 	db, err := leveldb.OpenFile(path, nil)
 	if err != nil {
 		panic("Could not open manifest")
 	}
 
-	return db, err
+	return db
 }
 
 /*

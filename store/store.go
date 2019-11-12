@@ -31,7 +31,8 @@ type Document struct {
 	Day          int
 	Title        string
 	Description  string
-	Content      string
+	Content      []byte
+	Encoding     string `json:",omitempty"`
 	Link         string
 }
 
@@ -71,13 +72,14 @@ func Upload(s *session.Session, doc Document, bucket string) error {
 	fmt.Printf("\n Storing %s to s3", name)
 
 	// Put the object to the S3 bucket
+	// TODO: compress doc.Content with gzip to save on storage costs
 	_, err := s3.New(s).PutObject(&s3.PutObjectInput{
 		Bucket:               aws.String(bucket),
 		Key:                  aws.String(name),
 		ACL:                  aws.String("private"),
 		Body:                 bytes.NewReader([]byte(doc.Content)),
 		ContentLength:        aws.Int64(int64(len(doc.Content))),
-		ContentType:          aws.String(http.DetectContentType([]byte(doc.Content))),
+		ContentType:          aws.String(http.DetectContentType(doc.Content)),
 		ContentDisposition:   aws.String("attachment"),
 		ServerSideEncryption: aws.String("AES256"),
 	})

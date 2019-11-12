@@ -104,10 +104,7 @@ func run(c *cli.Context) (err error) {
 
 	// Retrieve the manifest so that we don't re-ingest docs we already have
 	var db *leveldb.DB
-	db, err = store.OpenManifest("./db")
-	if err != nil {
-		fmt.Println(err)
-	}
+	db = store.MustOpen("./db")
 	defer db.Close()
 
 	// We're connected to S3 so let's iterate over our urls and fetch them
@@ -148,6 +145,8 @@ func run(c *cli.Context) (err error) {
 			if _, err := db.Get([]byte(key), nil); err == nil {
 				continue
 			} else {
+				// TODO: Detect encoding so that we can set the Encoding on the Document that gets written to S3
+
 				// Otherwise prepare to retrieve and store the full details and text of the item
 				var year int
 				var month string
@@ -167,7 +166,8 @@ func run(c *cli.Context) (err error) {
 				}
 
 				htmlFetcher := fetch.NewHTMLFetcher(item.Link)
-				content, err := htmlFetcher.Fetch()
+				html, err := htmlFetcher.Fetch()
+
 				// TODO: Better error handling
 				if err != nil {
 					fmt.Println(err)
@@ -183,7 +183,7 @@ func run(c *cli.Context) (err error) {
 					Title:        item.Title,
 					Description:  item.Description,
 					Link:         item.Link,
-					Content:      content,
+					Content:      html,
 				}
 
 				// Using the open session, upload the document to the bucket
