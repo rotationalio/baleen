@@ -18,6 +18,8 @@ https://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers
 package fetch
 
 import (
+	"io/ioutil"
+	"log"
 	"net"
 	"net/http"
 	"time"
@@ -47,20 +49,32 @@ func init() {
 // should use this client.
 var client *http.Client
 
-// Fetcher provides a interface for anything that can get RSS data and provide it in a
+// FeedFetcher provides a interface for anything that can get RSS data and provide it in a
 // sequential fashion (e.g. without concurrency). The fetcher is the building block for
 // larger subscription routines that periodically use the fetcher to retrieve data.
-// Fetchers should therefore be treated as things that will only run inside of a single
+// FeedFetchers should therefore be treated as things that will only run inside of a single
 // thread, whereas Subscription objects are things that may run concurrently.
-type Fetcher interface {
+type FeedFetcher interface {
 	Fetch() (feed *gofeed.Feed, err error)
 }
 
-// New creates a new HTTP fetcher that can fetch rss feeds from the specified URL.
-func New(url string) Fetcher {
+// NewFeedFetcher creates a new HTTP fetcher that can fetch rss feeds from the specified URL.
+func NewFeedFetcher(url string) FeedFetcher {
 	return &httpFetcher{
 		url:    url,
 		parser: gofeed.NewParser(),
+	}
+}
+
+// HTMLFetcher is an interface for fetching the full HTML associated with a feed item
+type HTMLFetcher interface {
+	Fetch() (content []byte, err error)
+}
+
+// NewHTMLFetcher creates a new HTML fetcher that can fetch the full HTML from the specified URL.
+func NewHTMLFetcher(url string) HTMLFetcher {
+	return &htmlFetcher{
+		url: url,
 	}
 }
 
@@ -117,6 +131,7 @@ func (f *httpFetcher) Fetch() (feed *gofeed.Feed, err error) {
 	}
 
 	// Use the universal parser to parse the Atom or RSS feed
+	// Note: Feeds with illegal character codes will not be successfully parsed & return nil here
 	if feed, err = f.parser.Parse(rep.Body); err != nil {
 		return nil, err
 	}
@@ -168,13 +183,68 @@ func (f *httpFetcher) newRequest() (req *http.Request, err error) {
 	return req, nil
 }
 
-/*
-Author:  Benjamin Bengfort
-Author:  Rebecca Bilbro
-Created: Mon Apr 29 06:43:36 2019 -0400
+//===========================================================================
+// HTML Fetcher
+//===========================================================================
 
-Copyright (C) 2019 Kansas Labs
-For license information, see LICENSE.txt
+// The htmlFetcher uses GET requests to retrieve the html containing the full text
+// of articles of feeds with a Baleen-specific http client.
+type htmlFetcher struct {
+	url string // the url of the article full text
+}
 
-ID: fetch.go [d6dba70] benjamin@bengfort.com $
-*/
+// Fetch creates a new htmlFetcher and attempts to retrieve the full text of the article,
+// returning it as raw bytes if successful
+func (f *htmlFetcher) Fetch() (raw []byte, err error) {
+	var req *http.Request
+	if req, err = f.newRequest(); err != nil {
+		return nil, err
+	}
+
+	var rep *http.Response
+	if rep, err = client.Do(req); err != nil {
+		return nil, err
+	}
+
+	// Close the body of the response reader when we're done.
+	if rep != nil {
+		defer func() {
+			ce := rep.Body.Close()
+			if ce != nil {
+				err = ce
+			}
+		}()
+	}
+
+	// Check the status code of the response; note that 304 means not modified, but we
+	// are still returning a 304 error to signal to the Subscription that nothing has
+	// changed and that the feed is nil.
+	if rep.StatusCode < 200 || rep.StatusCode >= 300 {
+		return nil, HTTPError{
+			Status: rep.Status,
+			Code:   rep.StatusCode,
+		}
+	}
+
+	// Parse the html
+	html, err := ioutil.ReadAll(rep.Body)
+	if err != nil {
+		log.Printf("no text parsed from html retrieved from %s", f.url)
+	}
+
+	return html, err
+}
+
+func (f *htmlFetcher) newRequest() (req *http.Request, err error) {
+	if req, err = http.NewRequest("GET", f.url, nil); err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("User-Agent", "Baleen/1.0")
+	req.Header.Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+	req.Header.Set("Accept-Language", "*")
+	req.Header.Set("Cache-Control", "max-age=3600")
+	req.Header.Set("Referer", "")
+
+	return req, nil
+}
