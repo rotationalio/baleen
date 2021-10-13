@@ -50,7 +50,7 @@ func TestRSSResponse(t *testing.T) {
 	fetch.SetDefaultClient(server.Client())
 
 	// Fetch the RSS from the server
-	fetcher := fetch.New(server.URL)
+	fetcher := fetch.NewFeedFetcher(server.URL)
 	feed, err := fetcher.Fetch()
 	ok(t, err)
 	equals(t, feed.FeedType, "rss")
@@ -67,7 +67,7 @@ func TestAtomResponse(t *testing.T) {
 	fetch.SetDefaultClient(server.Client())
 
 	// Fetch the Atom from the server
-	fetcher := fetch.New(server.URL)
+	fetcher := fetch.NewFeedFetcher(server.URL)
 	feed, err := fetcher.Fetch()
 	ok(t, err)
 	equals(t, feed.FeedType, "atom")
@@ -95,7 +95,7 @@ func TestSendETag(t *testing.T) {
 	// Set the default client to the test server client.
 	fetch.SetDefaultClient(server.Client())
 
-	fetcher := fetch.New(server.URL)
+	fetcher := fetch.NewFeedFetcher(server.URL)
 
 	// The first fetch should return the feed
 	feed, err := fetcher.Fetch()
@@ -130,7 +130,7 @@ func TestSendLastModified(t *testing.T) {
 	// Set the default client to the test server client.
 	fetch.SetDefaultClient(server.Client())
 
-	fetcher := fetch.New(server.URL)
+	fetcher := fetch.NewFeedFetcher(server.URL)
 
 	// The first fetch should return the feed
 	feed, err := fetcher.Fetch()

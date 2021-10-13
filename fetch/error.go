@@ -24,6 +24,11 @@ func (e HTTPError) NotModified() bool {
 	return e.Code == http.StatusNotModified
 }
 
+// Forbidden returns true if the error is an HTTP 403
+func (e HTTPError) Forbidden() bool {
+	return e.Code == http.StatusForbidden
+}
+
 // NotFound returns true if the error is an HTTP 404
 func (e HTTPError) NotFound() bool {
 	return e.Code == http.StatusNotFound

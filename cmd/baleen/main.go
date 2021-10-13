@@ -115,18 +115,22 @@ func run(c *cli.Context) (err error) {
 		if err != nil {
 			switch he := err.(type) {
 			case fetch.HTTPError:
-				if he.NotFound() {
-					fmt.Println("the url you supplied was not valid")
+				switch {
+				case he.NotModified():
+					fmt.Printf("no new items in the specified feed!: %s\n", url)
+				case he.Forbidden():
+					fmt.Printf("unable to access feed (forbidden): %s\n", url)
+				case he.NotFound():
+					fmt.Printf("the url you supplied was not valid: %s\n", url)
+				default:
+					fmt.Printf("unrecognized HTTP error %d\n", he.Code)
 				}
-				if he.NotModified() {
-					fmt.Println("no new items in the feed!")
-				}
-				return cli.NewExitError(err, 1)
 			default:
-				// If it's not one of the above errors, print out the error but don't stop execution
+				// If it's not an HTTP error, print out the error but don't stop execution
 				// Looks like the culprit is usually either a blip in internet connection or bad XML encoding
-				continue
+				fmt.Printf("unrecognized fetch error: %s\n", err.Error())
 			}
+			continue
 		}
 
 		// If we failed to get a feed, just skip it

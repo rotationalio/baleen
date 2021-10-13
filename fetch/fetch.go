@@ -9,7 +9,7 @@ the amount of bandwidth required.
 
 Basic Usage:
 
-	fetcher := fetch.New("https://www.example.com/rss")
+	fetcher := fetch.NewFeedFetcher("https://www.example.com/rss")
 	feed, err := fetcher.Fetch()
 
 For more on RSS hacking and bandwidth minimization see:
