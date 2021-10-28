@@ -39,29 +39,29 @@
 		<outline type="rss" text="BBC Turkish - Haberler, Son Dakika Haberleri, Haber-Analiz, Video" title="BBC Turkish - Haberler, Son Dakika Haberleri, Haber-Analiz, Video" xmlUrl="http://feeds.bbci.co.uk/turkce/rss.xml" htmlUrl="http://www.bbcturkce.com"/>
 		<outline type="rss" text="BBC Cymru Fyw - Newyddion a mwy" title="BBC Cymru Fyw - Newyddion a mwy" xmlUrl="http://feeds.bbci.co.uk/cymrufyw/rss.xml" htmlUrl="http://www.bbc.co.uk/cymrufyw"/>
 		<outline type="rss" text="BBC Chinese - 主页" title="BBC Chinese - 主页" xmlUrl="http://feeds.bbci.co.uk/zhongwen/simp/rss.xml" htmlUrl="http://www.bbcchinese.com"/>
-		<outline type="rss" text="presstv.ir" title = "presstv.ir" xmlUrl= "https://www.presstv.ir/RSS" htmlUrl = "https://www.presstv.ir/">
-		<outline type="rss" text ="tehrantimes.com" title = "tehrantimes.com" xmlUrl = "https://www.tehrantimes.com/rss" _htmlUrl ="https://www.tehrantimes.com/">
-		<outline type="rss" text = "iribnews.ir" title = "iribnews.ir" xmlUrl= "https://www.iribnews.ir/fa/rss" htmlUrl= "https://iribnews.ir/">
-		<outline type="rss" text= "jang.com.pk" title= "jang.com.pk" xmlUrl = "https://jang.com.pk/rss" htmlUrl = "https://jang.com.pk/">
-		<outline type="rss" text= "aajtak.in" title="aajtak.in" xmlUrl= "https://www.aajtak.in/rssfeeds/?id=home" htmlUrl="https://www.aajtak.in/">
-		<outline type= "rss" text="sundaytimes.lk" title= "sundaytimes.lk" xmlUrl= "https://www.aajtak.in/rssfeeds/?id=home" htmlUrl = "https://www.sundaytimes.lk/">
-		<outline type= "rss" text= "aljazeera.com" title= "aljazeera.com" xmlUrl=  "https://www.aljazeera.com/xml/rss/all.xml"  htmlUrl =  "https://www.aljazeera.com/">
-		<outline type= "rss" text= "almanar.com.lb" title= "almanar.com.lb" xmlUrl="https://www.almanar.com.lb/rss" htmlUrl="https://www.almanar.com.lb/">
-		<outline type= "rss" text="english.pnn.ps" title= "english.pnn.ps" xmlUrl = "http://english.pnn.ps/feed/" htmlUrl = "http://english.pnn.ps/">
-		<outline type= "rss" text= "sana.sy/en/" title ="sana.sy/en/" xmlUrl="http://www.sana.sy/en/?feed=rss2"  htmlUrl ="http://www.sana.sy/en/">
-		<outline type= "rss" text = "alriyadh.com" title= "alriyadh.com" xmlUrl= "https://www.alriyadh.com/page/rss" htmlUrl= "https://www.alriyadh.com/">
-		<outline type= "rss" text ="dailysabah.com" title= "dailysabah.com" xmlUrl= "https://www.dailysabah.com/rss"  htmlUrl= "https://www.dailysabah.com/">
-		<outline type= "rss" text= "alkhaleej.ae" title= "alkhaleej.ae" xmlUrl= "https://www.alkhaleej.ae/%D8%AE%D8%AF%D9%85%D8%A9-rss" htmlUrl ="https://www.alkhaleej.ae/">
-		<outline type= "rss" text= "arabworlddailynews.com/category/arab-league/jordan/" title= "arabworlddailynews.com/category/arab-league/jordan/" xmlUrl= "http://arabworlddailynews.com/feed/" htmlUrl= "http://arabworlddailynews.com/category/arab-league/jordan/">
-		<outline type= "rss" text = "eeo.com.cn/ens/news/" title= "eeo.com.cn/ens/news/" xmlUrl= "http://app.eeo.com.cn/rss.php?app=rss" htmlUrl="http://www.eeo.com.cn/ens/news/">
-		<outline type="rss" text= "mainichi.jp/english/" title= "mainichi.jp/english/" xmlUrl= "https://mainichi.jp/english/rss/" htmlUrl= "https://mainichi.jp/english/">
-		<outline type= "rss" text= "staitstimes.com/global" title= "staitstimes.com/global" xmlUrl= "https://www.straitstimes.com/RSS-Feeds" htmlUrl= "https://www.straitstimes.com/global">
-		<outline type= "rss" text= "taipeitimes.com" title= "taipeitimes.com" xmlUrl= "https://www.taipeitimes.com/xml/index.rss" htmlUrl= "http://www.taipeitimes.com/">
-		<outline type= "rss" text= "manilastandard.net" title= "manilastandard.net" xmlUrl= "https://manilastandard.net/rss" htmlUrl= "https://manilastandard.net/">
-		<outline type= "rss" text= "malaymail.com" title= "malaymail.com" xmlUrl= "https://www.malaymail.com/feed" htmlUrl= "https://www.malaymail.com/">
-		<outline type= "rss" text= "vietnamnews.vn" title="vietnamnews.vn" xmlUrl= "https://vietnamnews.vn/rss" htmlUrl= "https://vietnamnews.vn/">
-		<outline type= "rss" text= "themoscowtimes.com" title="themoscowtimes.com" xmlUrl= "https://www.themoscowtimes.com/page/rss" htmlUrl = "https://www.themoscowtimes.com/">
-		<outline type= "rss" text= "dailynk.com/english/" title= "dailynk.com/english/" xmlUrl="https://www.dailynk.com/english/feed/" htmlUrl= "https://www.dailynk.com/english/">
+		<outline type="rss" text="presstv.ir" title="presstv.ir" xmlUrl="https://www.presstv.ir/RSS" htmlUrl="https://www.presstv.ir/"/>
+		<outline type="rss" text="tehrantimes.com" title="tehrantimes.com" xmlUrl="https://www.tehrantimes.com/rss" htmlUrl="https://www.tehrantimes.com/"/>
+		<outline type="rss" text="iribnews.ir" title="iribnews.ir" xmlUrl="https://www.iribnews.ir/fa/rss" htmlUrl="https://iribnews.ir/"/>
+		<outline type="rss" text="jang.com.pk" title="jang.com.pk" xmlUrl="https://jang.com.pk/rss" htmlUrl="https://jang.com.pk/"/>
+		<outline type="rss" text="aajtak.in" title="aajtak.in" xmlUrl="https://www.aajtak.in/rssfeeds/?id=home" htmlUrl="https://www.aajtak.in/"/>
+		<outline type="rss" text="sundaytimes.lk" title="sundaytimes.lk" xmlUrl="https://www.aajtak.in/rssfeeds/?id=home" htmlUrl="https://www.sundaytimes.lk/"/>
+		<outline type="rss" text="aljazeera.com" title="aljazeera.com" xmlUrl="https://www.aljazeera.com/xml/rss/all.xml"  htmlUrl="https://www.aljazeera.com/"/>
+		<outline type="rss" text="almanar.com.lb" title="almanar.com.lb" xmlUrl="https://www.almanar.com.lb/rss" htmlUrl="https://www.almanar.com.lb/"/>
+		<outline type="rss" text="english.pnn.ps" title="english.pnn.ps" xmlUrl ="http://english.pnn.ps/feed/" htmlUrl="http://english.pnn.ps/"/>
+		<outline type="rss" text="sana.sy/en/" title="sana.sy/en/" xmlUrl="http://www.sana.sy/en/?feed=rss2"  htmlUrl="http://www.sana.sy/en/"/>
+		<outline type="rss" text="alriyadh.com" title="alriyadh.com" xmlUrl="https://www.alriyadh.com/page/rss" htmlUrl="https://www.alriyadh.com/"/>
+		<outline type="rss" text="dailysabah.com" title="dailysabah.com" xmlUrl="https://www.dailysabah.com/rss" htmlUrl="https://www.dailysabah.com/"/>
+		<outline type="rss" text="alkhaleej.ae" title="alkhaleej.ae" xmlUrl="https://www.alkhaleej.ae/%D8%AE%D8%AF%D9%85%D8%A9-rss" htmlUrl="https://www.alkhaleej.ae/"/>
+		<outline type="rss" text="arabworlddailynews.com/category/arab-league/jordan/" title="arabworlddailynews.com/category/arab-league/jordan/" xmlUrl="http://arabworlddailynews.com/feed/" htmlUrl="http://arabworlddailynews.com/category/arab-league/jordan/"/>
+		<outline type="rss" text="eeo.com.cn/ens/news/" title="eeo.com.cn/ens/news/" xmlUrl="http://app.eeo.com.cn/rss.php?app=rss" htmlUrl="http://www.eeo.com.cn/ens/news/"/>
+		<outline type="rss" text="mainichi.jp/english/" title="mainichi.jp/english/" xmlUrl="https://mainichi.jp/english/rss/" htmlUrl="https://mainichi.jp/english/"/>
+		<outline type="rss" text="staitstimes.com/global" title="staitstimes.com/global" xmlUrl="https://www.straitstimes.com/RSS-Feeds" htmlUrl="https://www.straitstimes.com/global"/>
+		<outline type="rss" text="taipeitimes.com" title="taipeitimes.com" xmlUrl="https://www.taipeitimes.com/xml/index.rss" htmlUrl="http://www.taipeitimes.com/"/>
+		<outline type="rss" text="manilastandard.net" title="manilastandard.net" xmlUrl="https://manilastandard.net/rss" htmlUrl="https://manilastandard.net/"/>
+		<outline type="rss" text="malaymail.com" title="malaymail.com" xmlUrl="https://www.malaymail.com/feed" htmlUrl="https://www.malaymail.com/"/>
+		<outline type="rss" text="vietnamnews.vn" title="vietnamnews.vn" xmlUrl="https://vietnamnews.vn/rss" htmlUrl="https://vietnamnews.vn/"/>
+		<outline type="rss" text="themoscowtimes.com" title="themoscowtimes.com" xmlUrl="https://www.themoscowtimes.com/page/rss" htmlUrl ="https://www.themoscowtimes.com/"/>
+		<outline type="rss" text="dailynk.com/english/" title= "dailynk.com/english/" xmlUrl="https://www.dailynk.com/english/feed/" htmlUrl="https://www.dailynk.com/english/"/>
 
 
     

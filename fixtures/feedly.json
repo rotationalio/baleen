@@ -250,261 +250,167 @@
               "_xmlUrl": "http://feeds.bbci.co.uk/zhongwen/simp/rss.xml",
               "_htmlUrl": "http://www.bbcchinese.com"
             },
-
-
             {
-              "_type": "rss",
-              "_text": "presstv.ir",
-              "_title": "presstv.ir",
-              "_xmlUrl": "https://www.presstv.ir/RSS",
-              "_htmlUrl": "https://www.presstv.ir/"
-
+              "_type":"rss",
+              "_text":"presstv.ir",
+              "_title":"presstv.ir",
+              "_xmlUrl":"https://www.presstv.ir/RSS",
+              "_htmlUrl":"https://www.presstv.ir/"
             },
-
             {
-              "_type": "rss",
-              "_text": "tehrantimes.com",
-              "_title": "tehrantimes.com",
-              "_xmlUrl": "https://www.tehrantimes.com/rss",
-              "_htmlUrl": "https://www.tehrantimes.com/"
-
+              "_type":"rss",
+              "_text":"tehrantimes.com",
+              "_title":"tehrantimes.com",
+              "_xmlUrl":"https://www.tehrantimes.com/rss",
+              "_htmlUrl":"https://www.tehrantimes.com/"
             },
-
-
             {
-              "_type": "rss",
-              "_text": "iribnews.ir",
-              "_title": "iribnews.ir",
-              "_xmlUrl": "https://www.iribnews.ir/fa/rss",
-              "_htmlUrl": "https://iribnews.ir/"
-
+              "_type":"rss",
+              "_text":"iribnews.ir",
+              "_title":"iribnews.ir",
+              "_xmlUrl":"https://www.iribnews.ir/fa/rss",
+              "_htmlUrl":"https://iribnews.ir/"
             },
-
-
             {
-              "_type": "rss",
-              "_text": "jang.com.pk",
-              "_title": "jang.com.pk",
-              "_xmlUrl": "https://jang.com.pk/rss",
-              "_htmlUrl": "https://jang.com.pk/"
-
+              "_type":"rss",
+              "_text":"jang.com.pk",
+              "_title":"jang.com.pk",
+              "_xmlUrl":"https://jang.com.pk/rss",
+              "_htmlUrl":"https://jang.com.pk/"
             },
-
-
             {
-              "_type": "rss",
-              "_text": "aajtak.in",
-              "_title": "aajtak.in",
-              "_xmlUrl": "https://www.aajtak.in/rssfeeds/?id=home",
-              "_htmlUrl": "https://www.aajtak.in/"
-
+              "_type":"rss",
+              "_text":"aajtak.in",
+              "_title":"aajtak.in",
+              "_xmlUrl":"https://www.aajtak.in/rssfeeds/?id=home",
+              "_htmlUrl":"https://www.aajtak.in/"
             },
-
             {
-              "_type": "rss",
-              "_text": "sundaytimes.lk",
-              "_title": "sundaytimes.lk",
-              "_xmlUrl": "https://www.aajtak.in/rssfeeds/?id=home",
-              "_htmlUrl": "https://www.sundaytimes.lk/"
-
-
+              "_type":"rss",
+              "_text":"sundaytimes.lk",
+              "_title":"sundaytimes.lk",
+              "_xmlUrl":"https://www.aajtak.in/rssfeeds/?id=home",
+              "_htmlUrl":"https://www.sundaytimes.lk/"
             },
-
             {
-              "_type": "rss",
-              "_text": "aljazeera.com",
-              "_title": "aljazeera.com",
-              "_xmlUrl": "https://www.aljazeera.com/xml/rss/all.xml",
-              "_htmlUrl": "https://www.aljazeera.com/"
-
+              "_type":"rss",
+              "_text":"aljazeera.com",
+              "_title":"aljazeera.com",
+              "_xmlUrl":"https://www.aljazeera.com/xml/rss/all.xml",
+              "_htmlUrl":"https://www.aljazeera.com/"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "almanar.com.lb",
-              "_title": "almanar.com.lb",
-              "_xmlUrl": "https://www.almanar.com.lb/rss",
-              "_htmlUrl": "https://www.almanar.com.lb/"
-
-
+              "_type":"rss",
+              "_text":"almanar.com.lb",
+              "_title":"almanar.com.lb",
+              "_xmlUrl":"https://www.almanar.com.lb/rss",
+              "_htmlUrl":"https://www.almanar.com.lb/"
             },
-
             {
-              "_type": "rss",
-              "_text": "english.pnn.ps",
-              "_title": "english.pnn.ps",
-              "_xmlUrl": "http://english.pnn.ps/feed/",
-              "_htmlUrl": "http://english.pnn.ps/"
-
-
-
+              "_type":"rss",
+              "_text":"english.pnn.ps",
+              "_title":"english.pnn.ps",
+              "_xmlUrl":"http://english.pnn.ps/feed/",
+              "_htmlUrl":"http://english.pnn.ps/"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "sana.sy/en/",
-              "_title": "sana.sy/en/",
-              "_xmlUrl": "http://www.sana.sy/en/?feed=rss2",
-              "_htmlUrl": "http://www.sana.sy/en/"
-
-
+              "_type":"rss",
+              "_text":"sana.sy/en/",
+              "_title":"sana.sy/en/",
+              "_xmlUrl":"http://www.sana.sy/en/?feed=rss2",
+              "_htmlUrl":"http://www.sana.sy/en/"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "alriyadh.com",
-              "_title": "alriyadh.com",
-              "_xmlUrl": "https://www.alriyadh.com/page/rss",
-              "_htmlUrl": "https://www.alriyadh.com/"
-
-
+              "_type":"rss",
+              "_text":"alriyadh.com",
+              "_title":"alriyadh.com",
+              "_xmlUrl":"https://www.alriyadh.com/page/rss",
+              "_htmlUrl":"https://www.alriyadh.com/"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "dailysabah.com",
-              "_title": "dailysabah.com",
-              "_xmlUrl": "https://www.dailysabah.com/rss",
-              "_htmlUrl": "https://www.dailysabah.com/"
-
-
+              "_type":"rss",
+              "_text":"dailysabah.com",
+              "_title":"dailysabah.com",
+              "_xmlUrl":"https://www.dailysabah.com/rss",
+              "_htmlUrl":"https://www.dailysabah.com/"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "alkhaleej.ae",
-              "_title": "alkhaleej.ae",
-              "_xmlUrl": "https://www.alkhaleej.ae/%D8%AE%D8%AF%D9%85%D8%A9-rss",
-              "_htmlUrl": "https://www.alkhaleej.ae/"
-
-
+              "_type":"rss",
+              "_text":"alkhaleej.ae",
+              "_title":"alkhaleej.ae",
+              "_xmlUrl":"https://www.alkhaleej.ae/%D8%AE%D8%AF%D9%85%D8%A9-rss",
+              "_htmlUrl":"https://www.alkhaleej.ae/"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "arabworlddailynews.com/category/arab-league/jordan/",
-              "_title": "arabworlddailynews.com/category/arab-league/jordan/",
-              "_xmlUrl": "http://arabworlddailynews.com/feed/",
-              "_htmlUrl": "http://arabworlddailynews.com/category/arab-league/jordan/"
-
-
+              "_type":"rss",
+              "_text":"arabworlddailynews.com/category/arab-league/jordan/",
+              "_title":"arabworlddailynews.com/category/arab-league/jordan/",
+              "_xmlUrl":"http://arabworlddailynews.com/feed/",
+              "_htmlUrl":"http://arabworlddailynews.com/category/arab-league/jordan/"
             },
-
-
             {
-
-              "_type": "rss",
-              "_text": "eeo.com.cn/ens/news/",
-              "_title": "eeo.com.cn/ens/news/",
-              "_xmlUrl": "http://app.eeo.com.cn/rss.php?app=rss",
-              "_htmlUrl": "http://www.eeo.com.cn/ens/news/"
-
-
+              "_type":"rss",
+              "_text":"eeo.com.cn/ens/news/",
+              "_title":"eeo.com.cn/ens/news/",
+              "_xmlUrl":"http://app.eeo.com.cn/rss.php?app=rss",
+              "_htmlUrl":"http://www.eeo.com.cn/ens/news/"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "mainichi.jp/english/",
-              "_title": "mainichi.jp/english/",
-              "_xmlUrl": "https://mainichi.jp/english/rss/",
-              "_htmlUrl": "https://mainichi.jp/english/"
-
-
+              "_type":"rss",
+              "_text":"mainichi.jp/english/",
+              "_title":"mainichi.jp/english/",
+              "_xmlUrl":"https://mainichi.jp/english/rss/",
+              "_htmlUrl":"https://mainichi.jp/english/"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "staitstimes.com/global",
-              "_title": "staitstimes.com/global",
-              "_xmlUrl": "https://www.straitstimes.com/RSS-Feeds",
-              "_htmlUrl": "https://www.straitstimes.com/global"
-
-
+              "_type":"rss",
+              "_text":"staitstimes.com/global",
+              "_title":"staitstimes.com/global",
+              "_xmlUrl":"https://www.straitstimes.com/RSS-Feeds",
+              "_htmlUrl":"https://www.straitstimes.com/global"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "taipeitimes.com",
-              "_title": "taipeitimes.com",
-              "_xmlUrl": "https://www.taipeitimes.com/xml/index.rss",
-              "_htmlUrl": "http://www.taipeitimes.com/"
-
-
+              "_type":"rss",
+              "_text":"taipeitimes.com",
+              "_title":"taipeitimes.com",
+              "_xmlUrl":"https://www.taipeitimes.com/xml/index.rss",
+              "_htmlUrl":"http://www.taipeitimes.com/"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "manilastandard.net",
-              "_title": "manilastandard.net",
-              "_xmlUrl": "https://manilastandard.net/rss",
-              "_htmlUrl": "https://manilastandard.net/"
-
-
+              "_type":"rss",
+              "_text":"manilastandard.net",
+              "_title":"manilastandard.net",
+              "_xmlUrl":"https://manilastandard.net/rss",
+              "_htmlUrl":"https://manilastandard.net/"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "malaymail.com",
-              "_title": "malaymail.com",
-              "_xmlUrl": "https://www.malaymail.com/feed",
-              "_htmlUrl": "https://www.malaymail.com/"
-
-
+              "_type":"rss",
+              "_text":"malaymail.com",
+              "_title":"malaymail.com",
+              "_xmlUrl":"https://www.malaymail.com/feed",
+              "_htmlUrl":"https://www.malaymail.com/"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "vietnamnews.vn",
-              "_title": "vietnamnews.vn",
-              "_xmlUrl": "https://vietnamnews.vn/rss",
-              "_htmlUrl": "https://vietnamnews.vn/"
-
-
+              "_type":"rss",
+              "_text":"vietnamnews.vn",
+              "_title":"vietnamnews.vn",
+              "_xmlUrl":"https://vietnamnews.vn/rss",
+              "_htmlUrl":"https://vietnamnews.vn/"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "themoscowtimes.com",
-              "_title": "themoscowtimes.com",
-              "_xmlUrl": "https://www.themoscowtimes.com/page/rss",
-              "_htmlUrl": "https://www.themoscowtimes.com/"
-
-
+              "_type":"rss",
+              "_text":"themoscowtimes.com",
+              "_title":"themoscowtimes.com",
+              "_xmlUrl":"https://www.themoscowtimes.com/page/rss",
+              "_htmlUrl":"https://www.themoscowtimes.com/"
             },
-
             {
-
-              "_type": "rss",
-              "_text": "dailynk.com/english/",
-              "_title": "dailynk.com/english/",
-              "_xmlUrl": "https://www.dailynk.com/english/feed/",
-              "_htmlUrl": "https://www.dailynk.com/english/"
-
-
+              "_type":"rss",
+              "_text":"dailynk.com/english/",
+              "_title":"dailynk.com/english/",
+              "_xmlUrl":"https://www.dailynk.com/english/feed/",
+              "_htmlUrl":"https://www.dailynk.com/english/"
             }
-
-
-
-
-
-
-
-
-
-
 
           ]
         },
