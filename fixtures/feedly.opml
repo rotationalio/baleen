@@ -47,7 +47,7 @@
 		<outline type="rss" text="sundaytimes.lk" title="sundaytimes.lk" xmlUrl="https://www.aajtak.in/rssfeeds/?id=home" htmlUrl="https://www.sundaytimes.lk/"/>
 		<outline type="rss" text="aljazeera.com" title="aljazeera.com" xmlUrl="https://www.aljazeera.com/xml/rss/all.xml"  htmlUrl="https://www.aljazeera.com/"/>
 		<outline type="rss" text="almanar.com.lb" title="almanar.com.lb" xmlUrl="https://www.almanar.com.lb/rss" htmlUrl="https://www.almanar.com.lb/"/>
-		<outline type="rss" text="english.pnn.ps" title="english.pnn.ps" xmlUrl ="http://english.pnn.ps/feed/" htmlUrl="http://english.pnn.ps/"/>
+		<outline type="rss" text="english.pnn.ps" title="english.pnn.ps" xmlUrl="http://english.pnn.ps/feed/" htmlUrl="http://english.pnn.ps/"/>
 		<outline type="rss" text="sana.sy/en/" title="sana.sy/en/" xmlUrl="http://www.sana.sy/en/?feed=rss2"  htmlUrl="http://www.sana.sy/en/"/>
 		<outline type="rss" text="alriyadh.com" title="alriyadh.com" xmlUrl="https://www.alriyadh.com/page/rss" htmlUrl="https://www.alriyadh.com/"/>
 		<outline type="rss" text="dailysabah.com" title="dailysabah.com" xmlUrl="https://www.dailysabah.com/rss" htmlUrl="https://www.dailysabah.com/"/>
@@ -60,7 +60,7 @@
 		<outline type="rss" text="manilastandard.net" title="manilastandard.net" xmlUrl="https://manilastandard.net/rss" htmlUrl="https://manilastandard.net/"/>
 		<outline type="rss" text="malaymail.com" title="malaymail.com" xmlUrl="https://www.malaymail.com/feed" htmlUrl="https://www.malaymail.com/"/>
 		<outline type="rss" text="vietnamnews.vn" title="vietnamnews.vn" xmlUrl="https://vietnamnews.vn/rss" htmlUrl="https://vietnamnews.vn/"/>
-		<outline type="rss" text="themoscowtimes.com" title="themoscowtimes.com" xmlUrl="https://www.themoscowtimes.com/page/rss" htmlUrl ="https://www.themoscowtimes.com/"/>
+		<outline type="rss" text="themoscowtimes.com" title="themoscowtimes.com" xmlUrl="https://www.themoscowtimes.com/page/rss" htmlUrl="https://www.themoscowtimes.com/"/>
 		<outline type="rss" text="dailynk.com/english/" title= "dailynk.com/english/" xmlUrl="https://www.dailynk.com/english/feed/" htmlUrl="https://www.dailynk.com/english/"/>
 
 
