@@ -17,10 +17,10 @@ GOTEST = $(GOCMD) test
 
 
 # Export targets not associated with files.
-.PHONY: all install build raft deps test citest clean doc protobuf
+.PHONY: all install build raft test citest clean doc protobuf
 
 # Ensure dependencies are installed, run tests and compile
-all: deps build test
+all: build test
 
 # Install the commands and create configurations and data directories
 install: build
@@ -32,10 +32,6 @@ build: baleen
 # Build the baleen command and store in the build directory
 baleen:
 	@ $(GOBUILD) -o $(BUILD)/baleen ./cmd/baleen
-
-# Use dep to collect dependencies.
-deps:
-	@ $(GODEP)
 
 # Target for simple testing on the command line
 test:
