@@ -6,7 +6,7 @@ package baleen_test
 import (
 	"testing"
 
-	. "github.com/kansaslabs/baleen"
+	. "github.com/rotationalio/baleen"
 )
 
 const expectedVersion = "0.0"
