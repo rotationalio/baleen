@@ -1,9 +1,11 @@
+import React from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
-import VerticalLayout from 'layouts/Vertical';
-import Topics from 'pages/topics';
-import Vocabulary from 'pages/vocabulary';
 import Dashboard from 'pages/dashboard';
 import { withBrowserRouter } from 'hoc';
+import VerticalLayout from 'layouts/Vertical';
+
+const Vocabulary = React.lazy(() => import('../pages/vocabulary'));
+const Topics = React.lazy(() => import('../pages/topics'));
 
 const AppRoutes = () => {
     const getLayout = () => {
