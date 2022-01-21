@@ -1,7 +1,10 @@
 import './assets/scss/Theme.scss';
 
+// app routes
+import Routes from 'routes';
+
 function App() {
-    return <div className="App">Hello React!</div>;
+    return <Routes />;
 }
 
 export default App;
