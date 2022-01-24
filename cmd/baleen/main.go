@@ -177,10 +177,17 @@ func run(c *cli.Context) (err error) {
 					fmt.Println(err)
 				}
 
+				var languageCode string
+				if feed.Language != "" {
+					languageCode = slug.Make(feed.Language)
+				} else {
+					languageCode = "unknown"
+				}
+
 				// Make the doc, store it & add to the manifest
 				doc := store.Document{
 					FeedID:       slug.Make(feed.Title),
-					LanguageCode: slug.Make(feed.Language),
+					LanguageCode: languageCode,
 					Year:         year,
 					Month:        month,
 					Day:          day,
