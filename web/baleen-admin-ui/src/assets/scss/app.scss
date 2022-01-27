@@ -1,0 +1,48 @@
+/*
+Template Name: Shreyu - Responsive Bootstrap 5 Admin Dashboard
+Author: CoderThemes
+Version: 2.0.0
+Website: https://coderthemes.com/
+Contact: support@coderthemes.com
+File: Main Css File
+*/
+
+
+//Fonts
+@import "custom/fonts/fonts";
+
+//Core files
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "config/variables";
+@import "../../../node_modules/bootstrap/scss/mixins.scss";
+
+
+// Structure
+@import "custom/structure/general";
+@import "custom/structure/left-menu";
+@import "custom/structure/topbar";
+@import "custom/structure/page-head";
+@import "custom/structure/footer";
+@import "custom/structure/right-sidebar";
+@import "custom/structure/layouts";
+@import "custom/structure/horizontal-nav";
+@import "custom/structure/two-column-menu";
+
+//Components
+@import "custom/components/avatar";
+@import "custom/components/custom-checkbox";
+@import "custom/components/custom-radio";
+@import "custom/components/helper";
+@import "custom/components/social";
+@import "custom/components/widgets";
+@import "custom/components/print";
+@import "custom/components/preloader";
+
+//Pages
+@import "custom/pages/error";
+
+
+// Plugins
+@import "custom/plugins/apexcharts";
+@import "custom/plugins/simplebar";
