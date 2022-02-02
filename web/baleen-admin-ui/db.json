@@ -1,0 +1,84 @@
+{
+    "vocabularies": {
+        "english": {
+            "total_documents": 3000,
+            "total_words": 100000,
+            "total_unique_words": 100000,
+            "words_per_document": 300.23,
+            "most_common_words": {
+                "intuitive": {
+                    "count": 50,
+                    "percentage": 0.05
+                },
+                "economy": {
+                    "count": 200,
+                    "percentage": 0.1
+                },
+                "pandemic": {
+                    "count": 300,
+                    "percentage": 0.15
+                }
+            }
+        },
+        "french": {
+            "total_documents": 294,
+            "total_words": 11827,
+            "total_unique_words": 34505,
+            "words_per_document": 714,
+            "most_common_words": {
+                "paradigms": {
+                    "count": 55,
+                    "percentage": 0.05
+                },
+                "Turnpike": {
+                    "count": 96,
+                    "percentage": 0.1
+                },
+                "XSS": {
+                    "count": 87,
+                    "percentage": 0.15
+                }
+            }
+        },
+        "spanish": {
+            "total_documents": 202,
+            "total_words": 4531,
+            "total_unique_words": 93902,
+            "words_per_document": 627,
+            "most_common_words": {
+                "Officer": {
+                    "count": 67,
+                    "percentage": 0.05
+                },
+                "Re-contextualized": {
+                    "count": 253,
+                    "percentage": 0.1
+                },
+                "calculate": {
+                    "count": 140,
+                    "percentage": 0.15
+                }
+            }
+        },
+        "chinese": {
+            "total_documents": 25,
+            "total_words": 33891,
+            "total_unique_words": 66815,
+            "words_per_document": 904,
+            "most_common_words": {
+                "4th generation": {
+                    "count": 89,
+                    "percentage": 0.05
+                },
+                "Wooden": {
+                    "count": 72,
+                    "percentage": 0.1
+                },
+                "blue": {
+                    "count": 420,
+                    "percentage": 0.15
+                }
+            }
+        }
+    }
+}
