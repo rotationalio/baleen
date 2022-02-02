@@ -15,9 +15,14 @@ import (
 
 	"path/filepath"
 
+	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/gosimple/slug"
+	"github.com/joho/godotenv"
+	"github.com/kelseyhightower/envconfig"
 	"github.com/rotationalio/baleen"
+	"github.com/rotationalio/baleen/config"
 	"github.com/rotationalio/baleen/fetch"
+	"github.com/rotationalio/baleen/publish"
 	"github.com/rotationalio/baleen/store"
 	"github.com/rotationalio/baleen/utils"
 	"github.com/spaolacci/murmur3"
@@ -50,6 +55,15 @@ func run(c *cli.Context) (err error) {
 	var root = filepath.Join("fixtures")
 	var files []string
 	var urls []string
+
+	if err := godotenv.Load(); err != nil {
+		log.Println("No .env file found, using default values")
+	}
+
+	var conf config.Config
+	if err := envconfig.Process("baleen", &conf); err != nil {
+		log.Fatal(err)
+	}
 
 	// If the user specifies a feed via the command line, only get that one
 	if c.NArg() > 0 {
@@ -86,20 +100,28 @@ func run(c *cli.Context) (err error) {
 		return cli.NewExitError("specify a feed to fetch or add feeds to fixtures directory", 1)
 	}
 
-	// We have feeds! So let's make sure we can connect to S3 and create a session
-	config := store.AWSCredentials{
-		Region: os.Getenv("AWS_REGION"),
-		Bucket: os.Getenv("KANSAS_BUCKET"),
+	var session *session.Session
+	if conf.AWS.Enabled {
+		// We have feeds! So let's make sure we can connect to S3 and create a session
+		creds := store.AWSCredentials{
+			Region: conf.AWS.Region,
+			Bucket: conf.AWS.Bucket,
+		}
+
+		session, err = store.GetSession(&creds)
+		if err != nil {
+			log.Println(err)
+		}
+		if session == nil {
+			panic("could not connect to s3")
+		} else {
+			log.Println("connected to s3")
+		}
 	}
 
-	session, err := store.GetSession(&config)
-	if err != nil {
-		log.Println(err)
-	}
-	if session == nil {
-		panic("could not connect to s3")
-	} else {
-		log.Println("connected to s3")
+	var publisher *publish.KafkaPublisher
+	if conf.Kafka.Enabled {
+		publisher = publish.New(conf.Kafka)
 	}
 
 	// Retrieve the manifest so that we don't re-ingest docs we already have
@@ -130,12 +152,35 @@ func run(c *cli.Context) (err error) {
 				// Looks like the culprit is usually either a blip in internet connection or bad XML encoding
 				fmt.Printf("unrecognized fetch error: %s\n", err.Error())
 			}
+
+			// Publish feed error to kafka
+			feeds := []*store.Feed{
+				{
+					URL:    url,
+					Active: false,
+					Error:  err.Error(),
+				},
+			}
+			if err = publisher.PublishFeeds(feeds); err != nil {
+				log.Println("could not publish some documents to kafka", err)
+			}
 			continue
 		}
 
 		// If we failed to get a feed, just skip it
 		if feed == nil {
 			break
+		}
+
+		// Publish feed success to kafka
+		feeds := []*store.Feed{
+			{
+				URL:    url,
+				Active: true,
+			},
+		}
+		if err = publisher.PublishFeeds(feeds); err != nil {
+			log.Println("could not publish some documents to kafka", err)
 		}
 
 		for _, item := range feed.Items {
@@ -146,7 +191,7 @@ func run(c *cli.Context) (err error) {
 			key := strconv.FormatInt(int64(hasher.Sum64()), 10)
 
 			// Look up the item's key, if it exists, we have the item already, so can skip
-			if _, err := db.Get([]byte(key), nil); err == nil {
+			if _, err := db.Get([]byte(key), nil); err == nil && !conf.Testing {
 				continue
 			} else {
 				// TODO: Detect encoding so that we can set the Encoding on the Document that gets written to S3
@@ -197,10 +242,20 @@ func run(c *cli.Context) (err error) {
 					Content:      html,
 				}
 
-				// Using the open session, upload the document to the bucket
-				err = store.Upload(session, doc, config.Bucket)
-				if err != nil {
-					log.Println(err)
+				if conf.AWS.Enabled {
+					// Using the open session, upload the document to the bucket
+					err = store.Upload(session, doc, conf.AWS.Bucket)
+					if err != nil {
+						log.Println(err)
+					}
+				}
+
+				if conf.Kafka.Enabled {
+					documents := []*store.Document{&doc}
+					// Publish the documents to the Kafka topic
+					if err = publisher.PublishDocuments(documents); err != nil {
+						log.Println("could not publish some documents to kafka", err)
+					}
 				}
 
 				// If there's no error so far, add to the manifest where the key is the hash and the value is a DB write timestamp
