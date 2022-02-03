@@ -17,8 +17,6 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/gosimple/slug"
-	"github.com/joho/godotenv"
-	"github.com/kelseyhightower/envconfig"
 	"github.com/rotationalio/baleen"
 	"github.com/rotationalio/baleen/config"
 	"github.com/rotationalio/baleen/fetch"
@@ -52,17 +50,12 @@ func main() {
 }
 
 func run(c *cli.Context) (err error) {
-	var root = filepath.Join("fixtures")
 	var files []string
 	var urls []string
-
-	if err := godotenv.Load(); err != nil {
-		log.Println("No .env file found, using default values")
-	}
-
 	var conf config.Config
-	if err := envconfig.Process("baleen", &conf); err != nil {
-		log.Fatal(err)
+
+	if conf, err = config.New(); err != nil {
+		return err
 	}
 
 	// If the user specifies a feed via the command line, only get that one
@@ -70,7 +63,7 @@ func run(c *cli.Context) (err error) {
 		urls = append(urls, c.Args()[0])
 	} else {
 		// Otherwise retrieve feeds from files in the fixtures directory
-		err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		err := filepath.Walk(conf.FixturesDir, func(path string, info os.FileInfo, err error) error {
 			files = append(files, path)
 			return nil
 		})
@@ -121,12 +114,14 @@ func run(c *cli.Context) (err error) {
 
 	var publisher *publish.KafkaPublisher
 	if conf.Kafka.Enabled {
-		publisher = publish.New(conf.Kafka)
+		if publisher, err = publish.New(conf.Kafka); err != nil {
+			panic(err)
+		}
 	}
 
 	// Retrieve the manifest so that we don't re-ingest docs we already have
 	var db *leveldb.DB
-	db = store.MustOpen("./db")
+	db = store.MustOpen(conf.DBPath)
 	defer db.Close()
 
 	// We're connected to S3 so let's iterate over our urls and fetch them
@@ -153,16 +148,16 @@ func run(c *cli.Context) (err error) {
 				fmt.Printf("unrecognized fetch error: %s\n", err.Error())
 			}
 
-			// Publish feed error to kafka
-			feeds := []*store.Feed{
-				{
+			if publisher != nil {
+				// Write feed error
+				feed := &store.Feed{
 					URL:    url,
 					Active: false,
 					Error:  err.Error(),
-				},
-			}
-			if err = publisher.PublishFeeds(feeds); err != nil {
-				log.Println("could not publish some documents to kafka", err)
+				}
+				if err = publisher.WriteFeed(feed); err != nil {
+					fmt.Printf("unable to compose Kafka feed message: %s\n", err.Error())
+				}
 			}
 			continue
 		}
@@ -172,15 +167,15 @@ func run(c *cli.Context) (err error) {
 			break
 		}
 
-		// Publish feed success to kafka
-		feeds := []*store.Feed{
-			{
+		if publisher != nil {
+			// Write feed active
+			feed := &store.Feed{
 				URL:    url,
 				Active: true,
-			},
-		}
-		if err = publisher.PublishFeeds(feeds); err != nil {
-			log.Println("could not publish some documents to kafka", err)
+			}
+			if err = publisher.WriteFeed(feed); err != nil {
+				fmt.Printf("unable to compose Kafka feed message: %s\n", err.Error())
+			}
 		}
 
 		for _, item := range feed.Items {
@@ -250,11 +245,9 @@ func run(c *cli.Context) (err error) {
 					}
 				}
 
-				if conf.Kafka.Enabled {
-					documents := []*store.Document{&doc}
-					// Publish the documents to the Kafka topic
-					if err = publisher.PublishDocuments(documents); err != nil {
-						log.Println("could not publish some documents to kafka", err)
+				if publisher != nil {
+					if err = publisher.WriteDocument(&doc); err != nil {
+						fmt.Printf("unable to compose Kafka document message: %s\n", err.Error())
 					}
 				}
 
@@ -264,6 +257,13 @@ func run(c *cli.Context) (err error) {
 			}
 		}
 	}
+
+	if publisher != nil {
+		if err = publisher.PublishMessages(); err != nil {
+			fmt.Printf("unable to publish some Kafka messages: %s\n", err.Error())
+		}
+	}
+
 	return nil
 }
 

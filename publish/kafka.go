@@ -2,78 +2,104 @@ package publish
 
 import (
 	"context"
+	"encoding/base64"
 	"encoding/json"
+	"fmt"
 
-	"github.com/hashicorp/go-multierror"
 	"github.com/rotationalio/baleen/config"
 	"github.com/rotationalio/baleen/store"
 	"github.com/segmentio/kafka-go"
 )
 
-// A KafkaPublisher publishes Documents to a Kafka topic.
+// A KafkaPublisher publishes objects to a Kafka topic.
 type KafkaPublisher struct {
-	writer *kafka.Writer
+	conf     config.KafkaConfig
+	writer   *kafka.Writer
+	messages []kafka.Message
 }
 
-func New(config config.KafkaConfig) *KafkaPublisher {
+func New(conf config.KafkaConfig) (publisher *KafkaPublisher, err error) {
+	writer := &kafka.Writer{
+		Addr: kafka.TCP(conf.URL),
+	}
+	switch conf.Balancer {
+	case "RoundRobin":
+		writer.Balancer = &kafka.RoundRobin{}
+	case "LeastBytes":
+		writer.Balancer = &kafka.LeastBytes{}
+	case "Hash":
+		writer.Balancer = &kafka.Hash{}
+	case "Murmur2":
+		writer.Balancer = &kafka.Murmur2Balancer{}
+	case "CRC32":
+		writer.Balancer = &kafka.CRC32Balancer{}
+	default:
+		return nil, fmt.Errorf("unknown balancer specified: %s", conf.Balancer)
+	}
+
 	return &KafkaPublisher{
-		writer: &kafka.Writer{
-			Addr:     kafka.TCP(config.URL),
-			Balancer: &kafka.LeastBytes{},
-		},
-	}
+		conf:     conf,
+		writer:   writer,
+		messages: make([]kafka.Message, 0),
+	}, nil
 }
 
-func (p *KafkaPublisher) PublishDocuments(documents []*store.Document) error {
-	var errs *multierror.Error
-
-	// Convert the documents into Kafka messages
-	messages := make([]kafka.Message, 0, len(documents))
-	for _, doc := range documents {
-		var data []byte
-		var err error
-		if data, err = json.Marshal(doc); err != nil {
-			// TODO: Need some way to know which documents errored so we can publish them later.
-			errs = multierror.Append(errs, err)
-			continue
-		}
-
-		messages = append(messages, kafka.Message{
-			Topic: "documents",
-			Value: []byte(data),
-		})
-	}
-
-	if err := p.writer.WriteMessages(context.Background(), messages...); err != nil {
-		errs = multierror.Append(errs, err)
-	}
-
-	return errs.ErrorOrNil()
+type KafkaDocument struct {
+	FeedID       string `json:"feed_id"`
+	LanguageCode string `json:"language_code"`
+	Year         int    `json:"year"`
+	Month        string `json:"month"`
+	Day          int    `json:"day"`
+	Title        string `json:"title"`
+	Description  string `json:"description"`
+	Content      string `json:"content"`
+	Encoding     string `json:",omitempty"`
+	Link         string `json:"link"`
 }
 
-func (p *KafkaPublisher) PublishFeeds(feeds []*store.Feed) error {
-	var errs *multierror.Error
-
-	// Convert the documents into Kafka messages
-	messages := make([]kafka.Message, 0, len(feeds))
-	for _, feed := range feeds {
-		var data []byte
-		var err error
-		if data, err = json.Marshal(feed); err != nil {
-			// TODO: Need some way to know which feeds errored so we can publish them later.
-			errs = multierror.Append(errs, err)
-			continue
-		}
-
-		messages = append(messages, kafka.Message{
-			Topic: "feeds",
-			Value: []byte(data),
-		})
+// Write a Document to a Kafka message.
+func (p *KafkaPublisher) WriteDocument(doc *store.Document) (err error) {
+	// Need to encode the content as a base64 string for JSON serialization.
+	kafkdaDoc := &KafkaDocument{
+		FeedID:       doc.FeedID,
+		LanguageCode: doc.LanguageCode,
+		Year:         doc.Year,
+		Month:        doc.Month,
+		Day:          doc.Day,
+		Title:        doc.Title,
+		Description:  doc.Description,
+		Content:      base64.RawStdEncoding.EncodeToString(doc.Content),
 	}
 
-	if err := p.writer.WriteMessages(context.Background(), messages...); err != nil {
-		errs = multierror.Append(errs, err)
+	// Marshal into JSON
+	var data []byte
+	if data, err = json.Marshal(kafkdaDoc); err != nil {
+		return err
 	}
 
-	return errs.ErrorOrNil()
+	p.messages = append(p.messages, kafka.Message{
+		Topic: p.conf.TopicDocuments,
+		Value: data,
+	})
+	return nil
+}
+
+// Write a Feed to a Kafka message.
+func (p *KafkaPublisher) WriteFeed(feed *store.Feed) (err error) {
+	// Marshal into JSON
+	var data []byte
+	if data, err = json.Marshal(feed); err != nil {
+		return err
+	}
+
+	p.messages = append(p.messages, kafka.Message{
+		Topic: p.conf.TopicFeeds,
+		Value: data,
+	})
+	return nil
+}
+
+// Publish all the existing messages to Kafka.
+func (p *KafkaPublisher) PublishMessages() (err error) {
+	return p.writer.WriteMessages(context.Background(), p.messages...)
 }

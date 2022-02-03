@@ -23,18 +23,17 @@ type AWSCredentials struct {
 }
 
 // A Document is the generic representation of an individual entry in a feed
-// TODO: Use a protocol buffer instead of json serialization.
 type Document struct {
-	FeedID       string `json:"feed_id"`
-	LanguageCode string `json:"language_code"`
-	Year         int    `json:"year"`
-	Month        string `json:"month"`
-	Day          int    `json:"day"`
-	Title        string `json:"title"`
-	Description  string `json:"description"`
-	Content      []byte `json:"content"`
+	FeedID       string
+	LanguageCode string
+	Year         int
+	Month        string
+	Day          int
+	Title        string
+	Description  string
+	Content      []byte
 	Encoding     string `json:",omitempty"`
-	Link         string `json:",omitempty"`
+	Link         string
 }
 
 type Feed struct {
