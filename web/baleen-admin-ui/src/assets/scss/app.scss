@@ -42,7 +42,12 @@ File: Main Css File
 //Pages
 @import "custom/pages/error";
 
-
 // Plugins
 @import "custom/plugins/apexcharts";
 @import "custom/plugins/simplebar";
+
+.overview:hover{
+    border:  1px solid #5369f8 !important;
+    transition: all 1s ease;
+    cursor: pointer;
+}
