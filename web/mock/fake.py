@@ -91,4 +91,4 @@ def generate_vocab_timeline():
         json.dump(day_data, f, indent=4)
 
 if __name__ == "__main__":
-    vocab = generate_vocab()
+    generate_vocab()
