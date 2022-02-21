@@ -29,8 +29,7 @@ type KafkaConfig struct {
 }
 
 // New creates a new Config object, loading environment variables and defaults.
-func New() (_ Config, err error) {
-	var conf Config
+func New() (conf Config, err error) {
 	if err = envconfig.Process("baleen", &conf); err != nil {
 		return Config{}, err
 	}

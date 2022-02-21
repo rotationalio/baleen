@@ -17,6 +17,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/gosimple/slug"
+	"github.com/joho/godotenv"
 	"github.com/rotationalio/baleen"
 	"github.com/rotationalio/baleen/config"
 	"github.com/rotationalio/baleen/fetch"
@@ -29,6 +30,9 @@ import (
 )
 
 func main() {
+	// Load environment variables from the .env file
+	godotenv.Load()
+
 	// Create a new CLI app
 	app := cli.NewApp()
 	app.Name = "baleen"
@@ -55,6 +59,7 @@ func run(c *cli.Context) (err error) {
 	var conf config.Config
 
 	if conf, err = config.New(); err != nil {
+		fmt.Println("Failed to load configuration:", err)
 		return err
 	}
 
