@@ -1,3 +1,4 @@
+import os
 import json
 import random
 
@@ -18,6 +19,8 @@ languages = {
 }
 
 def generate_vocab():
+    if not os.path.exists('vocab'):
+        os.makedirs('vocab')
     generate_vocab_stats()
     generate_vocab_timeline()
 
