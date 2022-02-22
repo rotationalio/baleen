@@ -93,5 +93,28 @@ def generate_vocab_timeline():
     with open('vocab/timeline.json', 'w+') as f:
         json.dump(day_data, f, indent=4)
 
+def generate_topics():
+    if not os.path.exists('topics'):
+        os.makedirs('topics')
+    
+    fake = Faker()
+    start = datetime(2020, 1, 1)
+    days = [start + timedelta(days=x) for x in range(0, 365)]
+    day_data = []
+    for d in days:
+        topics = {}
+        topics['date'] = d.strftime('%Y-%m-%d')
+        langs = {}
+        for lang, locales in languages.items():
+            if random.randint(0, 1) == 0:
+                continue
+            lang_topics = {}
+            for loc in locales:
+                if len(lang_topics) > 0 and random.randint(0, 1) == 0:
+                    continue
+                loc_topics = {}
+                
+
 if __name__ == "__main__":
     generate_vocab()
+    generate_topics()
