@@ -117,6 +117,7 @@ def generate_topics():
                 for t in range(0, num_topics):
                     topic = {}
                     topic['name'] = fake.word()
+                    topic['score'] = fake.pyfloat(min_value=0, max_value=1)
                     num_phrases = fake.pyint(min_value=5, max_value=10)
                     phrases = []
                     for p in range(0, num_phrases):
