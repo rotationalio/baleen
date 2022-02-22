@@ -112,8 +112,34 @@ def generate_topics():
             for loc in locales:
                 if len(lang_topics) > 0 and random.randint(0, 1) == 0:
                     continue
-                loc_topics = {}
-                
+                loc_topics = []
+                num_topics = fake.pyint(min_value=1, max_value=5)
+                for t in range(0, num_topics):
+                    topic = {}
+                    topic['name'] = fake.word()
+                    num_phrases = fake.pyint(min_value=5, max_value=10)
+                    phrases = []
+                    for p in range(0, num_phrases):
+                        phrase = {}
+                        phrase['text'] = fake.word()
+                        phrase['score'] = fake.pyfloat(min_value=0, max_value=1)
+                        phrases.append(phrase)
+                    topic['phrases'] = phrases
+                    num_documents = fake.pyint(min_value=1, max_value=10)
+                    documents = []
+                    for doc in range(0, num_documents):
+                        document = {}
+                        document['title'] = fake.sentence()
+                        document['url'] = fake.url()
+                        documents.append(document)
+                    topic['documents'] = documents
+                    loc_topics.append(topic)
+                lang_topics[loc] = loc_topics
+            langs[lang] = lang_topics
+        topics['languages'] = langs
+        day_data.append(topics)
+    with open('topics/timeline.json', 'w+') as f:
+        json.dump(day_data, f, indent=4)
 
 if __name__ == "__main__":
     generate_vocab()
