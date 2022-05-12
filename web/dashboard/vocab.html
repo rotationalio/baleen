@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.2.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@holoviz/panel@0.13.0-rc.10/dist/panel.min.js"></script>
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  </head>
+  <py-env>
+      - bokeh
+      - pandas
+      - panel==0.13.1a2
+      - matplotlib
+  </py-env>
+  <body>
+    <div id="languages"></div>
+    <py-script>
+import json
+import asyncio
+import pandas as pd
+import panel as pn
+from math import pi
+
+from bokeh.palettes import Category20c
+from bokeh.plotting import figure, show
+from bokeh.transform import cumsum
+
+from pyodide.http import open_url
+
+# Load vocab data
+response = open_url("http://localhost:8000/vocab/stats.json")
+data = json.loads(response.read())
+
+# Data wrangling
+df = pd.DataFrame()
+for lang, stats in data.items():
+    if isinstance(stats, dict):
+        row = pd.DataFrame.from_dict(stats, orient='columns')
+        row['language'] = lang
+        df = pd.concat([df, row])
+df = df.reset_index()
+
+# Create bokeh figure
+def lang_plot_bokeh(index='num_documents'):
+    df['angle'] = df[index]/df[index].sum() * 2*pi
+    df['color'] = Category20c[len(df)]
+    p = figure(height=350, title='{} by Language'.format(index), toolbar_location=None, tools='hover', tooltips="@index: @num_documents", x_range=(-0.5, 1.0))
+    p.wedge(x=0, y=1, radius=0.4, start_angle=cumsum('angle', include_zero=True), end_angle=cumsum('angle'), line_color="white", fill_color='color', legend_field='index', source=df)
+    p.axis.axis_label = None
+    p.axis.visible = False
+    p.grid.grid_line_color = None
+    return p
+
+# Configure the dropdown options
+rename = {'num_documents': 'Documents', 'num_words': 'Words', 'num_unique_words': 'Unique Words'}
+df = df.rename(columns=rename)
+opts = sorted(rename.values())
+select = pn.widgets.Select(options=opts, value=opts[0])
+row = pn.Column(select, pn.bind(lang_plot_bokeh, select))
+
+# Init the interactive plot
+await pn.io.pyodide.show(row, 'languages')
+    </py-script>
+    <div id="documents"></div>
+    <py-script>
+import json
+import asyncio
+import pandas as pd
+import panel as pn
+
+from pyodide.http import open_url
+
+# Load timeline data
+file = open_url("http://localhost:8000/vocab/timeline.json")
+data = json.loads(file.read())
+
+# Data wrangling
+timeline_df = pd.DataFrame()
+for d in data:
+    row = pd.DataFrame.from_dict(d, orient='columns')
+    timeline_df = pd.concat([timeline_df, row])
+timeline_df = timeline_df.reset_index()
+timeline_df['dt'] = pd.to_datetime(timeline_df['date'])
+timeline_df['num_documents'] = timeline_df['languages'].apply(lambda x: [v for v in x.values()][0]['num_documents'])
+
+def daily_plot_bokeh(lang='english'):
+    df = timeline_df[timeline_df['index'] == lang].copy()
+    df['rolling'] = df['num_documents'].rolling(7).mean()
+
+    p = figure(plot_width=800, plot_height=350, x_axis_type="datetime", title='Daily Document Counts', toolbar_location=None, tools='hover', tooltips="@dt: @rolling")
+    p.line('dt', 'rolling', source=df)
+    return p
+
+def cumulative_plot_bokeh(lang='english'):
+    df = timeline_df[timeline_df['index'] == lang].copy()
+    df['cumulative'] = df['num_documents'].cumsum()
+
+    p = figure(plot_width=800, plot_height=350, x_axis_type="datetime", title='Cumulative Document Counts', toolbar_location=None, tools='hover', tooltips="@dt: @cumulative")
+    p.line('dt', 'cumulative', source=df)
+    return p
+
+# Configure the dropdown options
+opts = sorted(timeline_df['index'].unique())
+select = pn.widgets.Select(options=opts, value='english')
+row = pn.Column(select, pn.bind(daily_plot_bokeh, select), pn.bind(cumulative_plot_bokeh, select))
+
+# Init the interactive plot
+await pn.io.pyodide.show(row, 'documents')
+        </py-script>
+  </body>
+</html>
