@@ -1,0 +1,89 @@
+{
+    "opml": {
+        "head": {
+            "title": "Example Feedly JSON Outline"
+        },
+        "body": {
+          "outline": [
+            {
+              "_type": "rss",
+              "_text": "feed1.com",
+              "_title": "Feed 1",
+              "_xmlUrl": "http://www.feed1.com/rss",
+              "_htmlUrl": "http://www.feed1.com/"
+            },
+            {
+              "_type": "atom",
+              "_text": "feed2.com",
+              "_title": "feed2.com",
+              "_xmlUrl": "",
+              "_htmlUrl": "http://www.feed2.com/"
+            },
+            {
+              "_type": "rss",
+              "_text": "feed3.com",
+              "_title": "Third Feed!",
+              "_xmlUrl": "https://www.feed3.com/rss",
+              "_htmlUrl": "http://www.feed2.com/"
+            },
+            {
+              "_type": "atom",
+              "_text": "feed4.com",
+              "_title": "feed4-rss.com",
+              "_xmlUrl": "http://www.feed4.com/atom",
+              "_htmlUrl": "http://www.feed2.com/"
+            },
+            {
+              "_type": "rss",
+              "_text": "feed5.com",
+              "_title": "The Fifth",
+              "_xmlUrl": "https://www.feed5.com/rss",
+              "_htmlUrl": ""
+            },
+            {
+              "_type": "atom",
+              "_text": "feed6.com",
+              "_title": "Feed 6 News",
+              "_xmlUrl": "https://www.feed6.com/rss.xml",
+              "_htmlUrl": "https://www.feed6.com/"
+            },
+            {
+              "_type": "rss",
+              "_text": "feed7.com",
+              "_title": "Seven Feeds",
+              "_xmlUrl": "https://www.feed7.com/feed",
+              "_htmlUrl": "https://feed7.com"
+            },
+            {
+              "_type": "atom",
+              "_text": "feed8.com",
+              "_title": "The Ocho",
+              "_xmlUrl": "http://www.feed8.com/atom.xml",
+              "_htmlUrl": "http://www.feed8.com/"
+            },
+            {
+              "_type": "rss",
+              "_text": "feed9.com",
+              "_title": "Feed Nine",
+              "_xmlUrl": "https://www.feed9.com/rss",
+              "_htmlUrl": "http://www.feed9.com/"
+            },
+            {
+              "_type": "atom",
+              "_text": "feed10.com",
+              "_title": "Dix",
+              "_xmlUrl": "http://feed.feed10.com/",
+              "_htmlUrl": "http://www.feed10.com/"
+            },
+            {
+              "_type": "rss",
+              "_text": "blank.com",
+              "_title": "",
+              "_xmlUrl": "",
+              "_htmlUrl": ""
+            }
+          ]
+        },
+        "_version": "1.0"
+    }
+}

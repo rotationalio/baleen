@@ -91,14 +91,3 @@ func Upload(s *session.Session, doc Document, bucket string) error {
 	})
 	return err
 }
-
-/*
-Author:  Rebecca Bilbro
-Author:  Benjamin Bengfort
-Created: Tue Oct 8 14:02:56 EDT 2019
-
-Copyright (C) 2019 Kansas Labs
-For license information, see LICENSE.txt
-
-ID: store.go [] bilbro@gmail.com $
-*/

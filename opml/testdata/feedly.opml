@@ -1,0 +1,18 @@
+<opml version="1.0">
+	<head>
+		<title>Example Feedly JSON Outline</title>
+	</head>
+	<body>
+		<outline text="feed1.com" title="Feed 1" type="rss" xmlUrl="http://www.feed1.com/rss" htmlUrl="http://www.feed1.com/" rssfr-favicon="http://www.feed1.com/favicon.ico"></outline>
+		<outline text="feed2.com" title="feed2.com" type="atom" xmlUrl="" htmlUrl="http://www.feed2.com/" rssfr-favicon="http://www.feed2.com/favicon.png"></outline>
+		<outline text="feed3.com" title="Third Feed!" type="rss" xmlUrl="https://www.feed3.com/rss" htmlUrl="http://www.feed2.com/" rssfr-favicon="http://www.feed3.com/favicon.ico"></outline>
+		<outline text="feed4.com" title="feed4-rss.com" type="atom" xmlUrl="http://www.feed4.com/atom" htmlUrl="http://www.feed2.com/" rssfr-favicon=""></outline>
+		<outline text="feed5.com" title="The Fifth" type="rss" xmlUrl="https://www.feed5.com/rss" htmlUrl="" rssfr-favicon="https://www.feed5.com/static/favicon.ico"></outline>
+		<outline text="feed6.com" title="Feed 6 News" type="atom" xmlUrl="https://www.feed6.com/rss.xml" htmlUrl="https://www.feed6.com/" rssfr-favicon="https://feed6.com/favicon.ico"></outline>
+		<outline text="feed7.com" title="Seven Feeds" type="rss" xmlUrl="https://www.feed7.com/feed" htmlUrl="https://feed7.com" rssfr-favicon="https://www.feed7.com/favicon.png"></outline>
+		<outline text="feed8.com" title="The Ocho" type="atom" xmlUrl="http://www.feed8.com/atom.xml" htmlUrl="http://www.feed8.com/" rssfr-favicon="http://www.feed8.com/favicon.ico"></outline>
+		<outline text="feed9.com" title="Feed Nine" type="rss" xmlUrl="https://www.feed9.com/rss" htmlUrl="http://www.feed9.com/" rssfr-favicon="http://www.feed9.com/rss/feed.ico"></outline>
+		<outline text="feed10.com" title="Dix" type="atom" xmlUrl="http://feed.feed10.com/" htmlUrl="http://www.feed10.com/" rssfr-favicon=""></outline>
+		<outline text="blank.com" title="" type="rss" xmlUrl="" htmlUrl="" rssfr-favicon=""></outline>
+	</body>
+</opml>

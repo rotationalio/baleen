@@ -14,14 +14,3 @@ func MustOpen(path string) *leveldb.DB {
 
 	return db
 }
-
-/*
-Author:  Rebecca Bilbro
-Author:  Benjamin Bengfort
-Created: Thu Oct 31 14:02:41 EDT 2019
-
-Copyright (C) 2019 Kansas Labs
-For license information, see LICENSE.txt
-
-ID: manifest.go [] bilbro@gmail.com $
-*/
