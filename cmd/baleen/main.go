@@ -20,23 +20,22 @@ import (
 	"github.com/rotationalio/baleen"
 	"github.com/rotationalio/baleen/config"
 	"github.com/rotationalio/baleen/fetch"
+	"github.com/rotationalio/baleen/opml"
 	"github.com/rotationalio/baleen/publish"
 	"github.com/rotationalio/baleen/store"
-	"github.com/rotationalio/baleen/utils"
 	"github.com/spaolacci/murmur3"
-	"github.com/syndtr/goleveldb/leveldb"
-	"gopkg.in/urfave/cli.v1"
+	"github.com/urfave/cli/v2"
 )
 
 func main() {
 	// Create a new CLI app
 	app := cli.NewApp()
 	app.Name = "baleen"
-	app.Version = baleen.Version(false)
+	app.Version = baleen.Version()
 	app.Usage = "a toolkit for ingesting data from RSS feeds"
 
 	// Define commands available to the application
-	app.Commands = []cli.Command{
+	app.Commands = []*cli.Command{
 		{
 			Name:   "run",
 			Usage:  "run the baleen ingestion service",
@@ -60,7 +59,7 @@ func run(c *cli.Context) (err error) {
 
 	// If the user specifies a feed via the command line, only get that one
 	if c.NArg() > 0 {
-		urls = append(urls, c.Args()[0])
+		urls = append(urls, c.Args().First())
 	} else {
 		// Otherwise retrieve feeds from files in the fixtures directory
 		err := filepath.Walk(conf.FixturesDir, func(path string, info os.FileInfo, err error) error {
@@ -73,7 +72,7 @@ func run(c *cli.Context) (err error) {
 		for _, file := range files {
 			switch filepath.Ext(file) {
 			case ".opml":
-				o := utils.OPML{}
+				o := opml.OPML{}
 				content, _ := ioutil.ReadFile(file)
 				err := xml.Unmarshal(content, &o)
 				if err != nil {
@@ -90,7 +89,7 @@ func run(c *cli.Context) (err error) {
 
 	// Return an error is no feed was specified in the cli and none were retrieved from fixtures
 	if len(urls) == 0 {
-		return cli.NewExitError("specify a feed to fetch or add feeds to fixtures directory", 1)
+		return cli.Exit("specify a feed to fetch or add feeds to fixtures directory", 1)
 	}
 
 	var session *session.Session
@@ -120,8 +119,7 @@ func run(c *cli.Context) (err error) {
 	}
 
 	// Retrieve the manifest so that we don't re-ingest docs we already have
-	var db *leveldb.DB
-	db = store.MustOpen(conf.DBPath)
+	db := store.MustOpen(conf.DBPath)
 	defer db.Close()
 
 	// We're connected to S3 so let's iterate over our urls and fetch them

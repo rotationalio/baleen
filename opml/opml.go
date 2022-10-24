@@ -1,4 +1,4 @@
-package utils
+package opml
 
 import (
 	"encoding/xml"
@@ -33,14 +33,3 @@ type Outline struct {
 	HTMLURL string `xml:"htmlUrl,attr"`
 	Favicon string `xml:"rssfr-favicon,attr"`
 }
-
-/*
-Author:  Rebecca Bilbro
-Author:  Benjamin Bengfort
-Created: Tue Oct 8 13:47:54 2019 -0400
-
-Copyright (C) 2019 Kansas Labs
-For license information, see LICENSE.txt
-
-ID: opml.go [c23ae33] rebeccabilbro@users.noreply.github.com $
-*/

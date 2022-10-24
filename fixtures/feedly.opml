@@ -62,9 +62,5 @@
 		<outline type="rss" text="vietnamnews.vn" title="vietnamnews.vn" xmlUrl="https://vietnamnews.vn/rss" htmlUrl="https://vietnamnews.vn/"/>
 		<outline type="rss" text="themoscowtimes.com" title="themoscowtimes.com" xmlUrl="https://www.themoscowtimes.com/page/rss" htmlUrl="https://www.themoscowtimes.com/"/>
 		<outline type="rss" text="dailynk.com/english/" title= "dailynk.com/english/" xmlUrl="https://www.dailynk.com/english/feed/" htmlUrl="https://www.dailynk.com/english/"/>
-
-
-    
-
 	</body>
 </opml>

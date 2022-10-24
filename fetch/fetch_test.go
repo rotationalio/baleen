@@ -11,7 +11,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/kansaslabs/baleen/fetch"
+	"github.com/rotationalio/baleen/fetch"
+	"github.com/stretchr/testify/require"
 )
 
 // Helper function for the httptest server to return RSS test data.
@@ -52,10 +53,10 @@ func TestRSSResponse(t *testing.T) {
 	// Fetch the RSS from the server
 	fetcher := fetch.NewFeedFetcher(server.URL)
 	feed, err := fetcher.Fetch()
-	ok(t, err)
-	equals(t, feed.FeedType, "rss")
-	equals(t, feed.Title, "Sample Feed")
-	equals(t, len(feed.Items), 1)
+	require.NoError(t, err)
+	require.Equal(t, feed.FeedType, "rss")
+	require.Equal(t, feed.Title, "Sample Feed")
+	require.Equal(t, len(feed.Items), 1)
 }
 
 func TestAtomResponse(t *testing.T) {
@@ -69,10 +70,10 @@ func TestAtomResponse(t *testing.T) {
 	// Fetch the Atom from the server
 	fetcher := fetch.NewFeedFetcher(server.URL)
 	feed, err := fetcher.Fetch()
-	ok(t, err)
-	equals(t, feed.FeedType, "atom")
-	equals(t, feed.Title, "Sample Feed")
-	equals(t, len(feed.Items), 1)
+	require.NoError(t, err)
+	require.Equal(t, feed.FeedType, "atom")
+	require.Equal(t, feed.Title, "Sample Feed")
+	require.Equal(t, len(feed.Items), 1)
 }
 
 func TestSendETag(t *testing.T) {
@@ -99,15 +100,15 @@ func TestSendETag(t *testing.T) {
 
 	// The first fetch should return the feed
 	feed, err := fetcher.Fetch()
-	ok(t, err)
-	equals(t, feed.Title, "Sample Feed")
+	require.NoError(t, err)
+	require.Equal(t, feed.Title, "Sample Feed")
 
 	// The second fetch should return 304
 	feed, err = fetcher.Fetch()
 	he, ok := err.(fetch.HTTPError)
-	assert(t, ok, "did not return an HTTPError on detection of etag")
-	equals(t, he.Code, http.StatusNotModified)
-	assert(t, feed == nil, "feed is not nil")
+	require.True(t, ok, "did not return an HTTPError on detection of etag")
+	require.Equal(t, he.Code, http.StatusNotModified)
+	require.True(t, feed == nil, "feed is not nil")
 }
 
 func TestSendLastModified(t *testing.T) {
@@ -134,24 +135,13 @@ func TestSendLastModified(t *testing.T) {
 
 	// The first fetch should return the feed
 	feed, err := fetcher.Fetch()
-	ok(t, err)
-	equals(t, feed.Title, "Sample Feed")
+	require.NoError(t, err)
+	require.Equal(t, feed.Title, "Sample Feed")
 
 	// The second fetch should return 304
 	feed, err = fetcher.Fetch()
 	he, ok := err.(fetch.HTTPError)
-	assert(t, ok, "did not return an HTTPError on detection of last modified")
-	equals(t, he.Code, http.StatusNotModified)
-	assert(t, feed == nil, "feed is not nil")
+	require.True(t, ok, "did not return an HTTPError on detection of last modified")
+	require.Equal(t, he.Code, http.StatusNotModified)
+	require.True(t, feed == nil, "feed is not nil")
 }
-
-/*
-Author:  Benjamin Bengfort
-Author:  Rebecca Bilbro
-Created: Mon Apr 29 06:43:36 2019 -0400
-
-Copyright (C) 2019 Kansas Labs
-For license information, see LICENSE.txt
-
-ID: fetch_test.go [d6dba70] benjamin@bengfort.com $
-*/
