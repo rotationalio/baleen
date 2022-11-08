@@ -5,9 +5,9 @@ command line application.
 package main
 
 import (
+	"context"
 	"encoding/xml"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"strconv"
@@ -73,7 +73,7 @@ func run(c *cli.Context) (err error) {
 			switch filepath.Ext(file) {
 			case ".opml":
 				o := opml.OPML{}
-				content, _ := ioutil.ReadFile(file)
+				content, _ := os.ReadFile(file)
 				err := xml.Unmarshal(content, &o)
 				if err != nil {
 					panic(err)
@@ -126,7 +126,7 @@ func run(c *cli.Context) (err error) {
 	for _, url := range urls {
 
 		feedFetcher := fetch.NewFeedFetcher(url)
-		feed, err := feedFetcher.Fetch()
+		feed, err := feedFetcher.Fetch(context.TODO())
 		if err != nil {
 			switch he := err.(type) {
 			case fetch.HTTPError:
@@ -208,7 +208,7 @@ func run(c *cli.Context) (err error) {
 				}
 
 				htmlFetcher := fetch.NewHTMLFetcher(item.Link)
-				html, err := htmlFetcher.Fetch()
+				html, err := htmlFetcher.Fetch(context.TODO())
 
 				// TODO: Better error handling
 				if err != nil {

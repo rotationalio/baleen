@@ -1,16 +1,21 @@
 /*
-Package fetch provides a high-level interface for going out to get RSS and Atom feeds
-from any source. Right now http and https requests are supported but future
-implementations may also include authenticated fetchers, etc. Fetchers are intended to
-synchronously make a single request to get the latest version the feed and to preserve
-the state of the last request to the feed they are managing. They ensure that
-connections are closed after each request use etag and last-modified headers to minimize
-the amount of bandwidth required.
+Package fetch provides a stateful interface for routinely fetching resources from the
+web. Fetchers synchronously make web requests to get the latest version of a resource
+and preserve the state of the last request they made. They ensure that connections are
+closed and that resource use is minimized. For example, an RSS and Atom feed may need to
+be refreshed periodically, but to save bandwidth, we want to make sure we're respecting
+etag and modified headers as well as cache control. By creating a fetcher, we can
+repeatedly fetch the resource, minimizing bandwidth and being a good netizen.
+
+Right now the fecher can handle http and https requests, but future implementations may
+also include authenticated fetchers. There are currently two types of fetchers: the
+FeedFetcher and the HTMLFetcher. The former is designed to fetch and parse RSS and ATOM
+feeds, while the latter is designed to fetch HTML content.
 
 Basic Usage:
 
 	fetcher := fetch.NewFeedFetcher("https://www.example.com/rss")
-	feed, err := fetcher.Fetch()
+	feed, err := fetcher.Fetch(ctx)
 
 For more on RSS hacking and bandwidth minimization see:
 https://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers
@@ -18,27 +23,16 @@ https://fishbowl.pastiche.org/2002/10/21/http_conditional_get_for_rss_hackers
 package fetch
 
 import (
-	"io/ioutil"
-	"log"
+	"context"
 	"net"
 	"net/http"
+	"net/http/cookiejar"
 	"time"
-
-	"github.com/mmcdole/gofeed"
 )
 
-func init() {
-	client = &http.Client{
-		Timeout: 1 * time.Minute,
-		Transport: &http.Transport{
-			Dial: (&net.Dialer{
-				Timeout: 45 * time.Second,
-			}).Dial,
-			TLSHandshakeTimeout: 45 * time.Second,
-			DisableKeepAlives:   true,
-			DisableCompression:  false,
-		},
-	}
+// Fetcher is an interface for statefully making periodic requests to a resource.
+type Fetcher interface {
+	Fetch(context.Context) (any, error)
 }
 
 // A package level http client for making requests. It is best practice to not use the
@@ -49,202 +43,53 @@ func init() {
 // should use this client.
 var client *http.Client
 
-// FeedFetcher provides a interface for anything that can get RSS data and provide it in a
-// sequential fashion (e.g. without concurrency). The fetcher is the building block for
-// larger subscription routines that periodically use the fetcher to retrieve data.
-// FeedFetchers should therefore be treated as things that will only run inside of a single
-// thread, whereas Subscription objects are things that may run concurrently.
-type FeedFetcher interface {
-	Fetch() (feed *gofeed.Feed, err error)
-}
-
-// NewFeedFetcher creates a new HTTP fetcher that can fetch rss feeds from the specified URL.
-func NewFeedFetcher(url string) FeedFetcher {
-	return &httpFetcher{
-		url:    url,
-		parser: gofeed.NewParser(),
+func init() {
+	// Initialize the HTTP client used in this package.
+	jar, _ := cookiejar.New(nil)
+	dialer := &net.Dialer{Timeout: 45 * time.Second}
+	client = &http.Client{
+		Timeout:       1 * time.Minute, // long time out enables global fetch
+		CheckRedirect: nil,             // default policy is try following redirect 10 times
+		Transport: &http.Transport{
+			DialContext:         dialer.DialContext,
+			TLSHandshakeTimeout: 45 * time.Second,
+			DisableKeepAlives:   true,
+			DisableCompression:  false,
+		},
+		Jar: jar,
 	}
 }
 
-// HTMLFetcher is an interface for fetching the full HTML associated with a feed item
-type HTMLFetcher interface {
-	Fetch() (content []byte, err error)
-}
+// Header values to send along with requests made by the fetch package.
+const (
+	userAgent    = "Baleen/v1"
+	acceptHTML   = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+	acceptRSS    = "application/atom+xml,application/rdf+xml,application/rss+xml,application/x-netcdf,application/xml;q=0.9,text/xml;q=0.2,*/*;q=0.1"
+	acceptLang   = "*"
+	acceptEncode = "gzip,deflate,br,*"
+	referer      = ""
+	cacheControl = "max-age=3600"
+	aimType      = "feed"
+)
 
-// NewHTMLFetcher creates a new HTML fetcher that can fetch the full HTML from the specified URL.
-func NewHTMLFetcher(url string) HTMLFetcher {
-	return &htmlFetcher{
-		url: url,
-	}
-}
+// Canonical names of headers used by the fetch package
+const (
+	HeaderUserAgent       = "User-Agent"
+	HeaderAccept          = "Accept"
+	HeaderAcceptLang      = "Accept-Language"
+	HeaderAcceptEncode    = "Accept-Encoding"
+	HeaderCacheControl    = "Cache-Control"
+	HeaderReferer         = "Referer"
+	HeaderIfNoneMatch     = "If-None-Match"
+	HeaderIfModifiedSince = "If-Modified-Since"
+	HeaderRFC3229         = "A-IM"
+	HeaderETag            = "ETag"
+	HeaderLastModified    = "Last-Modified"
+)
 
-// SetDefaultClient allows you to specify an alternative http.Client to the default one
+// SetClient allows you to specify an alternative http.Client to the default one
 // used by all http based Fetchers in this package. Use this function to change the
 // timeouts of the client or to set a test client.
-func SetDefaultClient(c *http.Client) {
+func SetClient(c *http.Client) {
 	client = c
-}
-
-//===========================================================================
-// HTTP Fetcher
-//===========================================================================
-
-// The httpFetcher uses GET requests to retrieve data with a Baleen-specific http
-// client. We avoid using gofeed.ParseURL because it is very simple and doesn't respect
-// rate limits or etags, which are necessary for Baleen to run in continuous operation.
-type httpFetcher struct {
-	url      string         // the url of the RSS or atom feed
-	parser   *gofeed.Parser // the universal feed parser for RSS and Atom feeds
-	etag     string         // used for conditional http to minimize bandwidth
-	modified string         // used for conditional http to minimize bandwidth
-}
-
-func (f *httpFetcher) Fetch() (feed *gofeed.Feed, err error) {
-	var req *http.Request
-	if req, err = f.newRequest(); err != nil {
-		return nil, err
-	}
-
-	var rep *http.Response
-	if rep, err = client.Do(req); err != nil {
-		return nil, err
-	}
-
-	// Close the body of the response reader when we're done.
-	if rep != nil {
-		defer func() {
-			ce := rep.Body.Close()
-			if ce != nil {
-				err = ce
-			}
-		}()
-	}
-
-	// Check the status code of the response; note that 304 means not modified, but we
-	// are still returning a 304 error to signal to the Subscription that nothing has
-	// changed and that the feed is nil.
-	if rep.StatusCode < 200 || rep.StatusCode >= 300 {
-		return nil, HTTPError{
-			Status: rep.Status,
-			Code:   rep.StatusCode,
-		}
-	}
-
-	// Use the universal parser to parse the Atom or RSS feed
-	// Note: Feeds with illegal character codes will not be successfully parsed & return nil here
-	if feed, err = f.parser.Parse(rep.Body); err != nil {
-		return nil, err
-	}
-
-	// Get the eTag and last-modified from the response header if we've successfully
-	// parsed the request and received a 200 response.
-	f.etag = rep.Header.Get("ETag")
-	f.modified = rep.Header.Get("Last-Modified")
-
-	// Note the explicit return of err here, this is in case the Body.Close() returns
-	// an error, which will supercede any other errors being returned.
-	return feed, err
-}
-
-func (f *httpFetcher) newRequest() (req *http.Request, err error) {
-	// Create the GET request
-	if req, err = http.NewRequest("GET", f.url, nil); err != nil {
-		return nil, err
-	}
-
-	// Be a good netizen and tell the server who we are and what we're doing
-	// TODO: add actual version and system information to the user agent
-	req.Header.Set("User-Agent", "Baleen/1.0")
-
-	// Response control headers (request compressed response by default)
-	// Note that compression and keep-alives are handled by our default client.
-	req.Header.Set("Accept", "application/atom+xml,application/rdf+xml,application/rss+xml,application/x-netcdf,application/xml;q=0.9,text/xml;q=0.2,*/*;q=0.1")
-
-	// Ask the server to refresh the cache if the content is an hour old
-	req.Header.Set("Cache-Control", "max-age=3600")
-	// Best practice is to leave the referer blank
-	req.Header.Set("Referer", "")
-
-	// Send the etag if an etag was sent from the server on a previous request.
-	if f.etag != "" {
-		req.Header.Set("If-None-Match", f.etag)
-	}
-
-	// Send the timestamp if last-modified was sent from the server previously.
-	// TODO: make f.modifed a time.Time and add RFC 1123-compliant parsing.
-	// SEE: https://github.com/kurtmckee/feedparser/blob/develop/feedparser/http.py#L113
-	if f.modified != "" {
-		req.Header.Set("If-Modified-Since", f.modified)
-	}
-
-	// RFC 3229 support
-	req.Header.Set("A-IM", "feed")
-
-	return req, nil
-}
-
-//===========================================================================
-// HTML Fetcher
-//===========================================================================
-
-// The htmlFetcher uses GET requests to retrieve the html containing the full text
-// of articles of feeds with a Baleen-specific http client.
-type htmlFetcher struct {
-	url string // the url of the article full text
-}
-
-// Fetch creates a new htmlFetcher and attempts to retrieve the full text of the article,
-// returning it as raw bytes if successful
-func (f *htmlFetcher) Fetch() (raw []byte, err error) {
-	var req *http.Request
-	if req, err = f.newRequest(); err != nil {
-		return nil, err
-	}
-
-	var rep *http.Response
-	if rep, err = client.Do(req); err != nil {
-		return nil, err
-	}
-
-	// Close the body of the response reader when we're done.
-	if rep != nil {
-		defer func() {
-			ce := rep.Body.Close()
-			if ce != nil {
-				err = ce
-			}
-		}()
-	}
-
-	// Check the status code of the response; note that 304 means not modified, but we
-	// are still returning a 304 error to signal to the Subscription that nothing has
-	// changed and that the feed is nil.
-	if rep.StatusCode < 200 || rep.StatusCode >= 300 {
-		return nil, HTTPError{
-			Status: rep.Status,
-			Code:   rep.StatusCode,
-		}
-	}
-
-	// Parse the html
-	html, err := ioutil.ReadAll(rep.Body)
-	if err != nil {
-		log.Printf("no text parsed from html retrieved from %s", f.url)
-	}
-
-	return html, err
-}
-
-func (f *htmlFetcher) newRequest() (req *http.Request, err error) {
-	if req, err = http.NewRequest("GET", f.url, nil); err != nil {
-		return nil, err
-	}
-
-	req.Header.Set("User-Agent", "Baleen/1.0")
-	req.Header.Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
-	req.Header.Set("Accept-Language", "*")
-	req.Header.Set("Cache-Control", "max-age=3600")
-	req.Header.Set("Referer", "")
-
-	return req, nil
 }
