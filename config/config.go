@@ -19,6 +19,7 @@ const prefix = "baleen"
 // loaded from the environment or a configuration file with reasonable defaults for
 // values that are omitted. The Config should be validated in preparation for running
 // Baleen to ensure that all eventing operations work as expected.
+// TODO: collect the config from a file instead of the environment.
 type Config struct {
 	LogLevel     logger.LevelDecoder `split_words:"true" default:"info"`
 	ConsoleLog   bool                `split_words:"true" default:"false"`
