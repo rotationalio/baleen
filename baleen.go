@@ -17,7 +17,6 @@ import (
 	"github.com/rotationalio/baleen/config"
 	"github.com/rotationalio/baleen/logger"
 	"github.com/rotationalio/baleen/metrics"
-	"github.com/rotationalio/watermill-ensign/pkg/ensign"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 )
@@ -89,13 +88,11 @@ func New(conf config.Config) (svc *Baleen, err error) {
 		middleware.Recoverer,
 	)
 
-	// TODO: generalize the publisher and subscriber to anything
-	// TODO: collect ensign configuration from the environment
-	if svc.publisher, err = ensign.NewPublisher(ensign.PublisherConfig{}, logger); err != nil {
+	if svc.publisher, err = CreatePublisher(conf.Publisher, logger); err != nil {
 		return nil, err
 	}
 
-	if svc.subscriber, err = ensign.NewSubscriber(ensign.SubscriberConfig{}, logger); err != nil {
+	if svc.subscriber, err = CreateSubscriber(conf.Subscriber, logger); err != nil {
 		return nil, err
 	}
 

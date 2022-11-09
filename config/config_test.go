@@ -10,13 +10,14 @@ import (
 )
 
 var testEnv = map[string]string{
-	"BALEEN_LOG_LEVEL":            "debug",
-	"BALEEN_CONSOLE_LOG":          "true",
-	"BALEEN_AWS_ENABLED":          "false",
-	"BALEEN_KAFKA_ENABLED":        "false",
-	"BALEEN_MONITORING_ENABLED":   "true",
-	"BALEEN_MONITORING_BIND_ADDR": ":8889",
-	"BALEEN_MONITORING_NODE_ID":   "test1234",
+	"BALEEN_LOG_LEVEL":                "debug",
+	"BALEEN_CONSOLE_LOG":              "true",
+	"BALEEN_AWS_ENABLED":              "false",
+	"BALEEN_KAFKA_ENABLED":            "false",
+	"BALEEN_MONITORING_ENABLED":       "true",
+	"BALEEN_MONITORING_BIND_ADDR":     ":8889",
+	"BALEEN_MONITORING_NODE_ID":       "test1234",
+	"BALEEN_PUBLISHER_ENSIGN_ENABLED": "true",
 }
 
 func TestConfig(t *testing.T) {

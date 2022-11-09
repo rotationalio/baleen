@@ -6,11 +6,16 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"os"
 
+	"github.com/ThreeDotsLabs/watermill"
+	"github.com/ThreeDotsLabs/watermill/message"
 	"github.com/joho/godotenv"
 	"github.com/rotationalio/baleen"
 	"github.com/rotationalio/baleen/config"
+	"github.com/rotationalio/baleen/events"
+	"github.com/rotationalio/baleen/opml"
 	"github.com/urfave/cli/v2"
 )
 
@@ -29,8 +34,27 @@ func main() {
 		{
 			Name:   "run",
 			Usage:  "run the baleen ingestion service",
+			Before: configure,
 			Action: run,
 			Flags:  []cli.Flag{},
+		},
+		{
+			Name:   "feeds:add",
+			Usage:  "add a feed subscription to baleen if its not already added",
+			Before: mkpub,
+			Action: addFeed,
+			Flags: []cli.Flag{
+				&cli.StringFlag{
+					Name:    "url",
+					Aliases: []string{"u"},
+					Usage:   "add a new subscription via its xml url",
+				},
+				&cli.StringFlag{
+					Name:    "opml",
+					Aliases: []string{"o"},
+					Usage:   "add subscriptions from an OPML file (json or xml)",
+				},
+			},
 		},
 	}
 
@@ -38,14 +62,92 @@ func main() {
 	app.Run(os.Args)
 }
 
+var (
+	conf      config.Config
+	publisher message.Publisher
+)
+
+func configure(c *cli.Context) (err error) {
+	if conf, err = config.New(); err != nil {
+		return cli.Exit(err, 1)
+	}
+	return nil
+}
+
+func mkpub(c *cli.Context) (err error) {
+	if err = configure(c); err != nil {
+		return err
+	}
+
+	if publisher, err = baleen.CreatePublisher(conf.Publisher, watermill.NopLogger{}); err != nil {
+		return cli.Exit(err, 1)
+	}
+
+	return nil
+}
+
 func run(c *cli.Context) (err error) {
 	var svc *baleen.Baleen
-	if svc, err = baleen.New(config.Config{}); err != nil {
+	if svc, err = baleen.New(conf); err != nil {
 		return cli.Exit(err, 1)
 	}
 
 	if err = svc.Run(context.Background()); err != nil {
 		return cli.Exit(err, 1)
 	}
+	return nil
+}
+
+func addFeed(c *cli.Context) (err error) {
+	var nEvents int
+	if c.String("url") == "" && c.String("opml") == "" {
+		return cli.Exit("specify either -url or -opml to add a feed", 1)
+	}
+
+	// Handle single URL case
+	if url := c.String("url"); url != "" {
+		sub := &events.Subscription{
+			FeedURL: url,
+		}
+
+		var msg *message.Message
+		if msg, err = events.Marshal(sub, watermill.NewULID()); err != nil {
+			return cli.Exit(err, 1)
+		}
+
+		if err = publisher.Publish(baleen.TopicSubscriptions, msg); err != nil {
+			return cli.Exit(err, 1)
+		}
+		nEvents++
+	}
+
+	// Handle OPML case
+	if path := c.String("opml"); path != "" {
+		var outline *opml.OPML
+		if outline, err = opml.Load(path); err != nil {
+			return cli.Exit(err, 1)
+		}
+
+		for _, feed := range outline.Body.Outlines {
+			sub := &events.Subscription{
+				FeedType: feed.Type,
+				Title:    feed.Title,
+				FeedURL:  feed.XMLURL,
+				SiteURL:  feed.HTMLURL,
+			}
+
+			var msg *message.Message
+			if msg, err = events.Marshal(sub, watermill.NewULID()); err != nil {
+				return cli.Exit(err, 1)
+			}
+
+			if err = publisher.Publish(baleen.TopicSubscriptions, msg); err != nil {
+				return cli.Exit(err, 1)
+			}
+			nEvents++
+		}
+	}
+
+	fmt.Printf("published %d subscription events\n", nEvents)
 	return nil
 }

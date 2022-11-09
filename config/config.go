@@ -1,7 +1,7 @@
 package config
 
 import (
-	"fmt"
+	"errors"
 	"time"
 
 	"github.com/ThreeDotsLabs/watermill/message"
@@ -23,13 +23,10 @@ const prefix = "baleen"
 type Config struct {
 	LogLevel     logger.LevelDecoder `split_words:"true" default:"info"`
 	ConsoleLog   bool                `split_words:"true" default:"false"`
-	CloseTimeout time.Duration       `split_words:"true"`
-	Monitoring   MonitoringConfig    `split_words:"true"`
-	AWS          AWSConfig           `split_words:"true"`
-	Kafka        KafkaConfig         `split_words:"true"`
-	DBPath       string              `split_words:"true" default:"./db"`
-	FixturesDir  string              `split_words:"true" default:"fixtures"`
-	Testing      bool                `split_words:"true" default:"false"`
+	CloseTimeout time.Duration       `split_words:"true" default:"30s"`
+	Monitoring   MonitoringConfig
+	Publisher    PublisherConfig
+	Subscriber   SubscriberConfig
 	processed    bool
 }
 
@@ -41,18 +38,38 @@ type MonitoringConfig struct {
 	NodeID   string `split_words:"true" required:"false"`
 }
 
-type AWSConfig struct {
-	Enabled bool   `split_words:"true" default:"true"`
-	Region  string `split_words:"true"`
-	Bucket  string `split_words:"true"`
+// Publisher Config defines the type of configuration to connect to the publisher with.
+type PublisherConfig struct {
+	Ensign EnsignConfig
+	Kafka  KafkaConfig
+}
+
+// Subscriber Config defines the type of configuration to connect to the publisher with.
+type SubscriberConfig struct {
+	Ensign EnsignConfig
+	Kafka  KafkaConfig
+}
+
+type EnsignConfig struct {
+	Enabled      bool   `default:"false"`
+	Endpoint     string `default:"flagship.rotational.dev:443"`
+	ClientID     string `split_words:"true"`
+	ClientSecret string `split_words:"true"`
+	Insecure     bool   `default:"false"`
 }
 
 type KafkaConfig struct {
-	Enabled        bool   `split_words:"true" default:"false"`
+	Enabled        bool   `default:"false"`
 	URL            string `split_words:"true"`
-	Balancer       string `split_words:"true" default:"LeastBytes"`
-	TopicDocuments string `split_words:"true" default:"documents"`
-	TopicFeeds     string `split_words:"true" default:"feeds"`
+	Balancer       string `default:"LeastBytes"`
+	TopicDocuments string `default:"documents"`
+	TopicFeeds     string `default:"feeds"`
+}
+
+type AWSConfig struct {
+	Enabled bool   `default:"false"`
+	Region  string `split_words:"true"`
+	Bucket  string `split_words:"true"`
 }
 
 // New creates a new Config object, loading environment variables and defaults.
@@ -92,11 +109,11 @@ func (c Config) Mark() (Config, error) {
 
 // Validate the entire config.
 func (c Config) Validate() (err error) {
-	if err = c.AWS.Validate(); err != nil {
+	if err = c.Publisher.Validate(); err != nil {
 		return err
 	}
 
-	if err = c.Kafka.Validate(); err != nil {
+	if err = c.Subscriber.Validate(); err != nil {
 		return err
 	}
 
@@ -110,16 +127,25 @@ func (c Config) RouterConfig() message.RouterConfig {
 	}
 }
 
-// Validate the AWS config.
-func (c AWSConfig) Validate() (err error) {
-	if c.Enabled {
-		if c.Region == "" {
-			return fmt.Errorf("AWS region must be specified")
-		}
+func (c PublisherConfig) Validate() error {
+	if !c.Ensign.Enabled && !c.Kafka.Enabled {
+		return errors.New("invalid configuration: at least one publisher must be enabled")
+	}
 
-		if c.Bucket == "" {
-			return fmt.Errorf("AWS bucket must be specified")
-		}
+	if c.Kafka.Enabled {
+		return c.Kafka.Validate()
+	}
+
+	return nil
+}
+
+func (c SubscriberConfig) Validate() error {
+	if !c.Ensign.Enabled && !c.Kafka.Enabled {
+		return errors.New("invalid configuration: at least one subscriber must be enabled")
+	}
+
+	if c.Kafka.Enabled {
+		return c.Kafka.Validate()
 	}
 
 	return nil
@@ -129,19 +155,34 @@ func (c AWSConfig) Validate() (err error) {
 func (c KafkaConfig) Validate() (err error) {
 	if c.Enabled {
 		if c.URL == "" {
-			return fmt.Errorf("kafka url must be specified")
+			return errors.New("invalid configuration: kafka url must be specified")
 		}
 
 		if c.Balancer == "" {
-			return fmt.Errorf("kafka balancer must be specified")
+			return errors.New("invalid configuration: kafka balancer must be specified")
 		}
 
 		if c.TopicDocuments == "" {
-			return fmt.Errorf("kafka topic for documents must be specified")
+			return errors.New("invalid configuration: kafka topic for documents must be specified")
 		}
 
 		if c.TopicFeeds == "" {
-			return fmt.Errorf("kafka topic for feeds must be specified")
+			return errors.New("invalid configuration: kafka topic for feeds must be specified")
+		}
+	}
+
+	return nil
+}
+
+// Validate the AWS config.
+func (c AWSConfig) Validate() (err error) {
+	if c.Enabled {
+		if c.Region == "" {
+			return errors.New("invalid configuration: AWS region must be specified")
+		}
+
+		if c.Bucket == "" {
+			return errors.New("invalid configuration: AWS bucket must be specified")
 		}
 	}
 

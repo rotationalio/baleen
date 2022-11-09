@@ -11,6 +11,7 @@ import (
 	"time"
 
 	api "github.com/rotationalio/ensign/pkg/api/v1beta1"
+	"github.com/tinylib/msgp/msgp"
 )
 
 // Types specifies the event types for Ensign
@@ -31,6 +32,8 @@ const (
 
 // TypedEvents can return their type for Ensign serialization
 type TypedEvent interface {
+	msgp.Marshaler
+	msgp.Unmarshaler
 	Type() *api.Type
 }
 
@@ -42,7 +45,7 @@ type Subscription struct {
 	SiteURL  string `msg:"site_url"`          // the url to the site (htmlURL in OPML)
 }
 
-var _ TypedEvent = Subscription{}
+var _ TypedEvent = &Subscription{}
 
 type FeedSync struct {
 	FeedID       string    `msg:"feed_id"`
@@ -68,7 +71,7 @@ type FeedSync struct {
 	FeedVersion  string    `msg:"feed_version"`
 }
 
-var _ TypedEvent = FeedSync{}
+var _ TypedEvent = &FeedSync{}
 
 type FeedItem struct {
 	FeedID      string   `msg:"feed_id"`
@@ -85,7 +88,7 @@ type FeedItem struct {
 	Enclosures  []string `msg:"enclosures"`
 }
 
-var _ TypedEvent = FeedItem{}
+var _ TypedEvent = &FeedItem{}
 
 type Document struct {
 	ETag         string    `msg:"etag,omitempty"`
@@ -106,7 +109,7 @@ type Document struct {
 	Link         string    `msg:"link"`
 }
 
-var _ TypedEvent = Document{}
+var _ TypedEvent = &Document{}
 
 func (Subscription) Type() *api.Type {
 	return &api.Type{
