@@ -16,6 +16,7 @@ import (
 	"github.com/ThreeDotsLabs/watermill/message/router/plugin"
 	"github.com/rotationalio/baleen/config"
 	"github.com/rotationalio/baleen/logger"
+	"github.com/rotationalio/baleen/metrics"
 	"github.com/rotationalio/watermill-ensign/pkg/ensign"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
@@ -102,9 +103,26 @@ func New(conf config.Config) (svc *Baleen, err error) {
 }
 
 func (s *Baleen) Run(ctx context.Context) error {
+	// Run the metrics server if it is enabled for Prometheus
+	if s.conf.Monitoring.Enabled {
+		if err := metrics.Serve(s.conf.Monitoring); err != nil {
+			return err
+		}
+	}
+
 	return s.router.Run(ctx)
 }
 
 func (s *Baleen) Close() error {
+	// Shutdown the metrics server if it was enabled
+	if s.conf.Monitoring.Enabled {
+		ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+		defer cancel()
+
+		if err := metrics.Shutdown(ctx); err != nil {
+			log.Error().Err(err).Msg("could not gracefully shutdown metrics server")
+		}
+	}
+
 	return s.router.Close()
 }

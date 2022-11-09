@@ -24,12 +24,21 @@ type Config struct {
 	LogLevel     logger.LevelDecoder `split_words:"true" default:"info"`
 	ConsoleLog   bool                `split_words:"true" default:"false"`
 	CloseTimeout time.Duration       `split_words:"true"`
+	Monitoring   MonitoringConfig    `split_words:"true"`
 	AWS          AWSConfig           `split_words:"true"`
 	Kafka        KafkaConfig         `split_words:"true"`
 	DBPath       string              `split_words:"true" default:"./db"`
 	FixturesDir  string              `split_words:"true" default:"fixtures"`
 	Testing      bool                `split_words:"true" default:"false"`
 	processed    bool
+}
+
+// MonitoringConfig maintains the parameters for the metrics server that the Prometheus
+// scraper will fetch the configured observability metrics from.
+type MonitoringConfig struct {
+	Enabled  bool   `default:"true"`
+	BindAddr string `split_words:"true" default:":1205"`
+	NodeID   string `split_words:"true" required:"false"`
 }
 
 type AWSConfig struct {

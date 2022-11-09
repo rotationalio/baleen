@@ -10,10 +10,13 @@ import (
 )
 
 var testEnv = map[string]string{
-	"BALEEN_LOG_LEVEL":     "debug",
-	"BALEEN_CONSOLE_LOG":   "true",
-	"BALEEN_AWS_ENABLED":   "false",
-	"BALEEN_KAFKA_ENABLED": "false",
+	"BALEEN_LOG_LEVEL":            "debug",
+	"BALEEN_CONSOLE_LOG":          "true",
+	"BALEEN_AWS_ENABLED":          "false",
+	"BALEEN_KAFKA_ENABLED":        "false",
+	"BALEEN_MONITORING_ENABLED":   "true",
+	"BALEEN_MONITORING_BIND_ADDR": ":8889",
+	"BALEEN_MONITORING_NODE_ID":   "test1234",
 }
 
 func TestConfig(t *testing.T) {
@@ -28,6 +31,9 @@ func TestConfig(t *testing.T) {
 	// Ensure configuration is correctly set from the environment
 	require.Equal(t, zerolog.DebugLevel, conf.GetLogLevel())
 	require.True(t, conf.ConsoleLog)
+	require.True(t, conf.Monitoring.Enabled)
+	require.Equal(t, testEnv["BALEEN_MONITORING_BIND_ADDR"], conf.Monitoring.BindAddr)
+	require.Equal(t, testEnv["BALEEN_MONITORING_NODE_ID"], conf.Monitoring.NodeID)
 }
 
 // Returns the current environment for the specified keys, or if no keys are specified

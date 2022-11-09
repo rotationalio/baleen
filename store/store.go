@@ -45,10 +45,7 @@ type Feed struct {
 // VerifyCredentials is a helper function that verifies the credentials are correct and
 // the bucket exists, returning true if so else false.
 func VerifyCredentials(creds *AWSCredentials) bool {
-	if creds != nil {
-		return true
-	}
-	return false
+	return creds != nil
 }
 
 // GetSession is a helper function that returns an AWS session that can be reused for
