@@ -5,10 +5,10 @@ import "fmt"
 // Version component constants for the current build.
 const (
 	VersionMajor         = 0
-	VersionMinor         = 1
+	VersionMinor         = 2
 	VersionPatch         = 0
-	VersionReleaseLevel  = ""
-	VersionReleaseNumber = 1
+	VersionReleaseLevel  = "beta"
+	VersionReleaseNumber = 2
 )
 
 // Set the GitVersion via -ldflags="-X 'github.com/rotationalio/baleen/pkg.GitVersion=$(git rev-parse --short HEAD)'"

@@ -287,7 +287,7 @@ github.com/rogpeppe/go-internal v1.8.0 h1:FCbCCtXNOY3UtUuHUYaghJg4y7Fd14rXifAYUA
 github.com/rogpeppe/go-internal v1.8.0/go.mod h1:WmiCO8CzOY8rg0OYDC4/i/2WRWAB6poM+XZ2dLUbcbE=
 github.com/rotationalio/ensign v0.1.1 h1:lIfieNHdeRqdJ4xIVUDwKjjKxpidRJOVcMX5xVLAecE=
 github.com/rotationalio/ensign v0.1.1/go.mod h1:eLhVuQVPxwkkctnbb0C8R+lcvUdtYxuj+NM6IL3Qu5s=
-github.com/rotationalio/watermill-ensign v0.1.0 h1:cmySRA3tIfaBudXLFzK1b/rvNJqrgGiuYdrFOc0+d2U=
+github.com/rotationalio/watermill-ensign v0.1.0 h1:utfjmXrDkryxwrPmlOW1BhQYm93OBPGslNstFK8Rkjk=
 github.com/rotationalio/watermill-ensign v0.1.0/go.mod h1:WYgimuA/JrGg2Py39+z4lS8xPv6vfE2a54sFSuPtpYU=
 github.com/rs/xid v1.4.0/go.mod h1:trrq9SKmegXys3aeAKXMUTdJsYXVwGY3RLcfgqegfbg=
 github.com/rs/zerolog v1.28.0 h1:MirSo27VyNi7RJYP3078AA1+Cyzd2GB66qy3aUHvsWY=
