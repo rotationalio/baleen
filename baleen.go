@@ -104,6 +104,12 @@ func New(conf config.Config) (svc *Baleen, err error) {
 		}
 	}
 
+	if conf.PostFetch.Enabled {
+		if err = svc.AddPostFetch(conf.PostFetch); err != nil {
+			return nil, err
+		}
+	}
+
 	return svc, nil
 }
 
