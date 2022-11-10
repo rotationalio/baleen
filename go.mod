@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/ThreeDotsLabs/watermill v1.1.1
-	github.com/aws/aws-sdk-go v1.44.133
+	github.com/aws/aws-sdk-go v1.44.134
 	github.com/joho/godotenv v1.4.0
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/mmcdole/gofeed v1.1.3
@@ -60,7 +60,7 @@ require (
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect
-	golang.org/x/crypto v0.1.0 // indirect
+	golang.org/x/crypto v0.2.0 // indirect
 	golang.org/x/net v0.2.0 // indirect
 	golang.org/x/sys v0.2.0 // indirect
 	golang.org/x/text v0.4.0 // indirect

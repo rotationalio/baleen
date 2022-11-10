@@ -15,6 +15,7 @@ import (
 	"github.com/rotationalio/baleen"
 	"github.com/rotationalio/baleen/config"
 	"github.com/rotationalio/baleen/events"
+	"github.com/rotationalio/baleen/logger"
 	"github.com/rotationalio/baleen/opml"
 	"github.com/urfave/cli/v2"
 )
@@ -42,6 +43,7 @@ func main() {
 			Name:   "feeds:add",
 			Usage:  "add a feed subscription to baleen if its not already added",
 			Before: mkpub,
+			After:  rmpub,
 			Action: addFeed,
 			Flags: []cli.Flag{
 				&cli.StringFlag{
@@ -55,6 +57,13 @@ func main() {
 					Usage:   "add subscriptions from an OPML file (json or xml)",
 				},
 			},
+		},
+		{
+			Name:   "debug",
+			Usage:  "subscribe to all topics to debug messages being published",
+			Before: configure,
+			Action: debug,
+			Flags:  []cli.Flag{},
 		},
 	}
 
@@ -83,6 +92,13 @@ func mkpub(c *cli.Context) (err error) {
 		return cli.Exit(err, 1)
 	}
 
+	return nil
+}
+
+func rmpub(c *cli.Context) (err error) {
+	if err = publisher.Close(); err != nil {
+		return cli.Exit(err, 1)
+	}
 	return nil
 }
 
@@ -149,5 +165,22 @@ func addFeed(c *cli.Context) (err error) {
 	}
 
 	fmt.Printf("published %d subscription events\n", nEvents)
+	return nil
+}
+
+func debug(c *cli.Context) (err error) {
+	var subscriber message.Subscriber
+	if subscriber, err = baleen.CreateSubscriber(conf.Subscriber, logger.New()); err != nil {
+		return cli.Exit(err, 1)
+	}
+	defer subscriber.Close()
+
+	subs, _ := subscriber.Subscribe(context.Background(), baleen.TopicSubscriptions)
+
+	for msg := range subs {
+		fmt.Printf("%+v\n", msg)
+		msg.Ack()
+	}
+
 	return nil
 }

@@ -23,23 +23,23 @@ type ZeroLogger struct{}
 var _ watermill.LoggerAdapter = &ZeroLogger{}
 
 func (ZeroLogger) Error(msg string, err error, fields watermill.LogFields) {
-	log.Error().Err(err).Fields(fields).Msg(msg)
+	log.Error().Err(err).Fields(map[string]interface{}(fields)).Msg(msg)
 }
 
 func (ZeroLogger) Info(msg string, fields watermill.LogFields) {
-	log.Info().Fields(fields).Msg(msg)
+	log.Info().Fields(map[string]interface{}(fields)).Msg(msg)
 }
 
 func (ZeroLogger) Debug(msg string, fields watermill.LogFields) {
-	log.Debug().Fields(fields).Msg(msg)
+	log.Debug().Fields(map[string]interface{}(fields)).Msg(msg)
 }
 
 func (ZeroLogger) Trace(msg string, fields watermill.LogFields) {
-	log.Trace().Fields(fields).Msg(msg)
+	log.Trace().Fields(map[string]interface{}(fields)).Msg(msg)
 }
 
 func (ZeroLogger) With(fields watermill.LogFields) watermill.LoggerAdapter {
-	return &ZeroContext{log: log.With().Fields(fields).Logger()}
+	return &ZeroContext{log: log.With().Fields(map[string]interface{}(fields)).Logger()}
 }
 
 type ZeroContext struct {
@@ -49,21 +49,21 @@ type ZeroContext struct {
 var _ watermill.LoggerAdapter = &ZeroContext{}
 
 func (z ZeroContext) Error(msg string, err error, fields watermill.LogFields) {
-	z.log.Error().Err(err).Fields(fields).Msg(msg)
+	z.log.Error().Err(err).Fields(map[string]interface{}(fields)).Msg(msg)
 }
 
 func (z ZeroContext) Info(msg string, fields watermill.LogFields) {
-	z.log.Info().Fields(fields).Msg(msg)
+	z.log.Info().Fields(map[string]interface{}(fields)).Msg(msg)
 }
 
 func (z ZeroContext) Debug(msg string, fields watermill.LogFields) {
-	z.log.Debug().Fields(fields).Msg(msg)
+	z.log.Debug().Fields(map[string]interface{}(fields)).Msg(msg)
 }
 
 func (z ZeroContext) Trace(msg string, fields watermill.LogFields) {
-	z.log.Trace().Fields(fields).Msg(msg)
+	z.log.Trace().Fields(map[string]interface{}(fields)).Msg(msg)
 }
 
 func (z ZeroContext) With(fields watermill.LogFields) watermill.LoggerAdapter {
-	return &ZeroContext{log: z.log.With().Fields(fields).Logger()}
+	return &ZeroContext{log: z.log.With().Fields(map[string]interface{}(fields)).Logger()}
 }

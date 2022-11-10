@@ -24,10 +24,16 @@ type Config struct {
 	LogLevel     logger.LevelDecoder `split_words:"true" default:"info"`
 	ConsoleLog   bool                `split_words:"true" default:"false"`
 	CloseTimeout time.Duration       `split_words:"true" default:"30s"`
+	FeedSync     FeedSyncConfig      `split_words:"true"`
 	Monitoring   MonitoringConfig
 	Publisher    PublisherConfig
 	Subscriber   SubscriberConfig
 	processed    bool
+}
+
+type FeedSyncConfig struct {
+	Enabled  bool          `default:"false"`
+	Interval time.Duration `default:"1h"`
 }
 
 // MonitoringConfig maintains the parameters for the metrics server that the Prometheus

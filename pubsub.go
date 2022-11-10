@@ -14,8 +14,7 @@ import (
 // TODO: how do we name our topics better and ensure there is a valid namespace?
 const (
 	TopicSubscriptions = "io.rotational.baleen/subscriptions"
-	TopicFeedSyncs     = "io.rotational.baleen/feed_syncs"
-	TopicFeedItems     = "io.rotational.baleen/feed_items"
+	TopicFeeds         = "io.rotational.baleen/feeds"
 	TopicDocuments     = "io.rotational.baleen/documents"
 )
 

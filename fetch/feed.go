@@ -72,6 +72,14 @@ func (f *FeedFetcher) Fetch(ctx context.Context) (feed *gofeed.Feed, err error) 
 	return feed, nil
 }
 
+func (f *FeedFetcher) ETag() string {
+	return f.etag
+}
+
+func (f *FeedFetcher) Modified() string {
+	return f.modified
+}
+
 func (f *FeedFetcher) newRequest(ctx context.Context) (req *http.Request, err error) {
 	// Create the GET request
 	if req, err = http.NewRequestWithContext(ctx, http.MethodGet, f.url, nil); err != nil {

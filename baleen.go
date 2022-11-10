@@ -77,8 +77,9 @@ func New(conf config.Config) (svc *Baleen, err error) {
 
 		// The handler function is retried if it returns an error.
 		// After MaxRetries, the message is Nacked and it's up to the PubSub to resend it.
+		// TODO: configure max retries from environment
 		middleware.Retry{
-			MaxRetries:      3,
+			MaxRetries:      0,
 			InitialInterval: time.Millisecond * 100,
 			Logger:          logger,
 		}.Middleware,
@@ -94,6 +95,13 @@ func New(conf config.Config) (svc *Baleen, err error) {
 
 	if svc.subscriber, err = CreateSubscriber(conf.Subscriber, logger); err != nil {
 		return nil, err
+	}
+
+	// Add Handlers
+	if conf.FeedSync.Enabled {
+		if err = svc.AddFeedSync(conf.FeedSync, svc.publisher); err != nil {
+			return nil, err
+		}
 	}
 
 	return svc, nil
