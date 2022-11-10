@@ -5,69 +5,67 @@
         <title>Defense Industrial Base Subscriptions in Feedly Cloud</title>
     </head>
     <body>
-        <outline text="dib" title="dib">
-            <outline type="rss" text="Military Space News, Nuclear Weapons, Missile Defense" title="Military Space News, Nuclear Weapons, Missile Defense" xmlUrl="http://www.spacewar.com/spacewar.xml" htmlUrl="http://www.spacewar.com/index.html"/>
-            <outline type="rss" text="Logistics Viewpoints" title="Logistics Viewpoints" xmlUrl="http://logisticsviewpoints.com/feed/" htmlUrl="https://logisticsviewpoints.com/"/>
-            <outline type="rss" text="gCaptain" title="gCaptain" xmlUrl="http://feeds.feedburner.com/Gcaptain" htmlUrl="https://gcaptain.com"/>
-            <outline type="rss" text="Cargo Facts" title="Cargo Facts" xmlUrl="http://cargofacts.com/feed/" htmlUrl="https://cargofacts.com"/>
-            <outline type="rss" text="The Latest" title="The Latest" xmlUrl="http://www.paymentssource.com/rss/emerging_payments.xml" htmlUrl="https://www.paymentssource.com/feed"/>
-            <outline type="rss" text="Bank Automation News" title="Bank Automation News" xmlUrl="http://bankinnovation.net/feed/" htmlUrl="https://bankautomationnews.com"/>
-            <outline type="rss" text="Military &amp; Defense" title="Military &amp; Defense" xmlUrl="http://www.businessinsider.com/defense.rss" htmlUrl="https://www.businessinsider.com/defense"/>
-            <outline type="rss" text="3D Printing Industry" title="3D Printing Industry" xmlUrl="http://3dprintingindustry.com/feed/" htmlUrl="https://3dprintingindustry.com/"/>
-            <outline type="rss" text="Industrials" title="Industrials" xmlUrl="http://www.ft.com/rss/companies/industrials" htmlUrl="https://www.ft.com/stream/d1252624-8645-438b-b521-9244aebdc99e"/>
-            <outline type="rss" text="Railnews - Latest News" title="Railnews - Latest News" xmlUrl="http://www.railnews.co.uk/rss/news/" htmlUrl="http://www.railnews.co.uk"/>
-            <outline type="rss" text="Supply Chain Dive - Latest News" title="Supply Chain Dive - Latest News" xmlUrl="http://www.supplychaindive.com/feeds/news/" htmlUrl="https://www.supplychaindive.com/news/"/>
-            <outline type="rss" text="SCMR Editorial" title="SCMR Editorial" xmlUrl="http://feeds.feedburner.com/scmr/rss/recentlyfiled" htmlUrl="https://www.scmr.com"/>
-            <outline type="rss" text="Accenture Banking Blog" title="Accenture Banking Blog" xmlUrl="http://bankingblog.accenture.com/feed/" htmlUrl="https://bankingblog.accenture.com/"/>
-            <outline type="rss" text="Faisal Khan" title="Faisal Khan" xmlUrl="http://www.faisalkhan.com/feed/" htmlUrl="https://faisalkhan.com/"/>
-            <outline type="rss" text="FinTech Futures - The definitive source of news and intelligence for the global fintech sector" title="FinTech Futures - The definitive source of news and intelligence for the global fintech sector" xmlUrl="http://www.bankingtech.com/feed/" htmlUrl="https://www.fintechfutures.com"/>
-            <outline type="rss" text="The Financial Brand" title="The Financial Brand" xmlUrl="http://feeds.feedburner.com/thefinancialbrand" htmlUrl="https://thefinancialbrand.com"/>
-            <outline type="rss" text="Fintech Archives | VentureBeat" title="Fintech Archives | VentureBeat" xmlUrl="http://venturebeat.com/tag/fintech/feed/" htmlUrl="https://venturebeat.com"/>
-            <outline type="rss" text="News news" title="News news" xmlUrl="http://www.railmagazine.com/news/rss.xml" htmlUrl="https://www.railmagazine.com/news"/>
-            <outline type="rss" text="Gregg Schoenberg, Author at TechCrunch" title="Gregg Schoenberg, Author at TechCrunch" xmlUrl="https://techcrunch.com/author/gregg-schoenberg-2/feed/" htmlUrl="https://techcrunch.com"/>
-            <outline type="rss" text="Navy Daily" title="Navy Daily" xmlUrl="http://news.navy.gov.au/en/static/rss/" htmlUrl="https://news.navy.gov.au"/>
-            <outline type="rss" text="Journal of Commerce | Air Cargo" title="Journal of Commerce | Air Cargo" xmlUrl="http://www.joc.com/rssfeed/8879" htmlUrl="https://www.joc.com/rssfeed/8879"/>
-            <outline type="rss" text="Civil Engineering News -- ScienceDaily" title="Civil Engineering News -- ScienceDaily" xmlUrl="http://www.sciencedaily.com/rss/matter_energy/civil_engineering.xml" htmlUrl="https://www.sciencedaily.com/news/matter_energy/civil_engineering/"/>
-            <outline type="rss" text="NASA Breaking News" title="NASA Breaking News" xmlUrl="http://www.nasa.gov/rss/breaking_news.rss" htmlUrl="http://www.nasa.gov/"/>
-            <outline type="rss" text="DC Velocity" title="DC Velocity" xmlUrl="http://feeds.feedburner.com/DCVelocityTopStories" htmlUrl="https://www.dcvelocity.com/rss/articles"/>
-            <outline type="rss" text="Supply Chain Movement" title="Supply Chain Movement" xmlUrl="http://www.supplychainmovement.com/feed/" htmlUrl="https://www.supplychainmovement.com/"/>
-            <outline type="rss" text="Journal of Commerce | Maritime News" title="Journal of Commerce | Maritime News" xmlUrl="http://www.joc.com/rssfeed/8876" htmlUrl="https://www.joc.com/rssfeed/8876"/>
-            <outline type="rss" text="Financial Technology" title="Financial Technology" xmlUrl="http://www.forbes.com/sites/tomgroenfeldt/feed/" htmlUrl="https://www.forbes.com/sites/tomgroenfeldt/"/>
-            <outline type="rss" text="Finovate" title="Finovate" xmlUrl="http://feeds.feedburner.com/finovate" htmlUrl="https://finovate.com/"/>
-            <outline type="rss" text="Journal of Commerce | Rail &amp; Intermodal" title="Journal of Commerce | Rail &amp; Intermodal" xmlUrl="http://www.joc.com/rssfeed/8878" htmlUrl="https://www.joc.com/rssfeed/8878"/>
-            <outline type="rss" text="Fintech • TechCrunch" title="Fintech • TechCrunch" xmlUrl="http://techcrunch.com/tag/fintech/feed/" htmlUrl="https://techcrunch.com/tag/fintech/"/>
-            <outline type="rss" text="Industrials" title="Industrials" xmlUrl="http://www.cnbc.com/id/20040302/rssCmp/97110/device/rss/rss.xml" htmlUrl="https://www.cnbc.com/industrials/"/>
-            <outline type="rss" text="Green marine – Offshore Energy" title="Green marine – Offshore Energy" xmlUrl="http://feeds.feedburner.com/worldmaritimenews/Ltoh" htmlUrl="https://www.offshore-energy.biz/markets/green-marine/"/>
-            <outline type="rss" text="Latest Media" title="Latest Media" xmlUrl="http://www.mobilepaymentstoday.com/RSS/rss.php" htmlUrl="https://www.mobilepaymentstoday.com/rss/"/>
-            <outline type="rss" text="Air Force Link News" title="Air Force Link News" xmlUrl="http://www.af.mil/DesktopModules/ArticleCS/RSS.ashx?max=20&amp;ContentType=1&amp;Site=1&amp;Category=755" htmlUrl="https://www.af.mil"/>
-            <outline type="rss" text="jqpublicblog" title="jqpublicblog" xmlUrl="http://www.jqpublic-blog.com/?feed=rss2" htmlUrl="https://jqpublicblog.com"/>
-            <outline type="rss" text="Advances in Civil Engineering" title="Advances in Civil Engineering" xmlUrl="http://www.hindawi.com/journals/ace/rss.xml" htmlUrl="https://www.hindawi.com"/>
-            <outline type="rss" text="Transport Topics" title="Transport Topics" xmlUrl="http://www.ttnews.com/rss/ttnewsrss.xml" htmlUrl="https://www.ttnews.com/rssarticles.xml"/>
-            <outline type="rss" text="Fintech Finance" title="Fintech Finance" xmlUrl="http://www.fintech.finance/feed/" htmlUrl="https://ffnews.com/"/>
-            <outline type="rss" text="FinTech Ranking" title="FinTech Ranking" xmlUrl="http://fintechranking.com/feed/" htmlUrl="https://fintechranking.com"/>
-            <outline type="rss" text="Supply Chain Digest" title="Supply Chain Digest" xmlUrl="http://www.scdigest.com/cache/rssfeed.xml" htmlUrl="https://www.scdigest.com/rss.php"/>
-            <outline type="rss" text="All Things Supply Chain" title="All Things Supply Chain" xmlUrl="http://www.inventory-and-supplychain-blog.com/feed/" htmlUrl="https://www.allthingssupplychain.com"/>
-            <outline type="rss" text="Transportation Management Company | Cerasis" title="Transportation Management Company | Cerasis" xmlUrl="http://cerasis.com/feed/" htmlUrl="https://www.globaltranz.com/"/>
-            <outline type="rss" text="Journal of Commerce | Trucking Logistics › LTL Trucking Logistics" title="Journal of Commerce | Trucking Logistics › LTL Trucking Logistics" xmlUrl="http://www.joc.com/rssfeed/8900" htmlUrl="https://www.joc.com/rssfeed/8900"/>
-            <outline type="rss" text="American Banker" title="American Banker" xmlUrl="http://www.americanbanker.com/resources/technology.xml" htmlUrl="https://www.americanbanker.com/feed"/>
-            <outline type="rss" text="Air Force Times" title="Air Force Times" xmlUrl="http://feeds.feedburner.com/air-force-times/news/your-air-force" htmlUrl="https://www.airforcetimes.com"/>
-            <outline type="rss" text="Inbound Logistics" title="Inbound Logistics" xmlUrl="http://www.inboundlogistics.com/cms/rss-feed/" htmlUrl="https://www.inboundlogistics.com/cms"/>
-            <outline type="rss" text="Post &amp; Parcel" title="Post &amp; Parcel" xmlUrl="https://postandparcel.info/feed/" htmlUrl="https://postandparcel.info"/>
-            <outline type="rss" text="The Fintech Times" title="The Fintech Times" xmlUrl="http://thefintechtimes.com/feed/" htmlUrl="https://thefintechtimes.com"/>
-            <outline type="rss" text="Noyes Payments Blog" title="Noyes Payments Blog" xmlUrl="http://blog.starpointllp.com/blog/?feed=rss2" htmlUrl="https://blog.starpointllp.com"/>
-            <outline type="rss" text="News About Military Technology" title="News About Military Technology" xmlUrl="http://www.spacewar.com/Military_Technology.xml" htmlUrl="https://www.spacewar.com/Military_Technology.html"/>
-            <outline type="rss" text="Journal of Commerce | International Logistics" title="Journal of Commerce | International Logistics" xmlUrl="http://www.joc.com/rssfeed/8948" htmlUrl="https://www.joc.com/rssfeed/8948"/>
-            <outline type="rss" text="The Bridge" title="The Bridge" xmlUrl="http://feeds.feedburner.com/strategy_bridge" htmlUrl="https://thestrategybridge.org/the-bridge/"/>
-            <outline type="rss" text="The Loadstar" title="The Loadstar" xmlUrl="http://theloadstar.co.uk/feed/" htmlUrl="https://theloadstar.com"/>
-            <outline type="rss" text="World Defence News" title="World Defence News" xmlUrl="http://worlddefencenews.blogspot.com/feeds/posts/default" htmlUrl="http://worlddefencenews.blogspot.com/"/>
-            <outline type="rss" text="DID: Department of Defense News" title="DID: Department of Defense News" xmlUrl="http://feeds.feedburner.com/did/rss" htmlUrl="https://www.defenseindustrydaily.com"/>
-            <outline type="rss" text="Space.com" title="Space.com" xmlUrl="http://www.space.com/syn/space.xml" htmlUrl="http://airedale.futurecdn.net/feeds/en_feed_3a953301.rss-fse?site=space"/>
-            <outline type="rss" text="MHD" title="MHD" xmlUrl="http://www.logisticsmagazine.com.au/rss.xml" htmlUrl="https://mhdsupplychain.com.au/"/>
-            <outline type="rss" text="PYMNTS.com" title="PYMNTS.com" xmlUrl="http://www.pymnts.com/feed/" htmlUrl="https://www.pymnts.com"/>
-            <outline type="rss" text="Daily Fintech" title="Daily Fintech" xmlUrl="http://bernardlunn.com/feed/" htmlUrl="https://dailyfintech.com/"/>
-            <outline type="rss" text="Chris Skinner's blog" title="Chris Skinner's blog" xmlUrl="http://thefinanser.com/feed/" htmlUrl="https://finansernextjs.wpengine.com/"/>
-            <outline type="rss" text="News – PYMNTS.com" title="News – PYMNTS.com" xmlUrl="http://www.pymnts.com/news/rss" htmlUrl="https://www.pymnts.com"/>
-            <outline type="rss" text="Procurement Insights" title="Procurement Insights" xmlUrl="http://procureinsights.wordpress.com/feed/" htmlUrl="https://procureinsights.com"/>
-        </outline>
+        <outline type="rss" text="Military Space News, Nuclear Weapons, Missile Defense" title="Military Space News, Nuclear Weapons, Missile Defense" xmlUrl="http://www.spacewar.com/spacewar.xml" htmlUrl="http://www.spacewar.com/index.html"/>
+        <outline type="rss" text="Logistics Viewpoints" title="Logistics Viewpoints" xmlUrl="http://logisticsviewpoints.com/feed/" htmlUrl="https://logisticsviewpoints.com/"/>
+        <outline type="rss" text="gCaptain" title="gCaptain" xmlUrl="http://feeds.feedburner.com/Gcaptain" htmlUrl="https://gcaptain.com"/>
+        <outline type="rss" text="Cargo Facts" title="Cargo Facts" xmlUrl="http://cargofacts.com/feed/" htmlUrl="https://cargofacts.com"/>
+        <outline type="rss" text="The Latest" title="The Latest" xmlUrl="http://www.paymentssource.com/rss/emerging_payments.xml" htmlUrl="https://www.paymentssource.com/feed"/>
+        <outline type="rss" text="Bank Automation News" title="Bank Automation News" xmlUrl="http://bankinnovation.net/feed/" htmlUrl="https://bankautomationnews.com"/>
+        <outline type="rss" text="Military &amp; Defense" title="Military &amp; Defense" xmlUrl="http://www.businessinsider.com/defense.rss" htmlUrl="https://www.businessinsider.com/defense"/>
+        <outline type="rss" text="3D Printing Industry" title="3D Printing Industry" xmlUrl="http://3dprintingindustry.com/feed/" htmlUrl="https://3dprintingindustry.com/"/>
+        <outline type="rss" text="Industrials" title="Industrials" xmlUrl="http://www.ft.com/rss/companies/industrials" htmlUrl="https://www.ft.com/stream/d1252624-8645-438b-b521-9244aebdc99e"/>
+        <outline type="rss" text="Railnews - Latest News" title="Railnews - Latest News" xmlUrl="http://www.railnews.co.uk/rss/news/" htmlUrl="http://www.railnews.co.uk"/>
+        <outline type="rss" text="Supply Chain Dive - Latest News" title="Supply Chain Dive - Latest News" xmlUrl="http://www.supplychaindive.com/feeds/news/" htmlUrl="https://www.supplychaindive.com/news/"/>
+        <outline type="rss" text="SCMR Editorial" title="SCMR Editorial" xmlUrl="http://feeds.feedburner.com/scmr/rss/recentlyfiled" htmlUrl="https://www.scmr.com"/>
+        <outline type="rss" text="Accenture Banking Blog" title="Accenture Banking Blog" xmlUrl="http://bankingblog.accenture.com/feed/" htmlUrl="https://bankingblog.accenture.com/"/>
+        <outline type="rss" text="Faisal Khan" title="Faisal Khan" xmlUrl="http://www.faisalkhan.com/feed/" htmlUrl="https://faisalkhan.com/"/>
+        <outline type="rss" text="FinTech Futures - The definitive source of news and intelligence for the global fintech sector" title="FinTech Futures - The definitive source of news and intelligence for the global fintech sector" xmlUrl="http://www.bankingtech.com/feed/" htmlUrl="https://www.fintechfutures.com"/>
+        <outline type="rss" text="The Financial Brand" title="The Financial Brand" xmlUrl="http://feeds.feedburner.com/thefinancialbrand" htmlUrl="https://thefinancialbrand.com"/>
+        <outline type="rss" text="Fintech Archives | VentureBeat" title="Fintech Archives | VentureBeat" xmlUrl="http://venturebeat.com/tag/fintech/feed/" htmlUrl="https://venturebeat.com"/>
+        <outline type="rss" text="News news" title="News news" xmlUrl="http://www.railmagazine.com/news/rss.xml" htmlUrl="https://www.railmagazine.com/news"/>
+        <outline type="rss" text="Gregg Schoenberg, Author at TechCrunch" title="Gregg Schoenberg, Author at TechCrunch" xmlUrl="https://techcrunch.com/author/gregg-schoenberg-2/feed/" htmlUrl="https://techcrunch.com"/>
+        <outline type="rss" text="Navy Daily" title="Navy Daily" xmlUrl="http://news.navy.gov.au/en/static/rss/" htmlUrl="https://news.navy.gov.au"/>
+        <outline type="rss" text="Journal of Commerce | Air Cargo" title="Journal of Commerce | Air Cargo" xmlUrl="http://www.joc.com/rssfeed/8879" htmlUrl="https://www.joc.com/rssfeed/8879"/>
+        <outline type="rss" text="Civil Engineering News -- ScienceDaily" title="Civil Engineering News -- ScienceDaily" xmlUrl="http://www.sciencedaily.com/rss/matter_energy/civil_engineering.xml" htmlUrl="https://www.sciencedaily.com/news/matter_energy/civil_engineering/"/>
+        <outline type="rss" text="NASA Breaking News" title="NASA Breaking News" xmlUrl="http://www.nasa.gov/rss/breaking_news.rss" htmlUrl="http://www.nasa.gov/"/>
+        <outline type="rss" text="DC Velocity" title="DC Velocity" xmlUrl="http://feeds.feedburner.com/DCVelocityTopStories" htmlUrl="https://www.dcvelocity.com/rss/articles"/>
+        <outline type="rss" text="Supply Chain Movement" title="Supply Chain Movement" xmlUrl="http://www.supplychainmovement.com/feed/" htmlUrl="https://www.supplychainmovement.com/"/>
+        <outline type="rss" text="Journal of Commerce | Maritime News" title="Journal of Commerce | Maritime News" xmlUrl="http://www.joc.com/rssfeed/8876" htmlUrl="https://www.joc.com/rssfeed/8876"/>
+        <outline type="rss" text="Financial Technology" title="Financial Technology" xmlUrl="http://www.forbes.com/sites/tomgroenfeldt/feed/" htmlUrl="https://www.forbes.com/sites/tomgroenfeldt/"/>
+        <outline type="rss" text="Finovate" title="Finovate" xmlUrl="http://feeds.feedburner.com/finovate" htmlUrl="https://finovate.com/"/>
+        <outline type="rss" text="Journal of Commerce | Rail &amp; Intermodal" title="Journal of Commerce | Rail &amp; Intermodal" xmlUrl="http://www.joc.com/rssfeed/8878" htmlUrl="https://www.joc.com/rssfeed/8878"/>
+        <outline type="rss" text="Fintech • TechCrunch" title="Fintech • TechCrunch" xmlUrl="http://techcrunch.com/tag/fintech/feed/" htmlUrl="https://techcrunch.com/tag/fintech/"/>
+        <outline type="rss" text="Industrials" title="Industrials" xmlUrl="http://www.cnbc.com/id/20040302/rssCmp/97110/device/rss/rss.xml" htmlUrl="https://www.cnbc.com/industrials/"/>
+        <outline type="rss" text="Green marine – Offshore Energy" title="Green marine – Offshore Energy" xmlUrl="http://feeds.feedburner.com/worldmaritimenews/Ltoh" htmlUrl="https://www.offshore-energy.biz/markets/green-marine/"/>
+        <outline type="rss" text="Latest Media" title="Latest Media" xmlUrl="http://www.mobilepaymentstoday.com/RSS/rss.php" htmlUrl="https://www.mobilepaymentstoday.com/rss/"/>
+        <outline type="rss" text="Air Force Link News" title="Air Force Link News" xmlUrl="http://www.af.mil/DesktopModules/ArticleCS/RSS.ashx?max=20&amp;ContentType=1&amp;Site=1&amp;Category=755" htmlUrl="https://www.af.mil"/>
+        <outline type="rss" text="jqpublicblog" title="jqpublicblog" xmlUrl="http://www.jqpublic-blog.com/?feed=rss2" htmlUrl="https://jqpublicblog.com"/>
+        <outline type="rss" text="Advances in Civil Engineering" title="Advances in Civil Engineering" xmlUrl="http://www.hindawi.com/journals/ace/rss.xml" htmlUrl="https://www.hindawi.com"/>
+        <outline type="rss" text="Transport Topics" title="Transport Topics" xmlUrl="http://www.ttnews.com/rss/ttnewsrss.xml" htmlUrl="https://www.ttnews.com/rssarticles.xml"/>
+        <outline type="rss" text="Fintech Finance" title="Fintech Finance" xmlUrl="http://www.fintech.finance/feed/" htmlUrl="https://ffnews.com/"/>
+        <outline type="rss" text="FinTech Ranking" title="FinTech Ranking" xmlUrl="http://fintechranking.com/feed/" htmlUrl="https://fintechranking.com"/>
+        <outline type="rss" text="Supply Chain Digest" title="Supply Chain Digest" xmlUrl="http://www.scdigest.com/cache/rssfeed.xml" htmlUrl="https://www.scdigest.com/rss.php"/>
+        <outline type="rss" text="All Things Supply Chain" title="All Things Supply Chain" xmlUrl="http://www.inventory-and-supplychain-blog.com/feed/" htmlUrl="https://www.allthingssupplychain.com"/>
+        <outline type="rss" text="Transportation Management Company | Cerasis" title="Transportation Management Company | Cerasis" xmlUrl="http://cerasis.com/feed/" htmlUrl="https://www.globaltranz.com/"/>
+        <outline type="rss" text="Journal of Commerce | Trucking Logistics › LTL Trucking Logistics" title="Journal of Commerce | Trucking Logistics › LTL Trucking Logistics" xmlUrl="http://www.joc.com/rssfeed/8900" htmlUrl="https://www.joc.com/rssfeed/8900"/>
+        <outline type="rss" text="American Banker" title="American Banker" xmlUrl="http://www.americanbanker.com/resources/technology.xml" htmlUrl="https://www.americanbanker.com/feed"/>
+        <outline type="rss" text="Air Force Times" title="Air Force Times" xmlUrl="http://feeds.feedburner.com/air-force-times/news/your-air-force" htmlUrl="https://www.airforcetimes.com"/>
+        <outline type="rss" text="Inbound Logistics" title="Inbound Logistics" xmlUrl="http://www.inboundlogistics.com/cms/rss-feed/" htmlUrl="https://www.inboundlogistics.com/cms"/>
+        <outline type="rss" text="Post &amp; Parcel" title="Post &amp; Parcel" xmlUrl="https://postandparcel.info/feed/" htmlUrl="https://postandparcel.info"/>
+        <outline type="rss" text="The Fintech Times" title="The Fintech Times" xmlUrl="http://thefintechtimes.com/feed/" htmlUrl="https://thefintechtimes.com"/>
+        <outline type="rss" text="Noyes Payments Blog" title="Noyes Payments Blog" xmlUrl="http://blog.starpointllp.com/blog/?feed=rss2" htmlUrl="https://blog.starpointllp.com"/>
+        <outline type="rss" text="News About Military Technology" title="News About Military Technology" xmlUrl="http://www.spacewar.com/Military_Technology.xml" htmlUrl="https://www.spacewar.com/Military_Technology.html"/>
+        <outline type="rss" text="Journal of Commerce | International Logistics" title="Journal of Commerce | International Logistics" xmlUrl="http://www.joc.com/rssfeed/8948" htmlUrl="https://www.joc.com/rssfeed/8948"/>
+        <outline type="rss" text="The Bridge" title="The Bridge" xmlUrl="http://feeds.feedburner.com/strategy_bridge" htmlUrl="https://thestrategybridge.org/the-bridge/"/>
+        <outline type="rss" text="The Loadstar" title="The Loadstar" xmlUrl="http://theloadstar.co.uk/feed/" htmlUrl="https://theloadstar.com"/>
+        <outline type="rss" text="World Defence News" title="World Defence News" xmlUrl="http://worlddefencenews.blogspot.com/feeds/posts/default" htmlUrl="http://worlddefencenews.blogspot.com/"/>
+        <outline type="rss" text="DID: Department of Defense News" title="DID: Department of Defense News" xmlUrl="http://feeds.feedburner.com/did/rss" htmlUrl="https://www.defenseindustrydaily.com"/>
+        <outline type="rss" text="Space.com" title="Space.com" xmlUrl="http://www.space.com/syn/space.xml" htmlUrl="http://airedale.futurecdn.net/feeds/en_feed_3a953301.rss-fse?site=space"/>
+        <outline type="rss" text="MHD" title="MHD" xmlUrl="http://www.logisticsmagazine.com.au/rss.xml" htmlUrl="https://mhdsupplychain.com.au/"/>
+        <outline type="rss" text="PYMNTS.com" title="PYMNTS.com" xmlUrl="http://www.pymnts.com/feed/" htmlUrl="https://www.pymnts.com"/>
+        <outline type="rss" text="Daily Fintech" title="Daily Fintech" xmlUrl="http://bernardlunn.com/feed/" htmlUrl="https://dailyfintech.com/"/>
+        <outline type="rss" text="Chris Skinner's blog" title="Chris Skinner's blog" xmlUrl="http://thefinanser.com/feed/" htmlUrl="https://finansernextjs.wpengine.com/"/>
+        <outline type="rss" text="News – PYMNTS.com" title="News – PYMNTS.com" xmlUrl="http://www.pymnts.com/news/rss" htmlUrl="https://www.pymnts.com"/>
+        <outline type="rss" text="Procurement Insights" title="Procurement Insights" xmlUrl="http://procureinsights.wordpress.com/feed/" htmlUrl="https://procureinsights.com"/>
     </body>
 </opml>

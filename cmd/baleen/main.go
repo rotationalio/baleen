@@ -59,6 +59,13 @@ func main() {
 			},
 		},
 		{
+			Name:   "posts:add",
+			Usage:  "add posts for document processing",
+			Before: mkpub,
+			After:  rmpub,
+			Action: addPost,
+		},
+		{
 			Name:   "debug",
 			Usage:  "subscribe to all topics to debug messages being published",
 			Before: configure,
@@ -165,6 +172,32 @@ func addFeed(c *cli.Context) (err error) {
 	}
 
 	fmt.Printf("published %d subscription events\n", nEvents)
+	return nil
+}
+
+func addPost(c *cli.Context) (err error) {
+	if !c.Args().Present() {
+		return cli.Exit("specify at least one url", 1)
+	}
+
+	var nEvents int
+	for i := 0; i < c.NArg(); i++ {
+		fitem := &events.FeedItem{
+			Link: c.Args().Get(i),
+		}
+
+		var msg *message.Message
+		if msg, err = events.Marshal(fitem, watermill.NewULID()); err != nil {
+			return cli.Exit(err, 1)
+		}
+
+		if err = publisher.Publish(baleen.TopicFeeds, msg); err != nil {
+			return cli.Exit(err, 1)
+		}
+		nEvents++
+	}
+
+	fmt.Printf("published %d feed item events\n", nEvents)
 	return nil
 }
 
