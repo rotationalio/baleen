@@ -1,0 +1,450 @@
+{
+    "opml": {
+        "head": {
+            "title": "Defense Industrial Base Subscriptions in Feedly Cloud"
+        },
+        "body": {
+            "outline": {
+                "outline": [
+                    {
+                        "_type": "rss",
+                        "_text": "Military Space News, Nuclear Weapons, Missile Defense",
+                        "_title": "Military Space News, Nuclear Weapons, Missile Defense",
+                        "_xmlUrl": "http://www.spacewar.com/spacewar.xml",
+                        "_htmlUrl": "http://www.spacewar.com/index.html"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Logistics Viewpoints",
+                        "_title": "Logistics Viewpoints",
+                        "_xmlUrl": "http://logisticsviewpoints.com/feed/",
+                        "_htmlUrl": "https://logisticsviewpoints.com/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "gCaptain",
+                        "_title": "gCaptain",
+                        "_xmlUrl": "http://feeds.feedburner.com/Gcaptain",
+                        "_htmlUrl": "https://gcaptain.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Cargo Facts",
+                        "_title": "Cargo Facts",
+                        "_xmlUrl": "http://cargofacts.com/feed/",
+                        "_htmlUrl": "https://cargofacts.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "The Latest",
+                        "_title": "The Latest",
+                        "_xmlUrl": "http://www.paymentssource.com/rss/emerging_payments.xml",
+                        "_htmlUrl": "https://www.paymentssource.com/feed"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Bank Automation News",
+                        "_title": "Bank Automation News",
+                        "_xmlUrl": "http://bankinnovation.net/feed/",
+                        "_htmlUrl": "https://bankautomationnews.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Military & Defense",
+                        "_title": "Military & Defense",
+                        "_xmlUrl": "http://www.businessinsider.com/defense.rss",
+                        "_htmlUrl": "https://www.businessinsider.com/defense"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "3D Printing Industry",
+                        "_title": "3D Printing Industry",
+                        "_xmlUrl": "http://3dprintingindustry.com/feed/",
+                        "_htmlUrl": "https://3dprintingindustry.com/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Industrials",
+                        "_title": "Industrials",
+                        "_xmlUrl": "http://www.ft.com/rss/companies/industrials",
+                        "_htmlUrl": "https://www.ft.com/stream/d1252624-8645-438b-b521-9244aebdc99e"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Railnews - Latest News",
+                        "_title": "Railnews - Latest News",
+                        "_xmlUrl": "http://www.railnews.co.uk/rss/news/",
+                        "_htmlUrl": "http://www.railnews.co.uk"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Supply Chain Dive - Latest News",
+                        "_title": "Supply Chain Dive - Latest News",
+                        "_xmlUrl": "http://www.supplychaindive.com/feeds/news/",
+                        "_htmlUrl": "https://www.supplychaindive.com/news/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "SCMR Editorial",
+                        "_title": "SCMR Editorial",
+                        "_xmlUrl": "http://feeds.feedburner.com/scmr/rss/recentlyfiled",
+                        "_htmlUrl": "https://www.scmr.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Accenture Banking Blog",
+                        "_title": "Accenture Banking Blog",
+                        "_xmlUrl": "http://bankingblog.accenture.com/feed/",
+                        "_htmlUrl": "https://bankingblog.accenture.com/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Faisal Khan",
+                        "_title": "Faisal Khan",
+                        "_xmlUrl": "http://www.faisalkhan.com/feed/",
+                        "_htmlUrl": "https://faisalkhan.com/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "FinTech Futures - The definitive source of news and intelligence for the global fintech sector",
+                        "_title": "FinTech Futures - The definitive source of news and intelligence for the global fintech sector",
+                        "_xmlUrl": "http://www.bankingtech.com/feed/",
+                        "_htmlUrl": "https://www.fintechfutures.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "The Financial Brand",
+                        "_title": "The Financial Brand",
+                        "_xmlUrl": "http://feeds.feedburner.com/thefinancialbrand",
+                        "_htmlUrl": "https://thefinancialbrand.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Fintech Archives | VentureBeat",
+                        "_title": "Fintech Archives | VentureBeat",
+                        "_xmlUrl": "http://venturebeat.com/tag/fintech/feed/",
+                        "_htmlUrl": "https://venturebeat.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "News news",
+                        "_title": "News news",
+                        "_xmlUrl": "http://www.railmagazine.com/news/rss.xml",
+                        "_htmlUrl": "https://www.railmagazine.com/news"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Gregg Schoenberg, Author at TechCrunch",
+                        "_title": "Gregg Schoenberg, Author at TechCrunch",
+                        "_xmlUrl": "https://techcrunch.com/author/gregg-schoenberg-2/feed/",
+                        "_htmlUrl": "https://techcrunch.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Navy Daily",
+                        "_title": "Navy Daily",
+                        "_xmlUrl": "http://news.navy.gov.au/en/static/rss/",
+                        "_htmlUrl": "https://news.navy.gov.au"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Journal of Commerce | Air Cargo",
+                        "_title": "Journal of Commerce | Air Cargo",
+                        "_xmlUrl": "http://www.joc.com/rssfeed/8879",
+                        "_htmlUrl": "https://www.joc.com/rssfeed/8879"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Civil Engineering News -- ScienceDaily",
+                        "_title": "Civil Engineering News -- ScienceDaily",
+                        "_xmlUrl": "http://www.sciencedaily.com/rss/matter_energy/civil_engineering.xml",
+                        "_htmlUrl": "https://www.sciencedaily.com/news/matter_energy/civil_engineering/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "NASA Breaking News",
+                        "_title": "NASA Breaking News",
+                        "_xmlUrl": "http://www.nasa.gov/rss/breaking_news.rss",
+                        "_htmlUrl": "http://www.nasa.gov/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "DC Velocity",
+                        "_title": "DC Velocity",
+                        "_xmlUrl": "http://feeds.feedburner.com/DCVelocityTopStories",
+                        "_htmlUrl": "https://www.dcvelocity.com/rss/articles"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Supply Chain Movement",
+                        "_title": "Supply Chain Movement",
+                        "_xmlUrl": "http://www.supplychainmovement.com/feed/",
+                        "_htmlUrl": "https://www.supplychainmovement.com/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Journal of Commerce | Maritime News",
+                        "_title": "Journal of Commerce | Maritime News",
+                        "_xmlUrl": "http://www.joc.com/rssfeed/8876",
+                        "_htmlUrl": "https://www.joc.com/rssfeed/8876"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Financial Technology",
+                        "_title": "Financial Technology",
+                        "_xmlUrl": "http://www.forbes.com/sites/tomgroenfeldt/feed/",
+                        "_htmlUrl": "https://www.forbes.com/sites/tomgroenfeldt/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Finovate",
+                        "_title": "Finovate",
+                        "_xmlUrl": "http://feeds.feedburner.com/finovate",
+                        "_htmlUrl": "https://finovate.com/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Journal of Commerce | Rail & Intermodal",
+                        "_title": "Journal of Commerce | Rail & Intermodal",
+                        "_xmlUrl": "http://www.joc.com/rssfeed/8878",
+                        "_htmlUrl": "https://www.joc.com/rssfeed/8878"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Fintech • TechCrunch",
+                        "_title": "Fintech • TechCrunch",
+                        "_xmlUrl": "http://techcrunch.com/tag/fintech/feed/",
+                        "_htmlUrl": "https://techcrunch.com/tag/fintech/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Industrials",
+                        "_title": "Industrials",
+                        "_xmlUrl": "http://www.cnbc.com/id/20040302/rssCmp/97110/device/rss/rss.xml",
+                        "_htmlUrl": "https://www.cnbc.com/industrials/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Green marine – Offshore Energy",
+                        "_title": "Green marine – Offshore Energy",
+                        "_xmlUrl": "http://feeds.feedburner.com/worldmaritimenews/Ltoh",
+                        "_htmlUrl": "https://www.offshore-energy.biz/markets/green-marine/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Latest Media",
+                        "_title": "Latest Media",
+                        "_xmlUrl": "http://www.mobilepaymentstoday.com/RSS/rss.php",
+                        "_htmlUrl": "https://www.mobilepaymentstoday.com/rss/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Air Force Link News",
+                        "_title": "Air Force Link News",
+                        "_xmlUrl": "http://www.af.mil/DesktopModules/ArticleCS/RSS.ashx?max=20&ContentType=1&Site=1&Category=755",
+                        "_htmlUrl": "https://www.af.mil"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "jqpublicblog",
+                        "_title": "jqpublicblog",
+                        "_xmlUrl": "http://www.jqpublic-blog.com/?feed=rss2",
+                        "_htmlUrl": "https://jqpublicblog.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Advances in Civil Engineering",
+                        "_title": "Advances in Civil Engineering",
+                        "_xmlUrl": "http://www.hindawi.com/journals/ace/rss.xml",
+                        "_htmlUrl": "https://www.hindawi.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Transport Topics",
+                        "_title": "Transport Topics",
+                        "_xmlUrl": "http://www.ttnews.com/rss/ttnewsrss.xml",
+                        "_htmlUrl": "https://www.ttnews.com/rssarticles.xml"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Fintech Finance",
+                        "_title": "Fintech Finance",
+                        "_xmlUrl": "http://www.fintech.finance/feed/",
+                        "_htmlUrl": "https://ffnews.com/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "FinTech Ranking",
+                        "_title": "FinTech Ranking",
+                        "_xmlUrl": "http://fintechranking.com/feed/",
+                        "_htmlUrl": "https://fintechranking.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Supply Chain Digest",
+                        "_title": "Supply Chain Digest",
+                        "_xmlUrl": "http://www.scdigest.com/cache/rssfeed.xml",
+                        "_htmlUrl": "https://www.scdigest.com/rss.php"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "All Things Supply Chain",
+                        "_title": "All Things Supply Chain",
+                        "_xmlUrl": "http://www.inventory-and-supplychain-blog.com/feed/",
+                        "_htmlUrl": "https://www.allthingssupplychain.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Transportation Management Company | Cerasis",
+                        "_title": "Transportation Management Company | Cerasis",
+                        "_xmlUrl": "http://cerasis.com/feed/",
+                        "_htmlUrl": "https://www.globaltranz.com/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Journal of Commerce | Trucking Logistics › LTL Trucking Logistics",
+                        "_title": "Journal of Commerce | Trucking Logistics › LTL Trucking Logistics",
+                        "_xmlUrl": "http://www.joc.com/rssfeed/8900",
+                        "_htmlUrl": "https://www.joc.com/rssfeed/8900"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "American Banker",
+                        "_title": "American Banker",
+                        "_xmlUrl": "http://www.americanbanker.com/resources/technology.xml",
+                        "_htmlUrl": "https://www.americanbanker.com/feed"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Air Force Times",
+                        "_title": "Air Force Times",
+                        "_xmlUrl": "http://feeds.feedburner.com/air-force-times/news/your-air-force",
+                        "_htmlUrl": "https://www.airforcetimes.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Inbound Logistics",
+                        "_title": "Inbound Logistics",
+                        "_xmlUrl": "http://www.inboundlogistics.com/cms/rss-feed/",
+                        "_htmlUrl": "https://www.inboundlogistics.com/cms"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Post & Parcel",
+                        "_title": "Post & Parcel",
+                        "_xmlUrl": "https://postandparcel.info/feed/",
+                        "_htmlUrl": "https://postandparcel.info"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "The Fintech Times",
+                        "_title": "The Fintech Times",
+                        "_xmlUrl": "http://thefintechtimes.com/feed/",
+                        "_htmlUrl": "https://thefintechtimes.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Noyes Payments Blog",
+                        "_title": "Noyes Payments Blog",
+                        "_xmlUrl": "http://blog.starpointllp.com/blog/?feed=rss2",
+                        "_htmlUrl": "https://blog.starpointllp.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "News About Military Technology",
+                        "_title": "News About Military Technology",
+                        "_xmlUrl": "http://www.spacewar.com/Military_Technology.xml",
+                        "_htmlUrl": "https://www.spacewar.com/Military_Technology.html"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Journal of Commerce | International Logistics",
+                        "_title": "Journal of Commerce | International Logistics",
+                        "_xmlUrl": "http://www.joc.com/rssfeed/8948",
+                        "_htmlUrl": "https://www.joc.com/rssfeed/8948"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "The Bridge",
+                        "_title": "The Bridge",
+                        "_xmlUrl": "http://feeds.feedburner.com/strategy_bridge",
+                        "_htmlUrl": "https://thestrategybridge.org/the-bridge/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "The Loadstar",
+                        "_title": "The Loadstar",
+                        "_xmlUrl": "http://theloadstar.co.uk/feed/",
+                        "_htmlUrl": "https://theloadstar.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "World Defence News",
+                        "_title": "World Defence News",
+                        "_xmlUrl": "http://worlddefencenews.blogspot.com/feeds/posts/default",
+                        "_htmlUrl": "http://worlddefencenews.blogspot.com/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "DID: Department of Defense News",
+                        "_title": "DID: Department of Defense News",
+                        "_xmlUrl": "http://feeds.feedburner.com/did/rss",
+                        "_htmlUrl": "https://www.defenseindustrydaily.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Space.com",
+                        "_title": "Space.com",
+                        "_xmlUrl": "http://www.space.com/syn/space.xml",
+                        "_htmlUrl": "http://airedale.futurecdn.net/feeds/en_feed_3a953301.rss-fse?site=space"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "MHD",
+                        "_title": "MHD",
+                        "_xmlUrl": "http://www.logisticsmagazine.com.au/rss.xml",
+                        "_htmlUrl": "https://mhdsupplychain.com.au/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "PYMNTS.com",
+                        "_title": "PYMNTS.com",
+                        "_xmlUrl": "http://www.pymnts.com/feed/",
+                        "_htmlUrl": "https://www.pymnts.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Daily Fintech",
+                        "_title": "Daily Fintech",
+                        "_xmlUrl": "http://bernardlunn.com/feed/",
+                        "_htmlUrl": "https://dailyfintech.com/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Chris Skinner's blog",
+                        "_title": "Chris Skinner's blog",
+                        "_xmlUrl": "http://thefinanser.com/feed/",
+                        "_htmlUrl": "https://finansernextjs.wpengine.com/"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "News – PYMNTS.com",
+                        "_title": "News – PYMNTS.com",
+                        "_xmlUrl": "http://www.pymnts.com/news/rss",
+                        "_htmlUrl": "https://www.pymnts.com"
+                    },
+                    {
+                        "_type": "rss",
+                        "_text": "Procurement Insights",
+                        "_title": "Procurement Insights",
+                        "_xmlUrl": "http://procureinsights.wordpress.com/feed/",
+                        "_htmlUrl": "https://procureinsights.com"
+                    }
+                ],
+                "_text": "dib",
+                "_title": "dib"
+            }
+        },
+        "_version": "1.0"
+    }
+}
