@@ -66,6 +66,7 @@
             "total_unique_words": 66815,
             "words_per_document": 904,
             "most_common_words": {
+                "4th generation": {
                 "generation": {
                     "count": 89,
                     "percentage": 0.05
