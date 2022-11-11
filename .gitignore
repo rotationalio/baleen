@@ -4,6 +4,7 @@
 *.dll
 *.so
 *.dylib
+.env
 
 # Configuration
 *.env
@@ -16,3 +17,4 @@
 
 # The manifest, which is a levelDB
 db/*
+yarn.lock
