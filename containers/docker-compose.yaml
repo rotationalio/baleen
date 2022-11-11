@@ -1,0 +1,103 @@
+version: "3"
+services:
+  zookeeper-1:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      - ZOOKEEPER_SERVER_ID=1
+      - ZOOKEEPER_CLIENT_PORT=2181
+      - ZOOKEEPER_DATA_DIR=/data
+      - ZOOKEEPER_TICK_TIME=2000
+      - ZOOKEEPER_INIT_LIMIT=5
+      - ZOOKEEPER_SYNC_LIMIT=2
+    ports:
+      - 22181:2181
+    volumes:
+      - ../data/zookeeper/zookeeper-1:/data
+  
+  zookeeper-2:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      - ZOOKEEPER_SERVER_ID=2
+      - ZOOKEEPER_CLIENT_PORT=2181
+      - ZOOKEEPER_DATA_DIR=/data
+      - ZOOKEEPER_TICK_TIME=2000
+      - ZOOKEEPER_INIT_LIMIT=5
+      - ZOOKEEPER_SYNC_LIMIT=2
+    ports:
+      - 32181:2181
+    volumes:
+      - ../data/zookeeper/zookeeper-2:/data
+  
+  zookeeper-3:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      - ZOOKEEPER_SERVER_ID=3
+      - ZOOKEEPER_CLIENT_PORT=2181
+      - ZOOKEEPER_DATA_DIR=/data
+      - ZOOKEEPER_TICK_TIME=2000
+      - ZOOKEEPER_INIT_LIMIT=5
+      - ZOOKEEPER_SYNC_LIMIT=2
+    ports:
+      - 42181:2181
+    volumes:
+      - ../data/zookeeper/zookeeper-3:/data
+  
+  kafka-1:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+      - zookeeper-3
+    ports:
+      - 29092:29092
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_LOG_DIRS=/logs
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181
+      - KAFKA_ADVERTISED_LISTENERS=INTERNAL_LISTENER://kafka-1:9092,EXTERNAL_LISTENER://localhost:29092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL_LISTENER:PLAINTEXT,EXTERNAL_LISTENER:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=INTERNAL_LISTENER
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=3
+      - KAFKA_MIN_INSYNC_REPLICAS=2
+    volumes:
+      - ../data/kafka/kafka-1:/logs
+
+  kafka-2:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+      - zookeeper-3
+    ports:
+      - 39092:39092
+    environment:
+      - KAFKA_BROKER_ID=2
+      - KAFKA_LOG_DIRS=/logs
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181
+      - KAFKA_ADVERTISED_LISTENERS=INTERNAL_LISTENER://kafka-2:9092,EXTERNAL_LISTENER://localhost:39092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL_LISTENER:PLAINTEXT,EXTERNAL_LISTENER:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=INTERNAL_LISTENER
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=3
+      - KAFKA_MIN_INSYNC_REPLICAS=2
+    volumes:
+      - ../data/kafka/kafka-2:/logs
+
+  kafka-3:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+      - zookeeper-3
+    ports:
+      - 49092:49092
+    environment:
+      - KAFKA_BROKER_ID=3
+      - KAFKA_LOG_DIRS=/logs
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181
+      - KAFKA_ADVERTISED_LISTENERS=INTERNAL_LISTENER://kafka-3:9092,EXTERNAL_LISTENER://localhost:49092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL_LISTENER:PLAINTEXT,EXTERNAL_LISTENER:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=INTERNAL_LISTENER
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=3
+      - KAFKA_MIN_INSYNC_REPLICAS=2
+    volumes:
+      - ../data/kafka/kafka-3:/logs

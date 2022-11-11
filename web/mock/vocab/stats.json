@@ -1,0 +1,135 @@
+{
+    "num_documents": 12761,
+    "num_words": 1476984,
+    "english": {
+        "num_documents": 1279,
+        "num_words": 15663,
+        "num_unique_words": 1997,
+        "words_per_document": 12.246286161063331,
+        "locales": {
+            "en-gb": {
+                "num_documents": 275
+            },
+            "en-us": {
+                "num_documents": 1004
+            }
+        }
+    },
+    "spanish": {
+        "num_documents": 2811,
+        "num_words": 17317,
+        "num_unique_words": 1115,
+        "words_per_document": 6.160441124155105,
+        "locales": {
+            "es-es": {
+                "num_documents": 1553
+            },
+            "es-us": {
+                "num_documents": 1258
+            }
+        }
+    },
+    "french": {
+        "num_documents": 3485,
+        "num_words": 12796,
+        "num_unique_words": 1993,
+        "words_per_document": 3.671736011477762,
+        "locales": {
+            "fr-fr": {
+                "num_documents": 2391
+            },
+            "fr-ca": {
+                "num_documents": 1094
+            }
+        }
+    },
+    "german": {
+        "num_documents": 2167,
+        "num_words": 14014,
+        "num_unique_words": 1748,
+        "words_per_document": 6.467005076142132,
+        "locales": {
+            "de-de": {
+                "num_documents": 1780
+            },
+            "de-at": {
+                "num_documents": 387
+            }
+        }
+    },
+    "italian": {
+        "num_documents": 1499,
+        "num_words": 15725,
+        "num_unique_words": 1485,
+        "words_per_document": 10.490326884589727,
+        "locales": {
+            "it-it": {
+                "num_documents": 504
+            },
+            "it-ch": {
+                "num_documents": 995
+            }
+        }
+    },
+    "portugese": {
+        "num_documents": 213,
+        "num_words": 16830,
+        "num_unique_words": 1457,
+        "words_per_document": 79.01408450704226,
+        "locales": {
+            "pt-pt": {
+                "num_documents": 71
+            },
+            "pt-br": {
+                "num_documents": 142
+            }
+        }
+    },
+    "russian": {
+        "num_documents": 499,
+        "num_words": 13453,
+        "num_unique_words": 1968,
+        "words_per_document": 26.95991983967936,
+        "locales": {
+            "ru-ru": {
+                "num_documents": 499
+            }
+        }
+    },
+    "japanese": {
+        "num_documents": 283,
+        "num_words": 16033,
+        "num_unique_words": 1502,
+        "words_per_document": 56.65371024734982,
+        "locales": {
+            "ja-jp": {
+                "num_documents": 283
+            }
+        }
+    },
+    "korean": {
+        "num_documents": 91,
+        "num_words": 16298,
+        "num_unique_words": 1904,
+        "words_per_document": 179.0989010989011,
+        "locales": {
+            "ko-kr": {
+                "num_documents": 91
+            }
+        }
+    },
+    "chinese": {
+        "num_documents": 434,
+        "num_words": 14135,
+        "num_unique_words": 1596,
+        "words_per_document": 32.56912442396313,
+        "locales": {
+            "zh-cn": {
+                "num_documents": 243
+            },
+            "zh-tw": {
+                "num_documents": 191
+            }
+        }
+    }
+}

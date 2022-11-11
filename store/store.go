@@ -36,6 +36,12 @@ type Document struct {
 	Link         string
 }
 
+type Feed struct {
+	URL    string `json:"url"`
+	Active bool   `json:"active"`
+	Error  string `json:"error"`
+}
+
 // VerifyCredentials is a helper function that verifies the credentials are correct and
 // the bucket exists, returning true if so else false.
 func VerifyCredentials(creds *AWSCredentials) bool {
