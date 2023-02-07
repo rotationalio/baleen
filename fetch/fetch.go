@@ -53,8 +53,8 @@ func init() {
 		Transport: &http.Transport{
 			DialContext:         dialer.DialContext,
 			TLSHandshakeTimeout: 45 * time.Second,
-			DisableKeepAlives:   true,
-			DisableCompression:  false,
+			DisableKeepAlives:   false,
+			DisableCompression:  true,
 		},
 		Jar: jar,
 	}
@@ -66,10 +66,14 @@ const (
 	acceptHTML   = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
 	acceptRSS    = "application/atom+xml,application/rdf+xml,application/rss+xml,application/x-netcdf,application/xml;q=0.9,text/xml;q=0.2,*/*;q=0.1"
 	acceptLang   = "*"
-	acceptEncode = "gzip,deflate,br,*"
+	acceptEncode = "gzip;q=1.0, deflate,br;q=0.6, compress,identity;q=0.1"
 	referer      = ""
 	cacheControl = "max-age=3600"
 	aimType      = "feed"
+	gzipEncode   = "gzip"
+	brotliEncode = "br"
+	zlibEncode   = "deflate"
+	lzwEncode    = "compress"
 )
 
 // Canonical names of headers used by the fetch package
@@ -85,6 +89,8 @@ const (
 	HeaderRFC3229         = "A-IM"
 	HeaderETag            = "ETag"
 	HeaderLastModified    = "Last-Modified"
+	HeaderContentType     = "Content-Type"
+	HeaderContentEncoding = "Content-Encoding"
 )
 
 // SetClient allows you to specify an alternative http.Client to the default one

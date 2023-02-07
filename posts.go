@@ -57,21 +57,28 @@ func PostFetch(msg *message.Message) (_ []*message.Message, err error) {
 		FeedID:    event.FeedID,
 	}
 
+	var html *fetch.HTML
 	fetcher := fetch.NewHTMLFetcher(event.Link)
-	if doc.Content, err = fetcher.Fetch(ctx); err != nil {
+	if html, err = fetcher.Fetch(ctx); err != nil {
 		log.Warn().Err(err).Str("url", event.Link).Str("feed_id", event.FeedID).Msg("could not fetch post")
 		httperr, ok := err.(*fetch.HTTPError)
 		if !ok {
 			return nil, err
 		}
+
+		// If we receive an http error pass an document error event on.
 		doc.Active = false
 		doc.StatusCode = httperr.Code
 		doc.Error = httperr.Status
 	}
 
-	// TODO: get metadata from the document not the item
-	doc.Title = event.Title
-	doc.Description = event.Description
+	if doc.Content, err = html.Extract(); err != nil {
+		log.Warn().Err(err).Str("url", event.Link).Str("feed_id", event.FeedID).Msg("could not decode post")
+		return nil, err
+	}
+
+	doc.Title = html.Title()
+	doc.Description = html.Description()
 	doc.Link = event.Link
 
 	var out *message.Message

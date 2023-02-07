@@ -3,7 +3,9 @@ module github.com/rotationalio/baleen
 go 1.19
 
 require (
+	github.com/PuerkitoBio/goquery v1.8.0
 	github.com/ThreeDotsLabs/watermill v1.1.1
+	github.com/andybalholm/brotli v1.0.4
 	github.com/aws/aws-sdk-go v1.44.134
 	github.com/joho/godotenv v1.4.0
 	github.com/kelseyhightower/envconfig v1.4.0
@@ -21,7 +23,6 @@ require (
 )
 
 require (
-	github.com/PuerkitoBio/goquery v1.8.0 // indirect
 	github.com/andybalholm/cascadia v1.3.1 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect

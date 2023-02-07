@@ -15,9 +15,15 @@ func TestHTMLResponse(t *testing.T) {
 
 	// Fetch the RSS from the server
 	fetcher := fetch.NewHTMLFetcher(url)
-	data, err := fetcher.Fetch(context.Background())
+	html, err := fetcher.Fetch(context.Background())
+	require.NoError(t, err)
+
+	data, err := html.Extract()
 	require.NoError(t, err)
 	require.Len(t, data, 1048)
+
+	require.Equal(t, "Hello World Post", html.Title())
+	require.Equal(t, "Just a quick test post", html.Description())
 }
 
 func TestHTMLError(t *testing.T) {

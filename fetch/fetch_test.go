@@ -26,6 +26,8 @@ func TestCanonicalHeaders(t *testing.T) {
 		fetch.HeaderIfNoneMatch,
 		fetch.HeaderIfModifiedSince,
 		fetch.HeaderLastModified,
+		fetch.HeaderContentType,
+		fetch.HeaderContentEncoding,
 	}
 
 	for _, header := range headers {
