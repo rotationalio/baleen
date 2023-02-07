@@ -7,6 +7,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/ThreeDotsLabs/watermill"
@@ -17,6 +18,7 @@ import (
 	"github.com/rotationalio/baleen/events"
 	"github.com/rotationalio/baleen/logger"
 	"github.com/rotationalio/baleen/opml"
+	"github.com/rotationalio/watermill-ensign/pkg/ensign"
 	"github.com/urfave/cli/v2"
 )
 
@@ -211,7 +213,10 @@ func debug(c *cli.Context) (err error) {
 	subs, _ := subscriber.Subscribe(context.Background(), baleen.TopicSubscriptions)
 
 	for msg := range subs {
-		fmt.Printf("%+v\n", msg)
+		etype := msg.Metadata.Get(ensign.TypeNameKey)
+		size := len(msg.Payload)
+		log.Printf("%s - %d bytes", etype, size)
+
 		msg.Ack()
 	}
 

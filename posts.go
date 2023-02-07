@@ -59,6 +59,7 @@ func PostFetch(msg *message.Message) (_ []*message.Message, err error) {
 
 	fetcher := fetch.NewHTMLFetcher(event.Link)
 	if doc.Content, err = fetcher.Fetch(ctx); err != nil {
+		log.Warn().Err(err).Str("url", event.Link).Str("feed_id", event.FeedID).Msg("could not fetch post")
 		httperr, ok := err.(*fetch.HTTPError)
 		if !ok {
 			return nil, err
