@@ -10,10 +10,10 @@ import (
 )
 
 func TestHTMLResponse(t *testing.T) {
-	// Create a test server serving rss2 data
+	// Create a test server serving HTML data
 	url := NewServer(t, FixtureHandler(t, "testdata/post.html"))
 
-	// Fetch the RSS from the server
+	// Fetch the post from the server
 	fetcher := fetch.NewHTMLFetcher(url)
 	html, err := fetcher.Fetch(context.Background())
 	require.NoError(t, err)
@@ -24,6 +24,29 @@ func TestHTMLResponse(t *testing.T) {
 
 	require.Equal(t, "Hello World Post", html.Title())
 	require.Equal(t, "Just a quick test post", html.Description())
+}
+
+func TestCompressedHTMLResponse(t *testing.T) {
+	testCases := []string{
+		"gzip", "br", "compress", "deflate",
+	}
+
+	for _, tc := range testCases {
+		// Create a test server serving compressed html data
+		url := NewServer(t, CompressedFixtureHandler(t, "testdata/post.html", tc))
+
+		// Fetch the post from the server
+		fetcher := fetch.NewHTMLFetcher(url)
+		html, err := fetcher.Fetch(context.Background())
+		require.NoError(t, err, "could not fetch for encoding %q", tc)
+
+		data, err := html.Extract()
+		require.NoError(t, err, "could not extract for encoding %q", tc)
+		require.Len(t, data, 1048)
+
+		require.Equal(t, "Hello World Post", html.Title())
+		require.Equal(t, "Just a quick test post", html.Description())
+	}
 }
 
 func TestHTMLError(t *testing.T) {
@@ -40,4 +63,17 @@ func TestHTMLError(t *testing.T) {
 	require.True(t, ok, "expected an http error returned")
 	require.Equal(t, http.StatusBadRequest, herr.Code)
 	require.NotEmpty(t, herr.Status)
+}
+
+func TestEncodingError(t *testing.T) {
+	// Create a test server serving compressed html data
+	url := NewServer(t, CompressedFixtureHandler(t, "testdata/post.html", "frog"))
+
+	// Fetch the post from the server
+	fetcher := fetch.NewHTMLFetcher(url)
+	html, err := fetcher.Fetch(context.Background())
+	require.NoError(t, err)
+
+	_, err = html.Extract()
+	require.EqualError(t, err, `unknown content encoding "frog"`)
 }

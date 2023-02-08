@@ -66,16 +66,23 @@ func (f *HTMLFetcher) Fetch(ctx context.Context) (html *HTML, err error) {
 		}
 	}
 
+	// If ContentLength is -1 making this buffer will panic, so use a nil buffer to
+	// expand the buffer while it's reading from the HTTP stream. If ContentLength is
+	// greater than 0, create a buffer with the capacity needed to prevent allocs.
+	var buf []byte
+	if rep.ContentLength > 0 {
+		buf = make([]byte, 0, rep.ContentLength)
+	}
+
 	// Materialize the HTML content from the body
-	buf := make([]byte, 0, rep.ContentLength)
 	html = &HTML{
 		content:  bytes.NewBuffer(buf),
 		ctype:    rep.Header.Get(HeaderContentType),
 		encoding: rep.Header.Get(HeaderContentEncoding),
 	}
 
-	if written, err := io.Copy(html.content, rep.Body); err != nil || written != rep.ContentLength {
-		return nil, fmt.Errorf("no text parsed from html retrieved from %s: %w", f.url, err)
+	if _, err := io.Copy(html.content, rep.Body); err != nil {
+		return nil, fmt.Errorf("could not read body retrieved from %s: %w", f.url, err)
 	}
 	return html, nil
 }
@@ -129,9 +136,7 @@ func (h *HTML) extract() (io.ReadCloser, error) {
 
 func (h *HTML) Title() string {
 	if h.title == "" {
-		if err := h.parse(); err != nil {
-			panic(err)
-		}
+		h.parse()
 	}
 	return h.title
 }
