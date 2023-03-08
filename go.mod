@@ -11,11 +11,12 @@ require (
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/mmcdole/gofeed v1.1.3
 	github.com/prometheus/client_golang v1.14.0
-	github.com/rotationalio/ensign v0.1.1
-	github.com/rotationalio/watermill-ensign v0.1.0
+	github.com/rotationalio/ensign v0.4.0
+	github.com/rotationalio/go-ensign v0.4.1
+	github.com/rotationalio/watermill-ensign v0.2.0
 	github.com/rs/zerolog v1.28.0
 	github.com/spaolacci/murmur3 v1.1.0
-	github.com/stretchr/testify v1.8.1
+	github.com/stretchr/testify v1.8.2
 	github.com/syndtr/goleveldb v1.0.0
 	github.com/tinylib/msgp v1.1.6
 	github.com/urfave/cli/v2 v2.23.5
@@ -26,7 +27,7 @@ require (
 	github.com/andybalholm/cascadia v1.3.1 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
-	github.com/cespare/xxhash/v2 v2.1.2 // indirect
+	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
@@ -62,11 +63,11 @@ require (
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect
 	golang.org/x/crypto v0.2.0 // indirect
-	golang.org/x/net v0.2.0 // indirect
-	golang.org/x/sys v0.2.0 // indirect
-	golang.org/x/text v0.4.0 // indirect
-	google.golang.org/genproto v0.0.0-20221109142239-94d6d90a7d66 // indirect
-	google.golang.org/grpc v1.50.1 // indirect
-	google.golang.org/protobuf v1.28.1 // indirect
+	golang.org/x/net v0.5.0 // indirect
+	golang.org/x/sys v0.4.0 // indirect
+	golang.org/x/text v0.6.0 // indirect
+	google.golang.org/genproto v0.0.0-20230110181048-76db0878b65f // indirect
+	google.golang.org/grpc v1.53.0 // indirect
+	google.golang.org/protobuf v1.29.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )

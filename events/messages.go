@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/ThreeDotsLabs/watermill/message"
-	mime "github.com/rotationalio/ensign/pkg/mimetype/v1beta1"
+	mime "github.com/rotationalio/go-ensign/mimetype/v1beta1"
 	"github.com/rotationalio/watermill-ensign/pkg/ensign"
 )
 

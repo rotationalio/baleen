@@ -10,7 +10,7 @@ import (
 	"github.com/rotationalio/baleen/config"
 	"github.com/rotationalio/baleen/events"
 	"github.com/rotationalio/baleen/fetch"
-	mime "github.com/rotationalio/ensign/pkg/mimetype/v1beta1"
+	mime "github.com/rotationalio/go-ensign/mimetype/v1beta1"
 	"github.com/rs/zerolog/log"
 )
 

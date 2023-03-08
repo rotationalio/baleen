@@ -6,7 +6,7 @@ import (
 	"github.com/ThreeDotsLabs/watermill"
 	"github.com/ThreeDotsLabs/watermill/message"
 	"github.com/rotationalio/baleen/config"
-	esdk "github.com/rotationalio/ensign/sdks/go"
+	esdk "github.com/rotationalio/go-ensign"
 	"github.com/rotationalio/watermill-ensign/pkg/ensign"
 )
 
