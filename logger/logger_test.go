@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/rotationalio/ensign/pkg/utils/logger"
+	"github.com/rotationalio/baleen/logger"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/stretchr/testify/require"

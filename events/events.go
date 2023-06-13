@@ -22,12 +22,20 @@ const (
 	TypeDocument     = "Document"
 )
 
-// Versions specifies the numeric version for each event type
+// Versions specifies the semantic version for each event type
 const (
-	VersionSubscription uint32 = 1
-	VersionFeedSync     uint32 = 1
-	VersionFeedItem     uint32 = 1
-	VersionDocument     uint32 = 1
+	VersionSubscription = "1.0.0"
+	VersionFeedSync     = "1.0.0"
+	VersionFeedItem     = "1.0.0"
+	VersionDocument     = "1.0.0"
+)
+
+// Parsed ensign versions for each event type
+var (
+	typeSubscription = mustParseType(TypeSubscription, VersionSubscription)
+	typeFeedSync     = mustParseType(TypeFeedSync, VersionFeedSync)
+	typeFeedItem     = mustParseType(TypeFeedItem, VersionFeedItem)
+	typeDocument     = mustParseType(TypeDocument, VersionDocument)
 )
 
 // TypedEvents can return their type for Ensign serialization
@@ -113,28 +121,44 @@ var _ TypedEvent = &Document{}
 
 func (Subscription) Type() *api.Type {
 	return &api.Type{
-		Name:    TypeSubscription,
-		Version: VersionSubscription,
+		Name:         typeSubscription.Name,
+		MajorVersion: typeSubscription.MajorVersion,
+		MinorVersion: typeSubscription.MinorVersion,
+		PatchVersion: typeSubscription.PatchVersion,
 	}
 }
 
 func (FeedSync) Type() *api.Type {
 	return &api.Type{
-		Name:    TypeFeedSync,
-		Version: VersionFeedSync,
+		Name:         typeFeedSync.Name,
+		MajorVersion: typeFeedSync.MajorVersion,
+		MinorVersion: typeFeedSync.MinorVersion,
+		PatchVersion: typeFeedSync.PatchVersion,
 	}
 }
 
 func (FeedItem) Type() *api.Type {
 	return &api.Type{
-		Name:    TypeFeedItem,
-		Version: VersionFeedItem,
+		Name:         typeFeedItem.Name,
+		MajorVersion: typeFeedItem.MajorVersion,
+		MinorVersion: typeFeedItem.MinorVersion,
+		PatchVersion: typeFeedItem.PatchVersion,
 	}
 }
 
 func (Document) Type() *api.Type {
 	return &api.Type{
-		Name:    TypeDocument,
-		Version: VersionDocument,
+		Name:         typeDocument.Name,
+		MajorVersion: typeDocument.MajorVersion,
+		MinorVersion: typeDocument.MinorVersion,
+		PatchVersion: typeDocument.PatchVersion,
 	}
+}
+
+func mustParseType(name, semver string) (eventType *api.Type) {
+	eventType = &api.Type{Name: name}
+	if err := eventType.ParseSemver(semver); err != nil {
+		panic(err)
+	}
+	return eventType
 }

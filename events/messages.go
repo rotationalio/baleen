@@ -3,7 +3,6 @@ package events
 import (
 	"errors"
 	"fmt"
-	"strconv"
 	"time"
 
 	"github.com/ThreeDotsLabs/watermill/message"
@@ -27,7 +26,7 @@ func Marshal(event TypedEvent, uuid string) (msg *message.Message, err error) {
 	msg = message.NewMessage(uuid, payload)
 	msg.Metadata.Set(ensign.MIMEKey, mimetype)
 	msg.Metadata.Set(ensign.TypeNameKey, etype.Name)
-	msg.Metadata.Set(ensign.TypeVersionKey, strconv.FormatUint(uint64(etype.Version), 10))
+	msg.Metadata.Set(ensign.TypeVersionKey, etype.Semver())
 	msg.Metadata.Set(ensign.CreatedKey, time.Now().Format(time.RFC3339Nano))
 
 	return msg, nil

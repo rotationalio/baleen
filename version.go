@@ -6,9 +6,9 @@ import "fmt"
 const (
 	VersionMajor         = 0
 	VersionMinor         = 2
-	VersionPatch         = 2
+	VersionPatch         = 3
 	VersionReleaseLevel  = "beta"
-	VersionReleaseNumber = 4
+	VersionReleaseNumber = 5
 )
 
 // Set the GitVersion via -ldflags="-X 'github.com/rotationalio/baleen/pkg.GitVersion=$(git rev-parse --short HEAD)'"
