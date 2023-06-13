@@ -11,11 +11,10 @@ import (
 )
 
 // Names of available topics
-// TODO: how do we name our topics better and ensure there is a valid namespace?
 const (
-	TopicSubscriptions = "io.rotational.baleen/subscriptions"
-	TopicFeeds         = "io.rotational.baleen/feeds"
-	TopicDocuments     = "io.rotational.baleen/documents"
+	TopicSubscriptions = "subscriptions"
+	TopicFeeds         = "feeds"
+	TopicDocuments     = "documents"
 )
 
 func CreatePublisher(conf config.PublisherConfig, logger watermill.LoggerAdapter) (message.Publisher, error) {
