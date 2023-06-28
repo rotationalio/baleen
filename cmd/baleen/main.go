@@ -72,7 +72,14 @@ func main() {
 			Usage:  "subscribe to all topics to debug messages being published",
 			Before: configure,
 			Action: debug,
-			Flags:  []cli.Flag{},
+			Flags: []cli.Flag{
+				&cli.StringSliceFlag{
+					Name:    "topics",
+					Aliases: []string{"t"},
+					Usage:   "specify the topics to subscribe to",
+					Value:   cli.NewStringSlice(defaultDebugTopics...),
+				},
+			},
 		},
 	}
 
@@ -203,6 +210,10 @@ func addPost(c *cli.Context) (err error) {
 	return nil
 }
 
+var defaultDebugTopics = []string{
+	baleen.TopicSubscriptions, baleen.TopicFeeds, baleen.TopicDocuments,
+}
+
 func debug(c *cli.Context) (err error) {
 	var subscriber message.Subscriber
 	if subscriber, err = baleen.CreateSubscriber(conf.Subscriber, logger.New()); err != nil {
@@ -210,15 +221,36 @@ func debug(c *cli.Context) (err error) {
 	}
 	defer subscriber.Close()
 
-	subs, _ := subscriber.Subscribe(context.Background(), baleen.TopicSubscriptions)
+	// Create the message channel
+	msgs := make(chan *message.Message, 3)
 
-	for msg := range subs {
+	// Create a multiplexing system for subscribing to topics
+	multiplex := func(topic string, msgs chan<- *message.Message) error {
+		var C <-chan *message.Message
+		if C, err = subscriber.Subscribe(context.Background(), topic); err != nil {
+			return cli.Exit(err, 1)
+		}
+
+		go func(in <-chan *message.Message, out chan<- *message.Message) {
+			for msg := range in {
+				out <- msg
+			}
+		}(C, msgs)
+		return nil
+	}
+
+	for _, topic := range c.StringSlice("topics") {
+		if err = multiplex(topic, msgs); err != nil {
+			return err
+		}
+	}
+
+	for msg := range msgs {
 		etype := msg.Metadata.Get(ensign.TypeNameKey)
 		size := len(msg.Payload)
 		log.Printf("%s - %d bytes", etype, size)
 
 		msg.Ack()
 	}
-
 	return nil
 }

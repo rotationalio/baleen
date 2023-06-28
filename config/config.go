@@ -2,11 +2,13 @@ package config
 
 import (
 	"errors"
+	"os"
 	"time"
 
 	"github.com/ThreeDotsLabs/watermill/message"
 	"github.com/kelseyhightower/envconfig"
 	"github.com/rotationalio/baleen/logger"
+	"github.com/rotationalio/go-ensign"
 	"github.com/rs/zerolog"
 )
 
@@ -62,8 +64,8 @@ type SubscriberConfig struct {
 }
 
 type EnsignConfig struct {
-	Enabled      bool   `default:"false"`
-	Endpoint     string `default:"flagship.rotational.dev:443"`
+	Enabled      bool   `default:"true"`
+	Endpoint     string `default:"ensign.rotational.app:443"`
 	ClientID     string `split_words:"true"`
 	ClientSecret string `split_words:"true"`
 	Insecure     bool   `default:"false"`
@@ -88,6 +90,15 @@ func New() (_ Config, err error) {
 	var conf Config
 	if err = envconfig.Process(prefix, &conf); err != nil {
 		return Config{}, err
+	}
+
+	// Post-process ensign config
+	if conf.Publisher.Ensign.Enabled {
+		conf.Publisher.Ensign.PostProcess()
+	}
+
+	if conf.Subscriber.Ensign.Enabled {
+		conf.Subscriber.Ensign.PostProcess()
 	}
 
 	// Validate config-specific constraints
@@ -160,6 +171,17 @@ func (c SubscriberConfig) Validate() error {
 	}
 
 	return nil
+}
+
+func (c *EnsignConfig) PostProcess() {
+	// Update ensign credentials with actual ensign environment variables.
+	if c.ClientID == "" {
+		c.ClientID = os.Getenv(ensign.EnvClientID)
+	}
+
+	if c.ClientSecret == "" {
+		c.ClientSecret = os.Getenv(ensign.EnvClientSecret)
+	}
 }
 
 // Validate the Kafka config.
